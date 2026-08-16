@@ -16,6 +16,7 @@ typescript:
   maxMethodParams: 0
   clientServerStatusCodesAsErrors: true
   responseFormat: envelope-http
+  envVarPrefix: X402API
   author: x402api
   packageName: '@x402api/sdk'
   moduleFormat: dual
