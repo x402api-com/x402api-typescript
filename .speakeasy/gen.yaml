@@ -2,27 +2,100 @@ configVersion: 2.0.0
 generation:
   sdkClassName: X402Api
   maintainOpenAPIOrder: true
-  persistentEdits:
-    enabled: true
-  repoUrl: https://github.com/x402api-com/x402api-typescript
+  usageSnippets:
+    optionalPropertyRendering: withExample
+    sdkInitStyle: constructor
+  useClassNamesForArrayFields: true
   fixes:
     nameResolutionDec2023: true
+    nameResolutionFeb2025: false
     parameterOrderingFeb2024: true
     requestResponseComponentNamesFeb2024: true
     securityFeb2025: true
+    sharedErrorComponentsApr2025: false
+    sharedNestedComponentsJan2026: false
     nameOverrideFeb2026: true
+  auth:
+    oAuth2ClientCredentialsEnabled: false
+    oAuth2PasswordEnabled: false
+    hoistGlobalSecurity: true
+  inferSSEOverload: true
+  sdkHooksConfigAccess: true
+  schemas:
+    allOfMergeStrategy: shallowMerge
+  requestBodyFieldName: body
+  versioningStrategy: automatic
+  persistentEdits:
+    enabled: "true"
+  tests:
+    generateTests: false
+    generateNewTests: true
+    skipResponseBodyAssertions: false
+  repoUrl: https://github.com/x402api-com/x402api-typescript
 typescript:
   version: 1.0.0
-  maxMethodParams: 0
-  clientServerStatusCodesAsErrors: true
-  responseFormat: envelope-http
-  envVarPrefix: X402API
-  author: x402api
-  packageName: '@x402api/sdk'
-  moduleFormat: dual
-  defaultErrorName: X402ApiError
-  forwardCompatibleEnumsByDefault: true
+  acceptHeaderEnum: false
+  additionalDependencies:
+    dependencies: {}
+    devDependencies: {}
+    peerDependencies: {}
   additionalPackageJSON:
-    license: MIT
     engines:
       node: '>=22'
+    license: MIT
+  additionalScripts: {}
+  alwaysIncludeInboundAndOutbound: false
+  apiPromiseHelpers: false
+  author: x402api
+  baseErrorName: X402APIBaseError
+  clientServerStatusCodesAsErrors: true
+  constFieldsAlwaysOptional: false
+  defaultErrorName: X402ApiError
+  enableCustomCodeRegions: false
+  enableMCPServer: false
+  enableReactQuery: false
+  enumFormat: union
+  envVarPrefix: X402API
+  eventStreamClassName: EventStream
+  exportZodModelNamespace: false
+  fixEnumNameSanitization: false
+  flatAdditionalProperties: true
+  flattenGlobalSecurity: true
+  flatteningOrder: parameters-first
+  formStringArrayEncodeMode: array
+  forwardCompatibleEnumsByDefault: true
+  forwardCompatibleUnionsByDefault: tagged-only
+  generateExamples: true
+  imports:
+    option: openapi
+    paths:
+      callbacks: models/callbacks
+      errors: models/errors
+      operations: models/operations
+      shared: models
+      webhooks: models/webhooks
+  inferUnionDiscriminators: true
+  inputModelSuffix: input
+  jsonpath: rfc9535
+  laxMode: lax
+  legacyFileNaming: false
+  maxMethodParams: 0
+  methodArguments: infer-optional-args
+  modelPropertyCasing: camel
+  moduleFormat: dual
+  multipartArrayFormat: standard
+  outputModelSuffix: output
+  packageName: '@x402api/sdk'
+  preApplyUnionDiscriminators: true
+  preserveModelFieldNames: false
+  privateIdentifierPrefix: '#'
+  requestExtras: false
+  responseFormat: envelope-http
+  sseFlatResponse: false
+  templateVersion: v2
+  unionStrategy: populated-fields
+  usageSDKInitImports: []
+  useIndexModules: true
+  useOxlint: true
+  useTsgo: true
+  zodVersion: v4-mini

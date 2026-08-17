@@ -3,9 +3,9 @@ speakeasyVersion: 1.794.0
 sources:
   x402api-public:
     inputs:
-    - location: registry.speakeasyapi.dev/x402api-com/x402api-com/x402api-public:${TAG:-latest}
+    - location: registry.speakeasyapi.dev/x402api-com-t3t/x402api-com/x402api-public@$TAG
     registry:
-      location: registry.speakeasyapi.dev/x402api-com/x402api-com/x402api-public
+      location: registry.speakeasyapi.dev/x402api-com-t3t/x402api-com/x402api-public
 targets:
   typescript:
     target: typescript

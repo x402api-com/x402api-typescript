@@ -1,0 +1,28 @@
+speakeasyVersion: 1.794.0
+sources:
+    x402api-public:
+        sourceNamespace: x402api-public
+        sourceRevisionDigest: sha256:ad67ff32538c7bcdb10b73dbfae4d920ad355c13c9f88765894b9f1697864c51
+        sourceBlobDigest: sha256:6acacb74938e02535b9f558623acf071d8943a664eb93d624bd45ac48505d6e1
+        tags:
+            - latest
+targets:
+    typescript:
+        source: x402api-public
+        sourceNamespace: x402api-public
+        sourceRevisionDigest: sha256:ad67ff32538c7bcdb10b73dbfae4d920ad355c13c9f88765894b9f1697864c51
+        sourceBlobDigest: sha256:6acacb74938e02535b9f558623acf071d8943a664eb93d624bd45ac48505d6e1
+workflow:
+    workflowVersion: 1.0.0
+    speakeasyVersion: 1.794.0
+    sources:
+        x402api-public:
+            inputs:
+                - location: registry.speakeasyapi.dev/x402api-com-t3t/x402api-com/x402api-public@$TAG
+            registry:
+                location: registry.speakeasyapi.dev/x402api-com-t3t/x402api-com/x402api-public
+    targets:
+        typescript:
+            target: typescript
+            source: x402api-public
+            output: .
