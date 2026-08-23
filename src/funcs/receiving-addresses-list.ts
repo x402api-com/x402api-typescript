@@ -33,7 +33,7 @@ import { Result } from "../types/fp.js";
  * @remarks
  * List tenant receiving-address registrations using opaque cursor pagination.
  *
- * If set, this operation will use either {@link Security.tenantApiKey} or {@link Security.tenantApiKey} from the global security.
+ * If set, this operation will use {@link Security.tenantApiKey} from the global security.
  */
 export function receivingAddressesList(
   client: X402ApiCore,

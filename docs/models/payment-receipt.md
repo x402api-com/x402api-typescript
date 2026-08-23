@@ -31,7 +31,13 @@ let value: PaymentReceipt = {
   feeQuoteDigest: "<value>",
   feeQuoteExpiresAt: new Date("2026-03-18T11:53:47.416Z"),
   settlementAmountAtomic: "<value>",
-  createdAt: new Date("2024-10-17T10:26:37.869Z"),
+  gasMode: "<value>",
+  buyerNativeFeeAtomic: "<value>",
+  sponsoredNativeFeeAtomic: "<value>",
+  sponsoredNativeSymbol: "<value>",
+  tenantGasChargeMicros: "<value>",
+  gasSponsorshipEvidenceDigest: "<value>",
+  createdAt: new Date("2026-04-18T03:06:07.112Z"),
 };
 ```
 
@@ -52,4 +58,10 @@ let value: PaymentReceipt = {
 | `feeQuoteDigest`                                                                              | *string*                                                                                      | :heavy_check_mark:                                                                            | N/A                                                                                           |
 | `feeQuoteExpiresAt`                                                                           | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_check_mark:                                                                            | N/A                                                                                           |
 | `settlementAmountAtomic`                                                                      | *string*                                                                                      | :heavy_check_mark:                                                                            | N/A                                                                                           |
+| `gasMode`                                                                                     | *string*                                                                                      | :heavy_check_mark:                                                                            | N/A                                                                                           |
+| `buyerNativeFeeAtomic`                                                                        | *string*                                                                                      | :heavy_check_mark:                                                                            | N/A                                                                                           |
+| `sponsoredNativeFeeAtomic`                                                                    | *string*                                                                                      | :heavy_check_mark:                                                                            | N/A                                                                                           |
+| `sponsoredNativeSymbol`                                                                       | *string*                                                                                      | :heavy_check_mark:                                                                            | N/A                                                                                           |
+| `tenantGasChargeMicros`                                                                       | *string*                                                                                      | :heavy_check_mark:                                                                            | N/A                                                                                           |
+| `gasSponsorshipEvidenceDigest`                                                                | *string*                                                                                      | :heavy_check_mark:                                                                            | N/A                                                                                           |
 | `createdAt`                                                                                   | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_check_mark:                                                                            | N/A                                                                                           |
