@@ -33,7 +33,7 @@ import { Result } from "../types/fp.js";
  * @remarks
  * List finalized and pending chain observations for one tenant-visible payment.
  *
- * If set, this operation will use either {@link Security.tenantApiKey} or {@link Security.tenantApiKey} from the global security.
+ * If set, this operation will use {@link Security.tenantApiKey} from the global security.
  */
 export function paymentsListObservations(
   client: X402ApiCore,

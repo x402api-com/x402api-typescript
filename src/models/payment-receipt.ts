@@ -77,6 +77,12 @@ export type PaymentReceipt = {
   feeQuoteDigest: string | null;
   feeQuoteExpiresAt: Date | null;
   settlementAmountAtomic: string;
+  gasMode: string;
+  buyerNativeFeeAtomic: string | null;
+  sponsoredNativeFeeAtomic: string | null;
+  sponsoredNativeSymbol: string | null;
+  tenantGasChargeMicros: string | null;
+  gasSponsorshipEvidenceDigest: string | null;
   createdAt: Date;
 };
 
@@ -148,6 +154,12 @@ export const PaymentReceipt$inboundSchema: z.ZodMiniType<
     fee_quote_digest: types.nullable(types.string()),
     fee_quote_expires_at: types.nullable(types.date()),
     settlement_amount_atomic: types.string(),
+    gas_mode: types.string(),
+    buyer_native_fee_atomic: types.nullable(types.string()),
+    sponsored_native_fee_atomic: types.nullable(types.string()),
+    sponsored_native_symbol: types.nullable(types.string()),
+    tenant_gas_charge_micros: types.nullable(types.string()),
+    gas_sponsorship_evidence_digest: types.nullable(types.string()),
     created_at: types.date(),
   }),
   z.transform((v) => {
@@ -162,6 +174,12 @@ export const PaymentReceipt$inboundSchema: z.ZodMiniType<
       "fee_quote_digest": "feeQuoteDigest",
       "fee_quote_expires_at": "feeQuoteExpiresAt",
       "settlement_amount_atomic": "settlementAmountAtomic",
+      "gas_mode": "gasMode",
+      "buyer_native_fee_atomic": "buyerNativeFeeAtomic",
+      "sponsored_native_fee_atomic": "sponsoredNativeFeeAtomic",
+      "sponsored_native_symbol": "sponsoredNativeSymbol",
+      "tenant_gas_charge_micros": "tenantGasChargeMicros",
+      "gas_sponsorship_evidence_digest": "gasSponsorshipEvidenceDigest",
       "created_at": "createdAt",
     });
   }),

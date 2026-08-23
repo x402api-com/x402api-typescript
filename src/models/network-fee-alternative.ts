@@ -16,6 +16,7 @@ import {
   FeePolicyQuoteCurrencyInputEnum,
   FeePolicyQuoteCurrencyInputEnum$inboundSchema,
 } from "./fee-policy-quote-currency-input-enum.js";
+import { GasModeEnum, GasModeEnum$inboundSchema } from "./gas-mode-enum.js";
 import {
   NetworkFeeEvidence,
   NetworkFeeEvidence$inboundSchema,
@@ -45,6 +46,15 @@ export type NetworkFeeAlternative = {
   nativeDecimals: number | null;
   nativeUsdQuoteMicros: string | null;
   estimatedFeeQuoteMicros: string | null;
+  /**
+   * * `buyer_pays` - buyer_pays
+   *
+   * @remarks
+   * * `sponsored` - sponsored
+   */
+  gasMode: GasModeEnum;
+  buyerNativeFeeAtomic: string | null;
+  maximumTenantGasReservationMicros: string;
   providerDisagreementBps: number | null;
   feeAllowanceQuoteMicros: string;
   feeAllowanceAtomic: string;
@@ -79,6 +89,9 @@ export const NetworkFeeAlternative$inboundSchema: z.ZodMiniType<
   nativeDecimals: types.nullable(types.number()),
   nativeUsdQuoteMicros: types.nullable(types.string()),
   estimatedFeeQuoteMicros: types.nullable(types.string()),
+  gasMode: GasModeEnum$inboundSchema,
+  buyerNativeFeeAtomic: types.nullable(types.string()),
+  maximumTenantGasReservationMicros: types.string(),
   providerDisagreementBps: types.nullable(types.number()),
   feeAllowanceQuoteMicros: types.string(),
   feeAllowanceAtomic: types.string(),

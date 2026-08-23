@@ -33,7 +33,7 @@ import { Result } from "../types/fp.js";
  * @remarks
  * Activate a ready external receiving-address registration idempotently.
  *
- * If set, this operation will use either {@link Security.tenantApiKey} or {@link Security.tenantApiKey} from the global security.
+ * If set, this operation will use {@link Security.tenantApiKey} from the global security.
  */
 export function receivingAddressesActivate(
   client: X402ApiCore,

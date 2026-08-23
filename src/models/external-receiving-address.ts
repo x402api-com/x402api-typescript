@@ -10,7 +10,6 @@ import * as openEnums from "../types/enums.js";
 import { OpenEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
-import { smartUnion } from "../types/smart-union.js";
 import { SDKValidationError } from "./errors/sdk-validation-error.js";
 
 /**
@@ -19,7 +18,7 @@ import { SDKValidationError } from "./errors/sdk-validation-error.js";
  * @remarks
  * * `onchain_canary` - onchain_canary
  */
-export const ProofMethodExternalAddressProofInputMethodEnum = {
+export const ExternalReceivingAddressProofMethod = {
   SignedMessage: "signed_message",
   OnchainCanary: "onchain_canary",
 } as const;
@@ -29,13 +28,9 @@ export const ProofMethodExternalAddressProofInputMethodEnum = {
  * @remarks
  * * `onchain_canary` - onchain_canary
  */
-export type ProofMethodExternalAddressProofInputMethodEnum = OpenEnum<
-  typeof ProofMethodExternalAddressProofInputMethodEnum
+export type ExternalReceivingAddressProofMethod = OpenEnum<
+  typeof ExternalReceivingAddressProofMethod
 >;
-
-export type ExternalReceivingAddressProofMethod =
-  | ProofMethodExternalAddressProofInputMethodEnum
-  | any;
 
 /**
  * * `current` - current
@@ -73,7 +68,7 @@ export type ExternalReceivingAddress = {
   assetId: string;
   address: string;
   status: string;
-  proofMethod: ProofMethodExternalAddressProofInputMethodEnum | any | null;
+  proofMethod: ExternalReceivingAddressProofMethod | null;
   proofVerifiedAt: Date | null;
   readinessState: string;
   readinessUsable: boolean;
@@ -89,29 +84,10 @@ export type ExternalReceivingAddress = {
 };
 
 /** @internal */
-export const ProofMethodExternalAddressProofInputMethodEnum$inboundSchema:
-  z.ZodMiniType<ProofMethodExternalAddressProofInputMethodEnum, unknown> =
-    openEnums.inboundSchema(ProofMethodExternalAddressProofInputMethodEnum);
-
-/** @internal */
 export const ExternalReceivingAddressProofMethod$inboundSchema: z.ZodMiniType<
   ExternalReceivingAddressProofMethod,
   unknown
-> = smartUnion([
-  ProofMethodExternalAddressProofInputMethodEnum$inboundSchema,
-  z.any(),
-]);
-
-export function externalReceivingAddressProofMethodFromJSON(
-  jsonString: string,
-): SafeParseResult<ExternalReceivingAddressProofMethod, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      ExternalReceivingAddressProofMethod$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ExternalReceivingAddressProofMethod' from JSON`,
-  );
-}
+> = openEnums.inboundSchema(ExternalReceivingAddressProofMethod);
 
 /** @internal */
 export const ReadinessStatus$inboundSchema: z.ZodMiniType<
@@ -134,10 +110,7 @@ export const ExternalReceivingAddress$inboundSchema: z.ZodMiniType<
     address: types.string(),
     status: types.string(),
     proof_method: types.nullable(
-      smartUnion([
-        ProofMethodExternalAddressProofInputMethodEnum$inboundSchema,
-        z.any(),
-      ]),
+      ExternalReceivingAddressProofMethod$inboundSchema,
     ),
     proof_verified_at: types.nullable(types.date()),
     readiness_state: types.string(),

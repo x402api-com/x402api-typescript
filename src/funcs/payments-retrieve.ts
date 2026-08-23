@@ -33,7 +33,7 @@ import { Result } from "../types/fp.js";
  * @remarks
  * Retrieve one tenant-visible payment by its canonical identifier.
  *
- * If set, this operation will use either {@link Security.tenantApiKey} or {@link Security.tenantApiKey} from the global security.
+ * If set, this operation will use {@link Security.tenantApiKey} from the global security.
  */
 export function paymentsRetrieve(
   client: X402ApiCore,

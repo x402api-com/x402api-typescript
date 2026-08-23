@@ -33,7 +33,7 @@ import { Result } from "../types/fp.js";
  * @remarks
  * Create an idempotent proof-of-control challenge for an external receiving address.
  *
- * If set, this operation will use either {@link Security.tenantApiKey} or {@link Security.tenantApiKey} from the global security.
+ * If set, this operation will use {@link Security.tenantApiKey} from the global security.
  */
 export function receivingAddressesCreateControlChallenge(
   client: X402ApiCore,

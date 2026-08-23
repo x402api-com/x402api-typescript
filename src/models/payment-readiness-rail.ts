@@ -13,9 +13,21 @@ import {
   PaymentReadinessAsset,
   PaymentReadinessAsset$inboundSchema,
 } from "./payment-readiness-asset.js";
+import {
+  PaymentReadinessBlocker,
+  PaymentReadinessBlocker$inboundSchema,
+} from "./payment-readiness-blocker.js";
 
 export type PaymentReadinessRail = {
+  assetId: string;
   network: string;
+  symbol: string;
+  selected: boolean;
+  walletReady: boolean;
+  platformAvailable: boolean;
+  acceptingNewPayments: boolean;
+  status: string;
+  blockers: Array<PaymentReadinessBlocker>;
   tenantChallengesEnabled: boolean;
   tenantSettlementEnabled: boolean;
   networkAssistanceEnabled: boolean;
@@ -30,7 +42,15 @@ export const PaymentReadinessRail$inboundSchema: z.ZodMiniType<
   unknown
 > = z.pipe(
   z.object({
+    asset_id: types.string(),
     network: types.string(),
+    symbol: types.string(),
+    selected: types.boolean(),
+    wallet_ready: types.boolean(),
+    platform_available: types.boolean(),
+    accepting_new_payments: types.boolean(),
+    status: types.string(),
+    blockers: z.array(PaymentReadinessBlocker$inboundSchema),
     tenant_challenges_enabled: types.boolean(),
     tenant_settlement_enabled: types.boolean(),
     network_assistance_enabled: types.boolean(),
@@ -40,6 +60,10 @@ export const PaymentReadinessRail$inboundSchema: z.ZodMiniType<
   }),
   z.transform((v) => {
     return remap$(v, {
+      "asset_id": "assetId",
+      "wallet_ready": "walletReady",
+      "platform_available": "platformAvailable",
+      "accepting_new_payments": "acceptingNewPayments",
       "tenant_challenges_enabled": "tenantChallengesEnabled",
       "tenant_settlement_enabled": "tenantSettlementEnabled",
       "network_assistance_enabled": "networkAssistanceEnabled",

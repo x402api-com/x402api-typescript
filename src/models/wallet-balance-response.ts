@@ -15,6 +15,10 @@ import {
   ObservationStateEnum$inboundSchema,
 } from "./observation-state-enum.js";
 import {
+  TrackingStatusEnum,
+  TrackingStatusEnum$inboundSchema,
+} from "./tracking-status-enum.js";
+import {
   WalletFencedChainReseedContext,
   WalletFencedChainReseedContext$inboundSchema,
 } from "./wallet-fenced-chain-reseed-context.js";
@@ -47,6 +51,16 @@ export type WalletBalanceResponse = {
    * * `unavailable` - unavailable
    */
   observationState: ObservationStateEnum;
+  /**
+   * * `healthy` - healthy
+   *
+   * @remarks
+   * * `degraded` - degraded
+   * * `indexer_disabled` - indexer_disabled
+   * * `awaiting_first_observation` - awaiting_first_observation
+   * * `wallet_version_unavailable` - wallet_version_unavailable
+   */
+  trackingStatus: TrackingStatusEnum;
   observedAt: Date | null;
   assets: Array<BalanceAsset>;
   walletVersions: Array<WalletVersionBalance>;
@@ -64,6 +78,7 @@ export const WalletBalanceResponse$inboundSchema: z.ZodMiniType<
     wallet_address: types.nullable(types.string()),
     requested_finality: WalletObservationFinalityEnum$inboundSchema,
     observation_state: ObservationStateEnum$inboundSchema,
+    tracking_status: TrackingStatusEnum$inboundSchema,
     observed_at: types.nullable(types.date()),
     assets: z.array(BalanceAsset$inboundSchema),
     wallet_versions: z.array(WalletVersionBalance$inboundSchema),
@@ -75,6 +90,7 @@ export const WalletBalanceResponse$inboundSchema: z.ZodMiniType<
       "wallet_address": "walletAddress",
       "requested_finality": "requestedFinality",
       "observation_state": "observationState",
+      "tracking_status": "trackingStatus",
       "observed_at": "observedAt",
       "wallet_versions": "walletVersions",
       "reseed_contexts": "reseedContexts",
