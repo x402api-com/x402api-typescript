@@ -107,7 +107,6 @@ jobs:
           package-manager-cache: false
 
       - name: Require the exact deployed production contract
-        if: inputs.mode == 'direct'
         shell: bash
         env:
           SDK_VERSION: ${{ inputs.set_version }}
@@ -149,6 +148,9 @@ jobs:
           if document.get("info", {}).get("version") != os.environ["SDK_VERSION"]:
               raise SystemExit("production contract version mismatch")
           PY
+          python scripts/render-openapi.py \
+            --input "${contract}" \
+            --output "${RUNNER_TEMP}/sdk-openapi.json"
 
       - name: Require the synchronized SDK version
         shell: bash
@@ -180,21 +182,65 @@ jobs:
           "${bin_root}/speakeasy" --version
           echo "${bin_root}" >>"${GITHUB_PATH}"
 
-      - name: Regenerate from the immutable reviewed source
+      - name: Regenerate locally from the verified contract
         env:
-          SOURCE_ENVIRONMENT: ${{ inputs.environment }}
           SDK_VERSION: ${{ inputs.set_version }}
-          SPEAKEASY_API_KEY: ${{ secrets.SPEAKEASY_API_KEY }}
         shell: bash
         run: |
           set -Eeuo pipefail
-          export "${SOURCE_ENVIRONMENT}"
-          speakeasy run --target typescript --auto-yes --output console \
-            --set-version "${SDK_VERSION}" --skip-versioning --skip-upload-spec
-          git diff --exit-code -- . \
-            ':(exclude).speakeasy/gen.lock' \
-            ':(exclude).speakeasy/workflow.lock'
-          test -z "$(git ls-files --others --exclude-standard)"
+          verify_root="$(mktemp -d)"
+          mkdir -p "${verify_root}/.speakeasy"
+          python - "${verify_root}/.speakeasy/gen.yaml" <<'PY'
+          import pathlib
+
+          source = pathlib.Path(".speakeasy/gen.yaml").read_text()
+          marker = '    enabled: "true"'
+          if source.count(marker) != 1:
+              raise SystemExit("unexpected persistent-edits configuration")
+          pathlib.Path(__import__("sys").argv[1]).write_text(
+              source.replace(marker, '    enabled: "false"')
+          )
+          PY
+          speakeasy generate sdk \
+            --schema "${RUNNER_TEMP}/sdk-openapi.json" \
+            --lang typescript \
+            --out "${verify_root}" \
+            --auto-yes \
+            --repo https://github.com/x402api-com/x402api-typescript \
+            --published
+          python - "${verify_root}/src" <<'PY'
+          import pathlib
+          import sys
+
+          reviewed_root = pathlib.Path("src")
+          generated_root = pathlib.Path(sys.argv[1])
+          reviewed = {path.relative_to(reviewed_root) for path in reviewed_root.rglob("*.ts")}
+          generated = {
+              path.relative_to(generated_root) for path in generated_root.rglob("*.ts")
+          }
+          if reviewed != generated:
+              raise SystemExit(
+                  f"generated source file set differs: "
+                  f"missing={sorted(reviewed - generated)} "
+                  f"extra={sorted(generated - reviewed)}"
+              )
+
+          def normalized(path: pathlib.Path) -> str:
+              return "\n".join(
+                  line
+                  for line in path.read_text().splitlines()
+                  if "@generated-id:" not in line
+              )
+
+          drift = [
+              str(relative)
+              for relative in sorted(reviewed)
+              if normalized(reviewed_root / relative)
+              != normalized(generated_root / relative)
+          ]
+          if drift:
+              raise SystemExit(f"reviewed SDK differs from local regeneration: {drift}")
+          PY
 
       - name: Install, test, and build
         shell: bash
@@ -202,14 +248,13 @@ jobs:
           set -Eeuo pipefail
           npm install --global npm@12.0.2
           npm ci
+          python -m unittest discover -s tests -p 'test_*.py'
           npm test
           npm run lint
           npm run build
           npm audit --audit-level=high
           npm pack --dry-run
-          git diff --exit-code -- . \
-            ':(exclude).speakeasy/gen.lock' \
-            ':(exclude).speakeasy/workflow.lock'
+          git diff --exit-code
           test -z "$(git ls-files --others --exclude-standard)"
 
       - name: Detect an existing publication
@@ -271,6 +316,7 @@ jobs:
           set -Eeuo pipefail
           npm install --global npm@12.0.2
           npm ci
+          python -m unittest discover -s tests -p 'test_*.py'
           npm test
           npm run lint
           npm run build
