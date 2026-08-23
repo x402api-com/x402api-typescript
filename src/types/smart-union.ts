@@ -5,7 +5,6 @@
 
 // Not needed if lax mode
 import * as z from "zod/v4-mini";
-import { Decimal } from "./decimal.js";
 import { startCountingDefaultToZeroValue } from "./default-to-zero-value.js";
 import { RFCDate } from "./rfcdate.js";
 import { startCountingUnrecognized } from "./unrecognized.js";
@@ -134,7 +133,6 @@ function countFieldsRecursive(parsed: unknown): number {
       || type === "bigint"
       || value instanceof Date
       || value instanceof RFCDate
-      || value instanceof Decimal
     ) {
       fieldCount++;
       continue;

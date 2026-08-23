@@ -33,7 +33,7 @@ import { Result } from "../types/fp.js";
  * @remarks
  * Request an idempotent refresh of external receiving-address readiness evidence.
  *
- * If set, this operation will use either {@link Security.tenantApiKey} or {@link Security.tenantApiKey} from the global security.
+ * If set, this operation will use {@link Security.tenantApiKey} from the global security.
  */
 export function receivingAddressesRefreshReadiness(
   client: X402ApiCore,

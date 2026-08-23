@@ -6,25 +6,82 @@
 import * as z from "zod/v4-mini";
 import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
+import * as openEnums from "../types/enums.js";
+import { OpenEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
+import {
+  CanonicalPaymentReadinessRail,
+  CanonicalPaymentReadinessRail$inboundSchema,
+} from "./canonical-payment-readiness-rail.js";
 import { SDKValidationError } from "./errors/sdk-validation-error.js";
 import {
   PaymentReadinessRail,
   PaymentReadinessRail$inboundSchema,
 } from "./payment-readiness-rail.js";
 
+/**
+ * * `accepting` - accepting
+ *
+ * @remarks
+ * * `setup_required` - setup_required
+ * * `temporarily_unavailable` - temporarily_unavailable
+ * * `paused_by_tenant` - paused_by_tenant
+ */
+export const PaymentReadinessState = {
+  Accepting: "accepting",
+  SetupRequired: "setup_required",
+  TemporarilyUnavailable: "temporarily_unavailable",
+  PausedByTenant: "paused_by_tenant",
+} as const;
+/**
+ * * `accepting` - accepting
+ *
+ * @remarks
+ * * `setup_required` - setup_required
+ * * `temporarily_unavailable` - temporarily_unavailable
+ * * `paused_by_tenant` - paused_by_tenant
+ */
+export type PaymentReadinessState = OpenEnum<typeof PaymentReadinessState>;
+
 export type PaymentReadiness = {
+  state: PaymentReadinessState;
+  acceptingNewPayments: boolean;
+  pausedByTenant: boolean;
+  platformAvailable: boolean;
+  healthValidUntil: Date;
   observedAt: Date;
   tenantStatus: string;
+  /**
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
   tenantAcceptingNewChallenges: boolean;
+  /**
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
   globalChallengesEnabled: boolean;
+  /**
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
   globalSettlementEnabled: boolean;
+  /**
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
   controlPlaneReadyForNewChallenges: boolean;
+  /**
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
   controlPlaneReadyForSettlement: boolean;
   externalOnboarding: any;
   rails: Array<PaymentReadinessRail>;
+  canonicalRails: Array<CanonicalPaymentReadinessRail>;
 };
+
+/** @internal */
+export const PaymentReadinessState$inboundSchema: z.ZodMiniType<
+  PaymentReadinessState,
+  unknown
+> = openEnums.inboundSchema(PaymentReadinessState);
 
 /** @internal */
 export const PaymentReadiness$inboundSchema: z.ZodMiniType<
@@ -32,6 +89,11 @@ export const PaymentReadiness$inboundSchema: z.ZodMiniType<
   unknown
 > = z.pipe(
   z.object({
+    state: PaymentReadinessState$inboundSchema,
+    accepting_new_payments: types.boolean(),
+    paused_by_tenant: types.boolean(),
+    platform_available: types.boolean(),
+    health_valid_until: types.date(),
     observed_at: types.date(),
     tenant_status: types.string(),
     tenant_accepting_new_challenges: types.boolean(),
@@ -41,9 +103,14 @@ export const PaymentReadiness$inboundSchema: z.ZodMiniType<
     control_plane_ready_for_settlement: types.boolean(),
     external_onboarding: z.any(),
     rails: z.array(PaymentReadinessRail$inboundSchema),
+    canonical_rails: z.array(CanonicalPaymentReadinessRail$inboundSchema),
   }),
   z.transform((v) => {
     return remap$(v, {
+      "accepting_new_payments": "acceptingNewPayments",
+      "paused_by_tenant": "pausedByTenant",
+      "platform_available": "platformAvailable",
+      "health_valid_until": "healthValidUntil",
       "observed_at": "observedAt",
       "tenant_status": "tenantStatus",
       "tenant_accepting_new_challenges": "tenantAcceptingNewChallenges",
@@ -53,6 +120,7 @@ export const PaymentReadiness$inboundSchema: z.ZodMiniType<
         "controlPlaneReadyForNewChallenges",
       "control_plane_ready_for_settlement": "controlPlaneReadyForSettlement",
       "external_onboarding": "externalOnboarding",
+      "canonical_rails": "canonicalRails",
     });
   }),
 );

@@ -1,17 +1,19 @@
 # ExternalReceivingAddressProofMethod
 
+* `signed_message` - signed_message
+* `onchain_canary` - onchain_canary
 
-## Supported Types
-
-### `models.ProofMethodExternalAddressProofInputMethodEnum`
+## Example Usage
 
 ```typescript
-const value: models.ProofMethodExternalAddressProofInputMethodEnum =
-  "onchain_canary";
+import { ExternalReceivingAddressProofMethod } from "@x402api/sdk/models";
+
+let value: ExternalReceivingAddressProofMethod = "signed_message";
+
+// Open enum: unrecognized values are captured as Unrecognized<string>
 ```
-
-### `any`
+## Values
 
 ```typescript
-const value: any = "<value>";
+"signed_message" | "onchain_canary" | Unrecognized<string>
 ```

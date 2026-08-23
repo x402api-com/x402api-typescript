@@ -203,34 +203,30 @@ For more information about the API: [x402api production documentation](https://x
 <!-- Start SDK Installation [installation] -->
 ## SDK Installation
 
-> [!TIP]
-> To finish publishing your SDK to npm and others you must [run your first generation action](https://www.speakeasy.com/docs/github-setup#step-by-step-guide).
-
-
 The SDK can be installed with either [npm](https://www.npmjs.com/), [pnpm](https://pnpm.io/), [bun](https://bun.sh/) or [yarn](https://classic.yarnpkg.com/en/) package managers.
 
 ### NPM
 
 ```bash
-npm add https://github.com/x402api-com/x402api-typescript
+npm add @x402api/sdk
 ```
 
 ### PNPM
 
 ```bash
-pnpm add https://github.com/x402api-com/x402api-typescript
+pnpm add @x402api/sdk
 ```
 
 ### Bun
 
 ```bash
-bun add https://github.com/x402api-com/x402api-typescript
+bun add @x402api/sdk
 ```
 
 ### Yarn
 
 ```bash
-yarn add https://github.com/x402api-com/x402api-typescript
+yarn add @x402api/sdk
 ```
 
 > [!NOTE]
@@ -259,15 +255,15 @@ async function run() {
   const result = await x402Api.charges.create({
     idempotencyKey: "<value>",
     body: {
-      resourceVersionId: "00000000-0000-4000-8000-000000000001",
-      resourceUrl: "https://merchant.example/products/pro-plan",
+      resourceVersionId: "aee1e97c-ebca-42b0-8a09-a29fca93ee2a",
+      resourceUrl: "https://impressionable-sand.net",
       prices: [
         {
-          assetId: "base_usdc",
-          amountAtomic: "1000000",
+          assetId: "<id>",
+          amountAtomic: "<value>",
         },
       ],
-      expiresInSeconds: 900,
+      expiresInSeconds: 652390,
     },
   });
 
@@ -302,15 +298,15 @@ async function run() {
   const result = await x402Api.charges.create({
     idempotencyKey: "<value>",
     body: {
-      resourceVersionId: "00000000-0000-4000-8000-000000000001",
-      resourceUrl: "https://merchant.example/products/pro-plan",
+      resourceVersionId: "aee1e97c-ebca-42b0-8a09-a29fca93ee2a",
+      resourceUrl: "https://impressionable-sand.net",
       prices: [
         {
-          assetId: "base_usdc",
-          amountAtomic: "1000000",
+          assetId: "<id>",
+          amountAtomic: "<value>",
         },
       ],
-      expiresInSeconds: 900,
+      expiresInSeconds: 652390,
     },
   });
 
@@ -454,15 +450,15 @@ async function run() {
   const result = await x402Api.charges.create({
     idempotencyKey: "<value>",
     body: {
-      resourceVersionId: "00000000-0000-4000-8000-000000000001",
-      resourceUrl: "https://merchant.example/products/pro-plan",
+      resourceVersionId: "aee1e97c-ebca-42b0-8a09-a29fca93ee2a",
+      resourceUrl: "https://impressionable-sand.net",
       prices: [
         {
-          assetId: "base_usdc",
-          amountAtomic: "1000000",
+          assetId: "<id>",
+          amountAtomic: "<value>",
         },
       ],
-      expiresInSeconds: 900,
+      expiresInSeconds: 652390,
     },
   }, {
     retries: {
@@ -506,15 +502,15 @@ async function run() {
   const result = await x402Api.charges.create({
     idempotencyKey: "<value>",
     body: {
-      resourceVersionId: "00000000-0000-4000-8000-000000000001",
-      resourceUrl: "https://merchant.example/products/pro-plan",
+      resourceVersionId: "aee1e97c-ebca-42b0-8a09-a29fca93ee2a",
+      resourceUrl: "https://impressionable-sand.net",
       prices: [
         {
-          assetId: "base_usdc",
-          amountAtomic: "1000000",
+          assetId: "<id>",
+          amountAtomic: "<value>",
         },
       ],
-      expiresInSeconds: 900,
+      expiresInSeconds: 652390,
     },
   });
 
@@ -552,15 +548,15 @@ async function run() {
     const result = await x402Api.charges.create({
       idempotencyKey: "<value>",
       body: {
-        resourceVersionId: "00000000-0000-4000-8000-000000000001",
-        resourceUrl: "https://merchant.example/products/pro-plan",
+        resourceVersionId: "aee1e97c-ebca-42b0-8a09-a29fca93ee2a",
+        resourceUrl: "https://impressionable-sand.net",
         prices: [
           {
-            assetId: "base_usdc",
-            amountAtomic: "1000000",
+            assetId: "<id>",
+            amountAtomic: "<value>",
           },
         ],
-        expiresInSeconds: 900,
+        expiresInSeconds: 652390,
       },
     });
 
@@ -628,15 +624,15 @@ async function run() {
   const result = await x402Api.charges.create({
     idempotencyKey: "<value>",
     body: {
-      resourceVersionId: "00000000-0000-4000-8000-000000000001",
-      resourceUrl: "https://merchant.example/products/pro-plan",
+      resourceVersionId: "aee1e97c-ebca-42b0-8a09-a29fca93ee2a",
+      resourceUrl: "https://impressionable-sand.net",
       prices: [
         {
-          assetId: "base_usdc",
-          amountAtomic: "1000000",
+          assetId: "<id>",
+          amountAtomic: "<value>",
         },
       ],
-      expiresInSeconds: 900,
+      expiresInSeconds: 652390,
     },
   });
 

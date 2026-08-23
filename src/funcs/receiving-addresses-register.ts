@@ -33,7 +33,7 @@ import { Result } from "../types/fp.js";
  * @remarks
  * Register a proven external receiving address without transferring wallet custody.
  *
- * If set, this operation will use either {@link Security.tenantApiKey} or {@link Security.tenantApiKey} from the global security.
+ * If set, this operation will use {@link Security.tenantApiKey} from the global security.
  */
 export function receivingAddressesRegister(
   client: X402ApiCore,

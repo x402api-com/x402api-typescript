@@ -20,22 +20,25 @@ let value: NetworkFeeAlternative = {
   nativeDecimals: 881455,
   nativeUsdQuoteMicros: "<value>",
   estimatedFeeQuoteMicros: "<value>",
-  providerDisagreementBps: null,
+  gasMode: "buyer_pays",
+  buyerNativeFeeAtomic: "<value>",
+  maximumTenantGasReservationMicros: "<value>",
+  providerDisagreementBps: 726641,
   feeAllowanceQuoteMicros: "<value>",
   feeAllowanceAtomic: "<value>",
   buyerPaymentAtomic: "<value>",
   tenantProceedsAtomic: "<value>",
-  quoteExpiresAt: new Date("2025-03-03T21:19:26.953Z"),
+  quoteExpiresAt: null,
   feeEvidence: {
     type: "<value>",
-    version: 530752,
+    version: 312,
     network: "<value>",
     assetId: "<id>",
     payloadProfile: "<value>",
   },
   feeEvidenceDigest: "<value>",
   eligible: false,
-  exclusionReason: null,
+  exclusionReason: "<value>",
 };
 ```
 
@@ -57,6 +60,9 @@ let value: NetworkFeeAlternative = {
 | `nativeDecimals`                                                                              | *number*                                                                                      | :heavy_check_mark:                                                                            | N/A                                                                                           |
 | `nativeUsdQuoteMicros`                                                                        | *string*                                                                                      | :heavy_check_mark:                                                                            | N/A                                                                                           |
 | `estimatedFeeQuoteMicros`                                                                     | *string*                                                                                      | :heavy_check_mark:                                                                            | N/A                                                                                           |
+| `gasMode`                                                                                     | [models.GasModeEnum](../models/gas-mode-enum.md)                                              | :heavy_check_mark:                                                                            | * `buyer_pays` - buyer_pays<br/>* `sponsored` - sponsored                                     |
+| `buyerNativeFeeAtomic`                                                                        | *string*                                                                                      | :heavy_check_mark:                                                                            | N/A                                                                                           |
+| `maximumTenantGasReservationMicros`                                                           | *string*                                                                                      | :heavy_check_mark:                                                                            | N/A                                                                                           |
 | `providerDisagreementBps`                                                                     | *number*                                                                                      | :heavy_check_mark:                                                                            | N/A                                                                                           |
 | `feeAllowanceQuoteMicros`                                                                     | *string*                                                                                      | :heavy_check_mark:                                                                            | N/A                                                                                           |
 | `feeAllowanceAtomic`                                                                          | *string*                                                                                      | :heavy_check_mark:                                                                            | N/A                                                                                           |

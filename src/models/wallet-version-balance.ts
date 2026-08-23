@@ -15,6 +15,10 @@ import {
   ObservationStateEnum$inboundSchema,
 } from "./observation-state-enum.js";
 import {
+  TrackingStatusEnum,
+  TrackingStatusEnum$inboundSchema,
+} from "./tracking-status-enum.js";
+import {
   WalletObservationFinalityEnum,
   WalletObservationFinalityEnum$inboundSchema,
 } from "./wallet-observation-finality-enum.js";
@@ -64,6 +68,16 @@ export type WalletVersionBalance = {
    * * `unavailable` - unavailable
    */
   observationState: ObservationStateEnum;
+  /**
+   * * `healthy` - healthy
+   *
+   * @remarks
+   * * `degraded` - degraded
+   * * `indexer_disabled` - indexer_disabled
+   * * `awaiting_first_observation` - awaiting_first_observation
+   * * `wallet_version_unavailable` - wallet_version_unavailable
+   */
+  trackingStatus: TrackingStatusEnum;
   observedAt: Date | null;
   assets: Array<BalanceAsset>;
   reseedContext: ReseedContext | null;
@@ -125,6 +139,7 @@ export const WalletVersionBalance$inboundSchema: z.ZodMiniType<
     wallet_address: types.string(),
     state: WalletVersionBalanceStateEnum$inboundSchema,
     observation_state: ObservationStateEnum$inboundSchema,
+    tracking_status: TrackingStatusEnum$inboundSchema,
     observed_at: types.nullable(types.date()),
     assets: z.array(BalanceAsset$inboundSchema),
     reseed_context: types.nullable(z.lazy(() => ReseedContext$inboundSchema)),
@@ -134,6 +149,7 @@ export const WalletVersionBalance$inboundSchema: z.ZodMiniType<
       "wallet_version_id": "walletVersionId",
       "wallet_address": "walletAddress",
       "observation_state": "observationState",
+      "tracking_status": "trackingStatus",
       "observed_at": "observedAt",
       "reseed_context": "reseedContext",
     });

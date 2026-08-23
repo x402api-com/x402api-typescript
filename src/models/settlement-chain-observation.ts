@@ -6,7 +6,6 @@
 import * as z from "zod/v4-mini";
 import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
-import { Decimal as Decimal$ } from "../types/decimal.js";
 import * as openEnums from "../types/enums.js";
 import { OpenEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
@@ -47,12 +46,12 @@ export type SettlementChainObservation = {
   state: SettlementChainObservationState;
   observationDigest: string;
   logIndex: number | null;
-  blockNumber: Decimal$ | number | null;
+  blockNumber: string | null;
   blockHash: string;
   assetContract: string;
   payer: string;
   recipient: string;
-  amountAtomic: Decimal$ | number | null;
+  amountAtomic: string | null;
   executionSuccess: boolean | null;
   observedAt: Date;
   createdAt: Date;
@@ -77,16 +76,12 @@ export const SettlementChainObservation$inboundSchema: z.ZodMiniType<
     state: SettlementChainObservationState$inboundSchema,
     observation_digest: types.string(),
     log_index: types.nullable(types.number()),
-    block_number: types.nullable(
-      z.pipe(z.string(), z.transform(v => new Decimal$(v))),
-    ),
+    block_number: types.nullable(types.string()),
     block_hash: types.string(),
     asset_contract: types.string(),
     payer: types.string(),
     recipient: types.string(),
-    amount_atomic: types.nullable(
-      z.pipe(z.string(), z.transform(v => new Decimal$(v))),
-    ),
+    amount_atomic: types.nullable(types.string()),
     execution_success: types.nullable(types.boolean()),
     observed_at: types.date(),
     created_at: types.date(),

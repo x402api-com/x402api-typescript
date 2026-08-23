@@ -1,25 +1,26 @@
 lockVersion: ""
 id: ""
 management:
-  docChecksum: 13bcdea04d59ed5432d141411d6f7d43
+  docChecksum: e603d325cb5ac6c62d01174bd466b06b
   docVersion: 1.0.0
   speakeasyVersion: 1.794.0
   generationVersion: 2.930.0
   releaseVersion: 1.0.0
-  configChecksum: e02bd8fd2d6f8704674c0c857772e7e3
+  configChecksum: b50236398687aa5a43a3ea36ca9482ca
   repoURL: https://github.com/x402api-com/x402api-typescript
   installationURL: https://github.com/x402api-com/x402api-typescript
+  published: true
 persistentEdits:
-  generation_id: 4512dee3-38e3-42e9-9e3f-b994bf5dc0d6
-  pristine_commit_hash: 07602266e8354aa5c5a65c57265681be708e28f3
-  pristine_tree_hash: d3c308699399671aef8a5acbaa5c87b86144e4e9
+  generation_id: 28bd71da-e486-49a0-bc8d-61f57824f847
+  pristine_commit_hash: 5d17b08204db3d5f71dd625e42a6924b9841eb49
+  pristine_tree_hash: 15a4a8b8a3da4d51e924f76bb42894c2ccf2773a
 features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.14
     core: 3.31.5
-    decimal: 0.1.2
     defaultEnabledRetries: 0.1.0
+    deprecations: 2.81.1
     enumUnions: 0.1.0
     envVarSecurityUsage: 0.1.2
     examples: 2.82.6
@@ -84,6 +85,14 @@ trackedFiles:
     id: b831a3d489e9
     last_write_checksum: sha1:8c27ef59f687f163d639060319ac5831fcc690d7
     pristine_git_object: abb657b27c636ac1db721daa5c16d693c357645c
+  docs/models/canonical-payment-readiness-rail-status.md:
+    id: c333d80bd867
+    last_write_checksum: sha1:d0dc6e0868c888a624d39d36c0de73a6b12e9d30
+    pristine_git_object: 7bafae5f2b168c60d607757982122b8a341e525e
+  docs/models/canonical-payment-readiness-rail.md:
+    id: 0701ea0cf81e
+    last_write_checksum: sha1:b10709bca60f08119822451d6cefd3496f41fc78
+    pristine_git_object: 8bdc3f73e0ff76b2f1d4d7c1fc3406315be2daec
   docs/models/chain.md:
     id: 4c5e3dba833c
     last_write_checksum: sha1:5739cddacac99b6ddcb913ef68ef90df68ca4b41
@@ -98,8 +107,8 @@ trackedFiles:
     pristine_git_object: 9f2506ab8bb2c3c1be54cfbbfcaa4e09db1258fd
   docs/models/dynamic-charge-response.md:
     id: 814da127f665
-    last_write_checksum: sha1:8a33774d6d45be532f430742579fae6254647dfc
-    pristine_git_object: 92c468eef1c34d4209502e11461e4e987954197c
+    last_write_checksum: sha1:269a7e451c5e8c8fd966d3840f89e1aec7881b79
+    pristine_git_object: 2f4705023a56585611a8817ac1bf9984a935bece
   docs/models/errors/api-error-envelope.md:
     id: eb983b44246c
     last_write_checksum: sha1:d28e714513c5fd58f51685e5ab0eec0c71fce9aa
@@ -134,16 +143,16 @@ trackedFiles:
     pristine_git_object: f406a6aff2d75a2cc9f730e89f2f8b88f1a0436c
   docs/models/external-receiving-address-proof-method.md:
     id: 360363c81cfb
-    last_write_checksum: sha1:b583e78d842b2141e9f29734852dce97a580899b
-    pristine_git_object: 6d16d639f4e20d7c44e54dfcc2939587cf962000
+    last_write_checksum: sha1:049f760500dc678a1d939c4989f59f325dedd67d
+    pristine_git_object: ab748cf2300c6cde3891bb9d052e93f327ab6280
   docs/models/external-receiving-address-rotation.md:
     id: 33a21c969b6a
     last_write_checksum: sha1:330f023f19e9a6ae3de1c052035b12305bfd3eab
     pristine_git_object: 8b826e641df51a749234bed5ddd729e1c6a2e7d8
   docs/models/external-receiving-address.md:
     id: c89159a221aa
-    last_write_checksum: sha1:c2032256435f26cf740d6ee7cf2b26624bfb7f25
-    pristine_git_object: c654cdd9784ece31174f8520b539579eb304b7b6
+    last_write_checksum: sha1:4d176a6e931fe7549fba90ee09ca243f4f139354
+    pristine_git_object: 7647ce5d7aa80608b4f8de6eb6ae3a18b9fb8be7
   docs/models/fee-evidence.md:
     id: 6109d9e9b0f4
     last_write_checksum: sha1:ed5407a29d07e542a27d3ef386610f2a4c74baf6
@@ -192,6 +201,10 @@ trackedFiles:
     id: 9892da94989b
     last_write_checksum: sha1:d239cf06288546f976f8249c7a724797ef8f64df
     pristine_git_object: 3b8ce6ad4b9c1ee94fec46ff1eaa884e151800b7
+  docs/models/gas-mode-enum.md:
+    id: 54647a30ff8b
+    last_write_checksum: sha1:b4a77ed71d5fefe17c831a68c311ec3551afe157
+    pristine_git_object: 3729b23a90c551b10068c0d4e79c460cd2bd20e2
   docs/models/http-metadata.md:
     id: 2290981920bc
     last_write_checksum: sha1:d3bbc17df1e950388ce13ed3666f640bb27a026d
@@ -218,8 +231,8 @@ trackedFiles:
     pristine_git_object: 32b742d77382766ae717192438898568ecff60a0
   docs/models/network-fee-alternative.md:
     id: d62ebaeffa64
-    last_write_checksum: sha1:d4c81daaa2459f1fb0133e9570d2ef9597596ead
-    pristine_git_object: b1294f9849bd891004f636beea984c74ab9febb2
+    last_write_checksum: sha1:a0f9141f8aef1788c46767c186b0b26b95455836
+    pristine_git_object: ea8fd912f96d143f3f6714ca147b8a57cdf6a538
   docs/models/network-fee-evidence.md:
     id: 372de234837b
     last_write_checksum: sha1:0172c931f277e87138d8282694a20cfec143e111
@@ -230,8 +243,8 @@ trackedFiles:
     pristine_git_object: c297767f6d3e3e5a09481730c69bbda28dcbd302
   docs/models/network-fee-preview-response.md:
     id: e93273250254
-    last_write_checksum: sha1:20a68f293d7ce6f458bcfff663c248433c7480f2
-    pristine_git_object: 47c7bdbe7973ba1e2aaa0a9e8c5d762f88d15ddc
+    last_write_checksum: sha1:0e67f2da608942aa34ebdbb50a9d12f5ec7ba775
+    pristine_git_object: 80931bb31c1f625cd0fcb274919c237e007ebe4a
   docs/models/network-fee-preview.md:
     id: 3a2f7b8ab838
     last_write_checksum: sha1:61e4b58b3de4fdb4735247f697be89964d702aba
@@ -452,30 +465,38 @@ trackedFiles:
     id: 5d2682daf79b
     last_write_checksum: sha1:d93412ac6920ab5df33f13e25e20b44f95e01e0f
     pristine_git_object: 437dd23011a8bd3024978838c0c06107882a6dc9
+  docs/models/owner.md:
+    id: 5dd96d90daac
+    last_write_checksum: sha1:89cf532a8b5fc3f75c4583886791867ea6772b57
+    pristine_git_object: 32a4aa6a6663b5b1d4e2e890fc3954ff7c52e33e
   docs/models/payment-readiness-asset.md:
     id: bd0fb7a5b1ec
     last_write_checksum: sha1:686599bf81789fe7753ad77bf84d21691017b95a
     pristine_git_object: 6cf887596a03b56bf5f47be8abff6e92ce18371d
+  docs/models/payment-readiness-blocker.md:
+    id: c8d126f5237f
+    last_write_checksum: sha1:93945092d78ed78d1e631d5bc205787ba7efc744
+    pristine_git_object: 7c5143a020876563eb430cb29e497f59e98d4ad1
   docs/models/payment-readiness-rail.md:
     id: e352e584bdc9
-    last_write_checksum: sha1:64e89ebb0dd88ad6d8680e4fe19e7540b6fa2086
-    pristine_git_object: 9d8cac4e30084172490574dac9aef9023eb83fa3
+    last_write_checksum: sha1:d742a572d84c8fcee1d711d8396077434c747ae4
+    pristine_git_object: c2386ba25b8846e89775dc09e6f6abb6fc360aaf
+  docs/models/payment-readiness-state.md:
+    id: e1cc8e49f11d
+    last_write_checksum: sha1:2a06c589a85e71f3905e9b03d4cd51001b4d7f91
+    pristine_git_object: 657f846c7f58d75608083b7dcd5763a0b33c861c
   docs/models/payment-readiness.md:
     id: 187b5d864ff3
-    last_write_checksum: sha1:28e465c516600fca59c4d270f78721908879ce7c
-    pristine_git_object: adc6fb97ce7924e888b75f2c637fa8a4c8b3499f
+    last_write_checksum: sha1:8320c6cf97a33dd5e44f614dbe80e8c882da9cd5
+    pristine_git_object: 5b83184ee570ead9566a8ff448bec31d1f98db64
   docs/models/payment-receipt.md:
     id: f3a1c62a6e07
-    last_write_checksum: sha1:6aec13bc2ce8a5138f7634d2c8ba8e3a90754113
-    pristine_git_object: ab89ccae456a649bc1cb8d6074cbaf86413ecd09
+    last_write_checksum: sha1:5e86db3b80ff0e94cf5848eab3638da103ecbf2d
+    pristine_git_object: dd7e9c80e3c412cef0d2b84c95c84f7ec9daf8db
   docs/models/price-input.md:
     id: d4ca1c6f937c
     last_write_checksum: sha1:5f02e396f816d00a36a5888f721bbcbb67847cd8
     pristine_git_object: cfa6fce2d9bd7d778f167be09de681f0d12aac4e
-  docs/models/proof-method-external-address-proof-input-method-enum.md:
-    id: 7bcb7913cf73
-    last_write_checksum: sha1:069b7df45132bc203a820dcf3074cb6bc0a3c64b
-    pristine_git_object: 1aeed5b70d159292100487af1e753563f76939ab
   docs/models/proof-method.md:
     id: f3a68c1155b6
     last_write_checksum: sha1:5fb9d57b67dc441ef18563826b74013db5e35d51
@@ -634,8 +655,8 @@ trackedFiles:
     pristine_git_object: b805f2cff336bc668ef4254f21a7d469fe87be87
   docs/models/settlement-chain-observation.md:
     id: b7c9312535df
-    last_write_checksum: sha1:44d36b7494abd8b8a9caad5b5c85c567122fc613
-    pristine_git_object: cc77b3a6b49da34f5ae8b4c0b880661b9bc65d87
+    last_write_checksum: sha1:61af40f6b24a1b3a33ed7230513e794c3dd32a24
+    pristine_git_object: 91c2e2cf1fa2613c3430f8cfd67a3911f2933cfc
   docs/models/settlement-job-order.md:
     id: eade2f66e47e
     last_write_checksum: sha1:3aaf115a3fde922ba9f483dbf6e378b8e667a7e5
@@ -688,14 +709,18 @@ trackedFiles:
     id: 4ce8887b0ec2
     last_write_checksum: sha1:78d05843dc48b3d5cc9b5e7f07d928c8e636528f
     pristine_git_object: 11275e67704e9ee91000d41db1f4e07a0281cb41
+  docs/models/tracking-status-enum.md:
+    id: 85d8f29e761a
+    last_write_checksum: sha1:ee3d62d923a163a4b3b5cd4f678f071b0236d507
+    pristine_git_object: 270f32ec7c7b1c6aef86ab9f7fca53881091ca10
   docs/models/two.md:
     id: 3720b8efc931
     last_write_checksum: sha1:7424c2af5f15862864ceb571297768c68ba40df5
     pristine_git_object: c24622c6ca7967d93166ed98ffc298ae104851be
   docs/models/wallet-balance-response.md:
     id: cf62240570b4
-    last_write_checksum: sha1:18351c9d577f5335f0490b5a32976d34ca2a70df
-    pristine_git_object: 7e9ff32bd4d75a1f231d173f7689cf0531abe66e
+    last_write_checksum: sha1:330b0f75d814f7f05e9c8e3e4b0a3f52e7acc2c8
+    pristine_git_object: 258ee1743cf81efc1598670f2bbcde13f11e0719
   docs/models/wallet-fenced-chain-reseed-context.md:
     id: 740979cc757a
     last_write_checksum: sha1:253a49eedcb35eab2878675e855926f2e966350e
@@ -710,8 +735,8 @@ trackedFiles:
     pristine_git_object: 27cafd9ac2da580572f0c869ca45fc9fe536bfb5
   docs/models/wallet-version-balance.md:
     id: 6fe4c6ef146f
-    last_write_checksum: sha1:3cee86f94231ee0d670ae9bf0e68f46213d31b8b
-    pristine_git_object: f96dd48e926d07376f2699a73a97229d88cf8f7b
+    last_write_checksum: sha1:afddcb3335dc57349d014a9cabb5753d74e92f04
+    pristine_git_object: 6b63d086df2a02ac362881e6b232bff9749f183c
   docs/models/wallet-version-state-enum.md:
     id: 9536d7c2a4e8
     last_write_checksum: sha1:b3933a53ec9131ea1317421d777a83488c522a42
@@ -778,124 +803,124 @@ trackedFiles:
     pristine_git_object: f9dfdbafddf49a2012f96d170d1d9d759bc9b1b7
   jsr.json:
     id: 7f6ab7767282
-    last_write_checksum: sha1:0d56a914dbd7dfe554c80babf16710c6909b18ab
-    pristine_git_object: 17d059b4368422b7ff7f5f34f201a3a1541d83d6
+    last_write_checksum: sha1:1b78e6f6b527a724545b33a6139a8350ccf87270
+    pristine_git_object: f3c28ca2d9d34a3445d805bd331003f151b443df
   package.json:
     id: 7030d0b2f71b
-    last_write_checksum: sha1:6820f2037d3954b3604eeaffbbb5ea444d38ee9c
-    pristine_git_object: 01d065d626be18b397bc10ae2d08dd4ea0c90714
+    last_write_checksum: sha1:25c83886283b193506a9f994db1930a3c71834ed
+    pristine_git_object: 70c6d31c3e1c300fb699e8bbd790b13bc6614315
   src/core.ts:
     id: f431fdbcd144
     last_write_checksum: sha1:d0c0c0d11aa8c1fdc5722efc568393f857f90763
     pristine_git_object: ab995ef8031b283c761c3a66813b95616c92f87c
   src/funcs/charges-create.ts:
     id: 2d305143ad95
-    last_write_checksum: sha1:3220e5da922b4bbf85cdc78a1b6d5b3e8d128cf7
-    pristine_git_object: 4d0c078fba9af95110c7352d18b7ff191ff460d6
+    last_write_checksum: sha1:ed1f30a07979d1d4e5cf0677ac9f88bd813fd497
+    pristine_git_object: 409b45942aeb7c54641d19cbc808fc12ecf331fe
   src/funcs/charges-retrieve.ts:
     id: 85ac1db23910
-    last_write_checksum: sha1:49876b4104b6b68b0706167edb182e4caf2e3996
-    pristine_git_object: 91c42e678513024943c8a01110ab8b40ad59e96f
+    last_write_checksum: sha1:8a94f529a89d846242805e9aa581c9f7c6de880b
+    pristine_git_object: aa813ef1c8b814d0587ed2586f668ddb610110f7
   src/funcs/facilitator-get-supported.ts:
     id: 4e87fe2a3f46
     last_write_checksum: sha1:e4902b4df769c7abd08021bf72f1f125f765e686
     pristine_git_object: 82ffb97e18ee662b54dfe150c4aa43758f7163ff
   src/funcs/idempotency-get-outcome.ts:
     id: 51cee33ac397
-    last_write_checksum: sha1:df6a8eb713016a69a10daa7d95bb4b98be315f89
-    pristine_git_object: 9a422b76ad70db52118abf0f55713698d6bdcbb4
+    last_write_checksum: sha1:1435df6fe2e7c3515096b6e8d5c121153fd17783
+    pristine_git_object: 080dbeb73b67b574f3c26e217f1eac6f045b074b
   src/funcs/network-fees-create-quote.ts:
     id: b55ab81f38eb
-    last_write_checksum: sha1:62e966aa0f40b8c366128b118c2351b880fe16aa
-    pristine_git_object: 49576dd74c4e43174c93d7661d5d4721b4e2bc08
+    last_write_checksum: sha1:9f5b7c447747c3d5ea9f7a0752e2e1ea95f37e40
+    pristine_git_object: abacc49b5cd39cca012af6032b4bc454a2cfcbc2
   src/funcs/orders-list.ts:
     id: d88100f9a327
-    last_write_checksum: sha1:540f27c3742ced9c0126c0fb237ad342e8ebc1ff
-    pristine_git_object: 455cd6a2a313bd8c3fd7909ced18aa464656e7de
+    last_write_checksum: sha1:798196512a5c964a6ace35dce3a2969eea5c9a47
+    pristine_git_object: f8abae92acda5d80ac1e9d0486976844c3407cb8
   src/funcs/orders-retrieve.ts:
     id: fc0bf971641d
-    last_write_checksum: sha1:209506dfdecf13b742ad1fb22fcd5d2aaf2a14f9
-    pristine_git_object: 6ad945ce677696575e535207ed574f50ef246f61
+    last_write_checksum: sha1:21fdda61b7eba843ac602fc87730abf30b984d46
+    pristine_git_object: 65698a201cd50916dd7af5c45c4505102ae756a4
   src/funcs/payment-readiness-retrieve.ts:
     id: 184f021fb111
-    last_write_checksum: sha1:38d2a9e1bcb3364cc45da85dfbccb8bfe57259cc
-    pristine_git_object: 47a78b9d3366ea5e7cff4ca4de1937a51bff91c3
+    last_write_checksum: sha1:a5f9c1271cf8f3c15fa35387e4be09df98f9f5da
+    pristine_git_object: 59afa4a7351ef53ca4dd1006e334f170c1dd35e7
   src/funcs/payments-list-observations.ts:
     id: d34dabf690e2
-    last_write_checksum: sha1:cceee3887c724c8983d05077b13beab776378446
-    pristine_git_object: 613f71bca096c7a65b15a0212566fd7e0a76bad5
+    last_write_checksum: sha1:9ea35ba9bcbb30daab3e3895d35136c73d3dfe99
+    pristine_git_object: 00e7ad4dc8ae572b8e77aef1c89c7dc7a30fe348
   src/funcs/payments-list.ts:
     id: 87cc6a67d92c
-    last_write_checksum: sha1:f540fa99c31624cf059caf5207c801120e4596f3
-    pristine_git_object: f8c10283e34bad0b17ba7ad65f41af6e75a7d264
+    last_write_checksum: sha1:54919d76899992bc57bafda3854ef4f07bc2d070
+    pristine_git_object: 067f0905298e85a1e2ec68c2de23047d53da8e2d
   src/funcs/payments-retrieve-receipt.ts:
     id: b2083de9f90f
-    last_write_checksum: sha1:010ad40a2a4ed9b620a7e8c45fb75a3233a5cd6e
-    pristine_git_object: 3b269ed8ceb3b3161e4f3f225cc966964b11b587
+    last_write_checksum: sha1:0553ae2d5fa648b13e18118623ee0437a5730af2
+    pristine_git_object: 6a7c6da1a881e11a3aa49f2e4d18d980466324a8
   src/funcs/payments-retrieve.ts:
     id: 11dfbba331d8
-    last_write_checksum: sha1:5eda144db76ca6d66a987e4fa064e4d378f976f0
-    pristine_git_object: 3a3726f90f65f6ec5598df924e911c2e002e3c7f
+    last_write_checksum: sha1:55e9cbc9b70b2ebf4bca8b2f142296c501185713
+    pristine_git_object: fcd6be7a7b89ec954ab3b05a0ed093c4b745f328
   src/funcs/receipt-verification-keys-retrieve.ts:
     id: 7d13d796d55f
     last_write_checksum: sha1:75291e8ce3985e95e432a9caafd4ddc281677d55
     pristine_git_object: 3b7112e5e6ed3fcca702c8accd8b44ab5cf964b7
   src/funcs/receiving-addresses-activate.ts:
     id: 8353a67c9158
-    last_write_checksum: sha1:3c43326f4e8518e3c62ca7152a9c9f64708303d4
-    pristine_git_object: efff12eaf158c8e9afb9db4d8c7e001497fc9d30
+    last_write_checksum: sha1:8492b5428a89e2719d8e469e99e383fd00a7e21c
+    pristine_git_object: 193d9efd5583b03a6e83bb611ca29a06647c5840
   src/funcs/receiving-addresses-create-control-challenge.ts:
     id: 227b4165821b
-    last_write_checksum: sha1:e06b75927c55118bfd7b3bf86fcb8a9120492c72
-    pristine_git_object: f7591f4f463637ea5817134566bf5413f391934b
+    last_write_checksum: sha1:e8fbec72fab99ead3448eb5fdf74994e3d0d6bcd
+    pristine_git_object: 507c734af39510395971c524bf40bd0c822f6ccf
   src/funcs/receiving-addresses-get-control-capabilities.ts:
     id: 4d25d496f823
-    last_write_checksum: sha1:9836af482ae70ceb81c1395de7d9b281778ff4b8
-    pristine_git_object: 28c3a2f8267fe4bb70e8174249a685a7dbd8c2fe
+    last_write_checksum: sha1:af9efb896d37c8fae556dcb86d0517fa3b4206ca
+    pristine_git_object: e5410adeedb88b0b409e6b93633119ab96582e45
   src/funcs/receiving-addresses-list.ts:
     id: 73446ce2d1fc
-    last_write_checksum: sha1:974ffebb3ee234437169e3b2424898128dea7a2a
-    pristine_git_object: 94f6ab630bfcc52af498e75585de7affd46f22b8
+    last_write_checksum: sha1:be3a827f0d86605e0b7ff858d82c6195927b545d
+    pristine_git_object: 57bb2597aef764e98f4beae9e7787ddb5be467fd
   src/funcs/receiving-addresses-refresh-readiness.ts:
     id: 465c066a0746
-    last_write_checksum: sha1:de8cd9e26d9b38ed07d82acef727247718f9a611
-    pristine_git_object: 121a7a50c4833f440329ac6c17eba896867adcc4
+    last_write_checksum: sha1:7214e8d5bf00d6bf99c70ee70310e94c025ecbbf
+    pristine_git_object: 15f14c1748163a50c8cabb42c33678581c80072d
   src/funcs/receiving-addresses-register.ts:
     id: c45712a700d7
-    last_write_checksum: sha1:eeef3f0292c9c68afb63171ed5e35079498c0e59
-    pristine_git_object: 7e95719bc61f535d87cd3050a16c9caa8dd44321
+    last_write_checksum: sha1:73814a1785f4fc705918e5602254f94b73ba57be
+    pristine_git_object: ed718ba7fe52856aea3eafebbd10b2dcf48f268c
   src/funcs/receiving-addresses-rotate.ts:
     id: ca93ee4e1a48
-    last_write_checksum: sha1:29a46d1ea2f6c171aae5e9712da234c2057fa6e0
-    pristine_git_object: 2fee97e7292a09a4d74e39c7f9db97b3d021ac16
+    last_write_checksum: sha1:302b018c930c11cadc6bce3ee96533578cc8336e
+    pristine_git_object: 449cab0ab052103847ffe12720f306386974d0a9
   src/funcs/resources-activate-version.ts:
     id: 06efaa8db2c8
-    last_write_checksum: sha1:2573368da52f5a103d20e7ba4c2d29cfa5c1893f
-    pristine_git_object: 47e6db60d05eb19f0f1fb0006d5c826b7797fa3d
+    last_write_checksum: sha1:894e5637185ad5818747466d5fb81ba3c58c178c
+    pristine_git_object: f77300e0f277be179db68d8a7f22842de113faea
   src/funcs/resources-create-version.ts:
     id: 75af643c36ab
-    last_write_checksum: sha1:23775373e4f3e9acc05e7edb4e64b212252c17b2
-    pristine_git_object: 5495fe6657554c5e54bd60f47981e1628dae9d2f
+    last_write_checksum: sha1:fbb2fa37584f0053279bf665e6080bd8fd43c70c
+    pristine_git_object: 2e1b1ffadbdad87e424c40a7bd9de27612fa945d
   src/funcs/resources-create.ts:
     id: d788385c12b0
-    last_write_checksum: sha1:302229f99c5a67b8d699a0d3d12fefc5505f3967
-    pristine_git_object: 89de925df231ed1ae71f4c9f1a92d569a24464fa
+    last_write_checksum: sha1:303e1e3bef71e91982d795b2c814838810be3ad3
+    pristine_git_object: ec65b1dbbb4cd6cb8009207f234778a6f38c9c2a
   src/funcs/resources-list-versions.ts:
     id: 8396523993be
-    last_write_checksum: sha1:018195ebd01ae4cdb386270bc2461c817878befa
-    pristine_git_object: 05da6fa2b634590fac77fd4ac96d8cf473b2a725
+    last_write_checksum: sha1:9a435e75e9912f692d00cd8ff8626c600f17cd61
+    pristine_git_object: ec6e52dee1fac1c8d4c8e3b168899b39f18316c1
   src/funcs/resources-list.ts:
     id: 073cbfd8abf0
-    last_write_checksum: sha1:866c96118125c465e365a398c04d6c4c851ad933
-    pristine_git_object: b5eb19bcfa6021b7112f72922b58c7b49b19442a
+    last_write_checksum: sha1:96a2a7001b08aa417811eae9cfedd5232627534a
+    pristine_git_object: b1154a8dee780ad34215a5c1ff8461d3911eeb07
   src/funcs/resources-retire-version.ts:
     id: f3dfd62fbb66
-    last_write_checksum: sha1:71f6f165bda44247d54c5334feb0b84347bff6c6
-    pristine_git_object: c91a17b9ff5e3758593b31553aadf52f2db4d9ca
+    last_write_checksum: sha1:c2d2fc038f528ee1f77fc15c97061b883847d89a
+    pristine_git_object: f30733e3d9ca5eaa08d6e94219c7fdf68409d0f2
   src/funcs/wallets-retrieve-balance.ts:
     id: 0f58969b62bf
-    last_write_checksum: sha1:fd4f46a710de014cb9f947ba7eccd612796b736d
-    pristine_git_object: 1674b3e9e9a39d8d3987ce2a21e3078baa526a4e
+    last_write_checksum: sha1:ddd890aebb5fff4d43bee84c8769202393ae7762
+    pristine_git_object: 2fc99f3c0fbd8bbbfb7891c3cf827823a9cca23d
   src/hooks/hooks.ts:
     id: a2463fc6f69b
     last_write_checksum: sha1:590a74da042cdec4e3ea22ef2f042b25373d9a61
@@ -918,8 +943,8 @@ trackedFiles:
     pristine_git_object: 0b2543a00780f8844dcd1fbdcbc51a91262d91bc
   src/lib/config.ts:
     id: 320761608fb3
-    last_write_checksum: sha1:c3df1a6806fb4cacaa6fa1f232809017c30f4778
-    pristine_git_object: 35c649836d83280e681615a3ee7b74ffa63e5b6e
+    last_write_checksum: sha1:84a8be2b353a108bc8f4a36689748c0a50097c26
+    pristine_git_object: c863db9c6aee74694b1e83c91182a128785c1085
   src/lib/encodings.ts:
     id: 3bd8ead98afd
     last_write_checksum: sha1:e49f64fdecc307c8d2868f6f31b3dc7d36349c8b
@@ -980,6 +1005,10 @@ trackedFiles:
     id: a9b926811abf
     last_write_checksum: sha1:393b8c018620b878dd37b780f0f20998da9597dc
     pristine_git_object: c85f73cd9f44b130da9af3c6e3074a26a3045818
+  src/models/canonical-payment-readiness-rail.ts:
+    id: c96e488f52f7
+    last_write_checksum: sha1:bf3bf2ae559410e920e04ae88eeb857d3250d5f8
+    pristine_git_object: 881540a2558a74ab494428adb24f6a996c1c52ce
   src/models/dynamic-charge-create.ts:
     id: 77dc76ca6372
     last_write_checksum: sha1:34ebad3d1f74ad98acfe0865f5fd062d6aace544
@@ -1054,8 +1083,8 @@ trackedFiles:
     pristine_git_object: e93c47f56f5c564a860e6e9b58dcb4909cf6cd57
   src/models/external-receiving-address.ts:
     id: b05cd50daead
-    last_write_checksum: sha1:cddaeab0904d303329be1791f6eb55977ca9e3cb
-    pristine_git_object: 425a6dbe3b16f4964d51db9e55fcdc74e331e406
+    last_write_checksum: sha1:7f48d3177e0f53d74e4674696e5e409e663dcdc1
+    pristine_git_object: 12c2a94651f906bceee26c55fa4488e7ecdb92cc
   src/models/fee-policy-document.ts:
     id: 8d5f0d1980c0
     last_write_checksum: sha1:a25e9b1ba3ae78271b6dacbab5f9e1f8eb8fc0f0
@@ -1068,6 +1097,10 @@ trackedFiles:
     id: 76a555e390a1
     last_write_checksum: sha1:fa747f90e3c0e872fe94f43deee5532e32aa1b11
     pristine_git_object: 259aafa74aee581dc32c11ba4ea0a2525ecc8bf6
+  src/models/gas-mode-enum.ts:
+    id: 98b21406d617
+    last_write_checksum: sha1:b228d0de35d2edc9afe83e3de67626c66ec3934a
+    pristine_git_object: 9c95e38bd7000092279de2ae573043fa9449d39b
   src/models/http-metadata.ts:
     id: a1b88c9124c4
     last_write_checksum: sha1:0b6b69c254f2039b369068100f5dfda942aacabd
@@ -1082,8 +1115,8 @@ trackedFiles:
     pristine_git_object: 406f2e5d78323be17af0d321045c63374e165e76
   src/models/index.ts:
     id: f93644b0f37e
-    last_write_checksum: sha1:4bf3cc800e1347f9329f0333d9e2290d853177a3
-    pristine_git_object: ba89d53a85e56502af54c2a65c2a76b000afbe94
+    last_write_checksum: sha1:60b56b2850c0bc18a0a51f850c84227516be18f0
+    pristine_git_object: d51fd978662642774f13bb5e34ebfc1e457e96ff
   src/models/native-fee-observation-evidence.ts:
     id: cb5bad907d7d
     last_write_checksum: sha1:df4291d5022a0d3ebb8e254d06d2ea5c89605711
@@ -1094,8 +1127,8 @@ trackedFiles:
     pristine_git_object: c8815275404ec728ddf3cd38ab7b5791822f2a84
   src/models/network-fee-alternative.ts:
     id: 082d0884cb05
-    last_write_checksum: sha1:a629855ff220e2a3c75867c1b50a7f9073d417a8
-    pristine_git_object: 503933a0796dd9337710d80bd54d7e9c3278105f
+    last_write_checksum: sha1:c94abeebc41f3ebd766270bdfcbc8644cebbc7e7
+    pristine_git_object: 29436c7c46d19ff1c5dd72678f68e0926c631355
   src/models/network-fee-evidence.ts:
     id: 1702fc816dbb
     last_write_checksum: sha1:9c22de40b5fc42e6033476d1bcea3ce559e6a530
@@ -1240,18 +1273,22 @@ trackedFiles:
     id: a3e44ee85286
     last_write_checksum: sha1:a1a090948e04cfd614caeda4bffaa79284bfb7cf
     pristine_git_object: fd97696894443a556e26d4d19abf701691c73a8a
+  src/models/payment-readiness-blocker.ts:
+    id: 129e7c31fcfa
+    last_write_checksum: sha1:afa778cfe31e82addcae554f676f3a0ef4ccbcf2
+    pristine_git_object: 8d83c1ed09913db6ebf967652f4adb8d0b7e393c
   src/models/payment-readiness-rail.ts:
     id: d713d14c71d4
-    last_write_checksum: sha1:7c1cef150feb1233b56dfc201d352ff5d8a0c678
-    pristine_git_object: ec88e7c1c87c9b15a7d6365bade31b0014cf3fca
+    last_write_checksum: sha1:f1067fc02fd9d429ac73405f2f0e0591a0b5298d
+    pristine_git_object: 8d4f253f200edf7973c8d57c28bbc048f35e67ac
   src/models/payment-readiness.ts:
     id: 1b2024589240
-    last_write_checksum: sha1:22f79550335a68b31735e3a34f7f7cb06626863e
-    pristine_git_object: f3540eecc6de3e42ed1e70365b4b7e142d99c3b6
+    last_write_checksum: sha1:39e704779583ce598f4d3b4e42624d1340d5b345
+    pristine_git_object: c4a8bfce1f755de8f5c1d2613fa3216ec9f9523a
   src/models/payment-receipt.ts:
     id: 141f5d6992a8
-    last_write_checksum: sha1:8738fe8ba3d3c294a5aba4401d8bd9e9f699c93c
-    pristine_git_object: 07227df3c60f01eb77f51203961fc64516f34818
+    last_write_checksum: sha1:a759287c7cb99523530a4c727e83c3e59b5510bd
+    pristine_git_object: ca299e40f160b20f52f14d2d245a2d9f908eadd0
   src/models/price-input.ts:
     id: 5f1458aa0cbe
     last_write_checksum: sha1:6b4ee97c97dd3e5b01621055543c6941d028660f
@@ -1306,8 +1343,8 @@ trackedFiles:
     pristine_git_object: 9183ca5cc79421f16f254dc6dbd08d211e631549
   src/models/settlement-chain-observation.ts:
     id: 7e164c6bd919
-    last_write_checksum: sha1:ad99d0ce749499b8632f024a3bb5ef8d545184ef
-    pristine_git_object: 1c55bba72d9d3b37edd4e2d4ae99430cd48d457d
+    last_write_checksum: sha1:447b19617df480b9164a72f1cf6ee6d913f67864
+    pristine_git_object: 3aa311022fcba1c35fb8df23a7716a048863faf7
   src/models/settlement-job.ts:
     id: cd7743089b76
     last_write_checksum: sha1:5072e7b94b96348e83d12b6f628e43a949926231
@@ -1336,10 +1373,14 @@ trackedFiles:
     id: 431debb923ad
     last_write_checksum: sha1:3d95d402e1ad13654279133fb6f16e182ee5bb7a
     pristine_git_object: 606697340b6e181e5bcfa9a283d7585af03923d2
+  src/models/tracking-status-enum.ts:
+    id: e946ad87b2c3
+    last_write_checksum: sha1:83f1a1da0a8299f60abbe35502aa00b583948e00
+    pristine_git_object: 1d97bdf4d77041c3b134449047eabad520775dd3
   src/models/wallet-balance-response.ts:
     id: 82a095eaf9a6
-    last_write_checksum: sha1:ab316425a1a4d5bb5f7ab3b023efcdc86cec92de
-    pristine_git_object: 518c7c55bd92fba91bd695fc33c20edac26c43d6
+    last_write_checksum: sha1:30360155a59b9f56623e5f6171e82258ef5fceb3
+    pristine_git_object: 8bb19ccbff5dc0c390ce0f77461adf6d826bd962
   src/models/wallet-fenced-chain-reseed-context.ts:
     id: 42903d141792
     last_write_checksum: sha1:512e69ae44d5cf44d82a10a2d762227f4f0b4512
@@ -1354,8 +1395,8 @@ trackedFiles:
     pristine_git_object: f3b9d4d733004499eca6eae995ccca88765260be
   src/models/wallet-version-balance.ts:
     id: b0ca6eafbbab
-    last_write_checksum: sha1:0e63f229020b57a2d338ed343bb5d74f0ffecd8e
-    pristine_git_object: 66a50e07b59f981529f954b3028fd00411dd0182
+    last_write_checksum: sha1:16ec38efcbd815c849f44494005d031ae9796af6
+    pristine_git_object: e15d053611e035cf3cd37a33d2d1193679dfb70e
   src/models/wallet-version-state-enum.ts:
     id: 4aa846c6d84b
     last_write_checksum: sha1:72299b55564e087377976ebb42e640e600d3c7e1
@@ -1424,10 +1465,6 @@ trackedFiles:
     id: b3487d7170f2
     last_write_checksum: sha1:db0268f55fd7369e3d50e716c036d5df8fcef0af
     pristine_git_object: e75c22bbf5213ab1c3e2f5a38e94930a6d13acf6
-  src/types/decimal.ts:
-    id: 23664b562c6f
-    last_write_checksum: sha1:a50b730fd646cba3ec40c3386177b549f9e28665
-    pristine_git_object: 4d40dd435880af3e0023ffd38b3ebe99e16e5c3d
   src/types/default-to-zero-value.ts:
     id: 6e0f763ae8c8
     last_write_checksum: sha1:9158d1f08bffb2d8ff52511548fad7efefac5ac7
@@ -1442,8 +1479,8 @@ trackedFiles:
     pristine_git_object: 7d4f9f139bcbd770fe3d0850eaa6761758311b50
   src/types/index.ts:
     id: cd7a0a5ed005
-    last_write_checksum: sha1:0e6a98f0fe5510a2dabbc83539266089965aef2d
-    pristine_git_object: 056d3b61a2104e7b51590daef77349b3f382a932
+    last_write_checksum: sha1:23c0ee4e643cf4fd013e3f5a9e97b14aa622735e
+    pristine_git_object: 3e2cdbf239d7fea7c854ea55a27f9c698d3f7623
   src/types/operations.ts:
     id: 314da01dca47
     last_write_checksum: sha1:9afd9181120305f6916039b5bfc350b60db8fd51
@@ -1458,8 +1495,8 @@ trackedFiles:
     pristine_git_object: 05a12a9ea1c818e7cb49104f009b6cc6376bac25
   src/types/smart-union.ts:
     id: 2e3af2ad4ea7
-    last_write_checksum: sha1:4289691eab48684d61d38161e59d37f761b38bdc
-    pristine_git_object: d27c49006c0facbd78c643fbd470a8fcb98fd338
+    last_write_checksum: sha1:8ee730e15f36590f2eae5875faea6e7a5224cafd
+    pristine_git_object: d1775a0df688d695666e7237bc1253e96e22ba2f
   src/types/streams.ts:
     id: f99be9c4bf14
     last_write_checksum: sha1:21b75828c957ee30985ddcc9f9f2704991242a58
@@ -1522,7 +1559,7 @@ examples:
         application/json: {"fee_mode": "buyer_pays", "quote_currency": "USD", "fee_allowance_cap_quote_micros": "0", "prices": [{"asset_id": "<id>", "listed_amount_atomic": "<value>"}]}
       responses:
         "200":
-          application/json: {"fee_policy": {"type": "<value>", "version": 533894, "feeMode": "tenant_absorbs_up_to_cap", "quoteCurrency": "USD", "feeAllowanceCapQuoteMicros": "<value>"}, "alternatives": [{"type": "<value>", "version": 144180, "network": "<value>", "assetId": "<id>", "contractAddress": "<value>", "feeMode": "buyer_pays", "quoteCurrency": "USD", "listedAmountAtomic": "<value>", "feeAllowanceCapQuoteMicros": "<value>", "estimatedNativeFeeAtomic": "<value>", "nativeSymbol": "<value>", "nativeDecimals": 943830, "nativeUsdQuoteMicros": "<value>", "estimatedFeeQuoteMicros": "<value>", "providerDisagreementBps": 395127, "feeAllowanceQuoteMicros": "<value>", "feeAllowanceAtomic": "<value>", "buyerPaymentAtomic": "<value>", "tenantProceedsAtomic": "<value>", "quoteExpiresAt": "2026-02-14T03:49:42.586Z", "feeEvidence": {"type": "<value>", "version": 575376, "network": "<value>", "assetId": "<id>", "payloadProfile": "<value>"}, "feeEvidenceDigest": "<value>", "eligible": false, "exclusionReason": null}], "fee_quote_digest": "<value>"}
+          application/json: {"fee_policy": {"type": "<value>", "version": 533894, "feeMode": "tenant_absorbs_up_to_cap", "quoteCurrency": "USD", "feeAllowanceCapQuoteMicros": "<value>"}, "alternatives": [{"type": "<value>", "version": 144180, "network": "<value>", "assetId": "<id>", "contractAddress": "<value>", "feeMode": "buyer_pays", "quoteCurrency": "USD", "listedAmountAtomic": "<value>", "feeAllowanceCapQuoteMicros": "<value>", "estimatedNativeFeeAtomic": "<value>", "nativeSymbol": "<value>", "nativeDecimals": 943830, "nativeUsdQuoteMicros": "<value>", "estimatedFeeQuoteMicros": "<value>", "gasMode": "sponsored", "buyerNativeFeeAtomic": "<value>", "maximumTenantGasReservationMicros": "<value>", "providerDisagreementBps": 395127, "feeAllowanceQuoteMicros": "<value>", "feeAllowanceAtomic": "<value>", "buyerPaymentAtomic": "<value>", "tenantProceedsAtomic": "<value>", "quoteExpiresAt": "2026-02-14T03:49:42.586Z", "feeEvidence": {"type": "<value>", "version": 575376, "network": "<value>", "assetId": "<id>", "payloadProfile": "<value>"}, "feeEvidenceDigest": "<value>", "eligible": false, "exclusionReason": null}], "fee_quote_digest": "<value>"}
         default:
           application/json: {"error": {"status": 707299, "code": "<value>", "detail": "<value>"}}
   orders_list:
@@ -1549,7 +1586,7 @@ examples:
     speakeasy-default-payment-readiness-retrieve:
       responses:
         "200":
-          application/json: {"observed_at": "2024-11-30T08:47:46.305Z", "tenant_status": "<value>", "tenant_accepting_new_challenges": false, "global_challenges_enabled": true, "global_settlement_enabled": false, "control_plane_ready_for_new_challenges": true, "control_plane_ready_for_settlement": true, "external_onboarding": "<value>", "rails": [{"network": "<value>", "tenant_challenges_enabled": true, "tenant_settlement_enabled": false, "network_assistance_enabled": true, "challenge_control_ready": true, "settlement_control_ready": true, "assets": []}]}
+          application/json: {"state": "setup_required", "accepting_new_payments": false, "paused_by_tenant": true, "platform_available": false, "health_valid_until": "2025-03-25T18:31:03.503Z", "observed_at": "2024-11-30T08:47:46.305Z", "tenant_status": "<value>", "tenant_accepting_new_challenges": false, "global_challenges_enabled": true, "global_settlement_enabled": false, "control_plane_ready_for_new_challenges": true, "control_plane_ready_for_settlement": true, "external_onboarding": "<value>", "rails": [{"asset_id": "<id>", "network": "<value>", "symbol": "<value>", "selected": true, "wallet_ready": false, "platform_available": true, "accepting_new_payments": false, "status": "<value>", "blockers": [], "tenant_challenges_enabled": true, "tenant_settlement_enabled": false, "network_assistance_enabled": true, "challenge_control_ready": true, "settlement_control_ready": true, "assets": []}], "canonical_rails": []}
         default:
           application/json: {"error": {"status": 390582, "code": "<value>", "detail": "<value>"}}
   receipt_verification_keys_retrieve:
@@ -1598,7 +1635,7 @@ examples:
           id: "2e2f1e58-c2c0-46a3-b29e-0a71dfe0b3fe"
       responses:
         "200":
-          application/json: {"id": "94a49846-407b-4d32-9e0e-1fb442171592", "order_id": "909d4b01-b16d-4016-9bbf-309aa2446db0", "settlement_job_id": "55b27e61-4b57-4316-a13c-e90c6b37a69c", "receipt": "<value>", "receipt_digest": "<value>", "signature": "<value>", "signing_key_version": "<value>", "eligible_alternatives": [{"type": "<value>", "version": 25680, "network": "<value>", "assetId": "<id>", "contractAddress": "<value>", "feeMode": "buyer_pays", "quoteCurrency": "USD", "listedAmountAtomic": "<value>", "feeAllowanceCapQuoteMicros": "<value>", "estimatedNativeFeeAtomic": "<value>", "nativeSymbol": "<value>", "nativeDecimals": 968687, "nativeUsdQuoteMicros": "<value>", "estimatedFeeQuoteMicros": "<value>", "providerDisagreementBps": 52216, "feeAllowanceQuoteMicros": "<value>", "feeAllowanceAtomic": "<value>", "buyerPaymentAtomic": "<value>", "tenantProceedsAtomic": "<value>", "quoteExpiresAt": "2024-09-07T06:50:34.973Z", "feeEvidence": {"type": "<value>", "version": 711092, "network": "<value>", "assetId": "<id>", "payloadProfile": "<value>"}, "feeEvidenceDigest": "<value>", "eligible": false, "exclusionReason": "<value>"}], "fee_policy": {"type": "<value>", "version": 131435, "feeMode": "tenant_absorbs_up_to_cap", "quoteCurrency": "USD", "feeAllowanceCapQuoteMicros": "<value>"}, "fee_evidence": {"type": "<value>", "version": 716168, "network": "<value>", "assetId": "<id>", "payloadProfile": "<value>"}, "fee_quote_digest": "<value>", "fee_quote_expires_at": "2025-02-19T07:14:16.931Z", "settlement_amount_atomic": "<value>", "created_at": "2026-05-06T12:15:44.193Z"}
+          application/json: {"id": "94a49846-407b-4d32-9e0e-1fb442171592", "order_id": "909d4b01-b16d-4016-9bbf-309aa2446db0", "settlement_job_id": "55b27e61-4b57-4316-a13c-e90c6b37a69c", "receipt": "<value>", "receipt_digest": "<value>", "signature": "<value>", "signing_key_version": "<value>", "eligible_alternatives": [{"type": "<value>", "version": 25680, "network": "<value>", "assetId": "<id>", "contractAddress": "<value>", "feeMode": "buyer_pays", "quoteCurrency": "USD", "listedAmountAtomic": "<value>", "feeAllowanceCapQuoteMicros": "<value>", "estimatedNativeFeeAtomic": "<value>", "nativeSymbol": "<value>", "nativeDecimals": 968687, "nativeUsdQuoteMicros": "<value>", "estimatedFeeQuoteMicros": "<value>", "gasMode": "buyer_pays", "buyerNativeFeeAtomic": "<value>", "maximumTenantGasReservationMicros": "<value>", "providerDisagreementBps": 52216, "feeAllowanceQuoteMicros": "<value>", "feeAllowanceAtomic": "<value>", "buyerPaymentAtomic": "<value>", "tenantProceedsAtomic": "<value>", "quoteExpiresAt": "2024-09-07T06:50:34.973Z", "feeEvidence": {"type": "<value>", "version": 711092, "network": "<value>", "assetId": "<id>", "payloadProfile": "<value>"}, "feeEvidenceDigest": "<value>", "eligible": false, "exclusionReason": "<value>"}], "fee_policy": {"type": "<value>", "version": 131435, "feeMode": "tenant_absorbs_up_to_cap", "quoteCurrency": "USD", "feeAllowanceCapQuoteMicros": "<value>"}, "fee_evidence": {"type": "<value>", "version": 716168, "network": "<value>", "assetId": "<id>", "payloadProfile": "<value>"}, "fee_quote_digest": "<value>", "fee_quote_expires_at": "2025-02-19T07:14:16.931Z", "settlement_amount_atomic": "<value>", "gas_mode": "<value>", "buyer_native_fee_atomic": "<value>", "sponsored_native_fee_atomic": "<value>", "sponsored_native_symbol": "<value>", "tenant_gas_charge_micros": "<value>", "gas_sponsorship_evidence_digest": "<value>", "created_at": "2026-05-06T12:15:44.193Z"}
         default:
           application/json: {"error": {"status": 311187, "code": "<value>", "detail": "<value>"}}
   receiving_addresses_get_control_capabilities:
@@ -1651,7 +1688,7 @@ examples:
           Idempotency-Key: "<value>"
       responses:
         "200":
-          application/json: {"id": "11ea48c8-d895-4649-b5e8-d629e8232623", "wallet_id": "d9638cc2-ff50-4559-91c4-d4c3e9296757", "wallet_version_id": "31bfccb8-d89f-4ab4-9e9d-3c54f688a32e", "label": "<value>", "network": "<value>", "asset_id": "<id>", "address": "6209 Lincoln Summit", "status": "<value>", "proof_method": "<value>", "proof_verified_at": "2026-06-14T01:22:57.730Z", "readiness_state": "<value>", "readiness_usable": true, "readiness_refresh_eligible": true, "readiness_status": "durable", "activation_eligible": false, "activation_eligible_at": "2024-02-21T10:41:58.368Z", "verified_at": "2024-11-29T10:49:50.194Z", "expires_at": "2026-02-28T14:15:26.969Z", "activated_at": "2024-06-21T04:56:27.775Z", "observed_balance_atomic": "<value>", "created_at": "2024-04-21T03:13:02.369Z"}
+          application/json: {"id": "11ea48c8-d895-4649-b5e8-d629e8232623", "wallet_id": "d9638cc2-ff50-4559-91c4-d4c3e9296757", "wallet_version_id": "31bfccb8-d89f-4ab4-9e9d-3c54f688a32e", "label": "<value>", "network": "<value>", "asset_id": "<id>", "address": "6209 Lincoln Summit", "status": "<value>", "proof_method": "signed_message", "proof_verified_at": "2026-06-14T01:22:57.730Z", "readiness_state": "<value>", "readiness_usable": true, "readiness_refresh_eligible": true, "readiness_status": "durable", "activation_eligible": false, "activation_eligible_at": "2024-02-21T10:41:58.368Z", "verified_at": "2024-11-29T10:49:50.194Z", "expires_at": "2026-02-28T14:15:26.969Z", "activated_at": "2024-06-21T04:56:27.775Z", "observed_balance_atomic": "<value>", "created_at": "2024-04-21T03:13:02.369Z"}
         default:
           application/json: {"error": {"status": 888320, "code": "<value>", "detail": "<value>"}}
   receiving_addresses_refresh_readiness:
@@ -1677,7 +1714,7 @@ examples:
         application/json: {"challenge_id": "c900807a-20cb-46dd-b385-cf6c6c50cf95", "proof": {"method": "onchain_canary"}, "reason": "<value>"}
       responses:
         "201":
-          application/json: {"id": "d9020f24-550b-46b4-a4c9-5499d3f1226a", "wallet_id": "5851efb6-8b94-481e-b78d-f31af4afef7d", "wallet_version_id": "0bec8b81-6458-478c-97b8-7686f05015b7", "label": "<value>", "network": "<value>", "asset_id": "<id>", "address": "981 Schultz Courts", "status": "<value>", "proof_method": "<value>", "proof_verified_at": "2025-09-19T18:24:34.974Z", "readiness_state": "<value>", "readiness_usable": true, "readiness_refresh_eligible": false, "readiness_status": "durable", "activation_eligible": true, "activation_eligible_at": "2025-12-21T20:32:06.604Z", "verified_at": "2026-03-09T08:44:12.010Z", "expires_at": "2024-03-28T10:01:37.240Z", "activated_at": "2024-02-04T01:05:11.543Z", "observed_balance_atomic": "<value>", "created_at": "2026-11-24T08:33:39.716Z"}
+          application/json: {"id": "d9020f24-550b-46b4-a4c9-5499d3f1226a", "wallet_id": "5851efb6-8b94-481e-b78d-f31af4afef7d", "wallet_version_id": "0bec8b81-6458-478c-97b8-7686f05015b7", "label": "<value>", "network": "<value>", "asset_id": "<id>", "address": "981 Schultz Courts", "status": "<value>", "proof_method": "onchain_canary", "proof_verified_at": "2025-09-19T18:24:34.974Z", "readiness_state": "<value>", "readiness_usable": true, "readiness_refresh_eligible": false, "readiness_status": "durable", "activation_eligible": true, "activation_eligible_at": "2025-12-21T20:32:06.604Z", "verified_at": "2026-03-09T08:44:12.010Z", "expires_at": "2024-03-28T10:01:37.240Z", "activated_at": "2024-02-04T01:05:11.543Z", "observed_balance_atomic": "<value>", "created_at": "2026-11-24T08:33:39.716Z"}
         default:
           application/json: {"error": {"status": 232216, "code": "<value>", "detail": "<value>"}}
   resources_list:
@@ -1773,7 +1810,7 @@ examples:
           finality: "finalized"
       responses:
         "200":
-          application/json: {"wallet_id": "48ec05c6-546e-430b-a6d4-622cfa37e4ec", "network": "<value>", "wallet_address": "<value>", "requested_finality": "finalized", "observation_state": "healthy", "observed_at": "2025-02-28T02:23:35.044Z", "assets": [], "wallet_versions": [{"wallet_version_id": "801094d5-97d0-4b73-86d7-81a2d9c2d7df", "version": 848333, "wallet_address": "<value>", "state": "active", "observation_state": "unavailable", "observed_at": "2024-05-08T12:50:04.943Z", "assets": [{"asset_id": "<id>", "display_name": "Guy_Torphy", "symbol": "<value>", "contract_address": "<value>", "decimals": 495800, "amount_atomic": "<value>", "amount": "961.18", "issuer_native": true, "observed_at": "2026-04-03T06:58:50.241Z", "node_source": "<value>", "source_consensus": "<value>", "block": {"number": "<value>", "hash": "<value>", "finality": "<value>"}}], "reseed_context": {"checkpoint_id": "011c5d2e-c17e-404e-ae5c-36408516970f", "network": "<value>", "finality": "confirmed", "manifest_digest": "<value>", "policy_digest": "<value>", "expected_generation": 158780, "expected_next_block_number": "<value>", "expected_last_scanned_block_number": "<value>", "expected_last_scanned_block_hash": "<value>", "expected_review_required_at": "2024-10-12T16:23:00.691Z", "expected_review_error_code": "<value>", "observed_at": "2024-04-06T10:06:24.253Z"}}], "reseed_contexts": []}
+          application/json: {"wallet_id": "48ec05c6-546e-430b-a6d4-622cfa37e4ec", "network": "<value>", "wallet_address": "<value>", "requested_finality": "finalized", "observation_state": "healthy", "tracking_status": "awaiting_first_observation", "observed_at": "2025-02-28T02:23:35.044Z", "assets": [], "wallet_versions": [{"wallet_version_id": "801094d5-97d0-4b73-86d7-81a2d9c2d7df", "version": 848333, "wallet_address": "<value>", "state": "active", "observation_state": "unavailable", "tracking_status": "healthy", "observed_at": "2024-05-08T12:50:04.943Z", "assets": [{"asset_id": "<id>", "display_name": "Guy_Torphy", "symbol": "<value>", "contract_address": "<value>", "decimals": 495800, "amount_atomic": "<value>", "amount": "961.18", "issuer_native": true, "observed_at": "2026-04-03T06:58:50.241Z", "node_source": "<value>", "source_consensus": "<value>", "block": {"number": "<value>", "hash": "<value>", "finality": "<value>"}}], "reseed_context": {"checkpoint_id": "011c5d2e-c17e-404e-ae5c-36408516970f", "network": "<value>", "finality": "confirmed", "manifest_digest": "<value>", "policy_digest": "<value>", "expected_generation": 158780, "expected_next_block_number": "<value>", "expected_last_scanned_block_number": "<value>", "expected_last_scanned_block_hash": "<value>", "expected_review_required_at": "2024-10-12T16:23:00.691Z", "expected_review_error_code": "<value>", "observed_at": "2024-04-06T10:06:24.253Z"}}], "reseed_contexts": []}
         default:
           application/json: {"error": {"status": 286656, "code": "<value>", "detail": "<value>"}}
 examplesVersion: 1.0.2

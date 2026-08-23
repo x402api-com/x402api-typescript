@@ -33,7 +33,7 @@ import { Result } from "../types/fp.js";
  * @remarks
  * Create an idempotent receiving-address rotation from a proven replacement.
  *
- * If set, this operation will use either {@link Security.tenantApiKey} or {@link Security.tenantApiKey} from the global security.
+ * If set, this operation will use {@link Security.tenantApiKey} from the global security.
  */
 export function receivingAddressesRotate(
   client: X402ApiCore,
