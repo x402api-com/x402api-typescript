@@ -19,6 +19,7 @@
 /.eslintcache
 /.tshy
 /.tshy-*
+__pycache__/
 /__tests__
 .DS_Store
 **/.speakeasy/temp/
