@@ -5,7 +5,7 @@ management:
   docVersion: 1.0.0
   speakeasyVersion: 1.794.0
   generationVersion: 2.930.0
-  releaseVersion: 1.0.1
+  releaseVersion: 1.0.0
   configChecksum: b50236398687aa5a43a3ea36ca9482ca
   repoURL: https://github.com/x402api-com/x402api-typescript
   installationURL: https://github.com/x402api-com/x402api-typescript
