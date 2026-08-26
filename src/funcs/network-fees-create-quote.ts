@@ -32,9 +32,9 @@ import { Result } from "../types/fp.js";
  * Create a network-fee quote
  *
  * @remarks
- * Preview bounded network fees for the requested resource prices and rails.
+ * Preview bounded network fees for the requested resource prices and rails. Requires a tenant API key with the `resources:read` scope.
  *
- * If set, this operation will use {@link Security.tenantApiKey} from the global security.
+ * If set, this operation will use either {@link Security.tenantApiKey} or {@link Security.tenantApiKey} from the global security.
  */
 export function networkFeesCreateQuote(
   client: X402ApiCore,

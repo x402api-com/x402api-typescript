@@ -8,7 +8,7 @@
 
 ## getOutcome
 
-Return the authoritative tenant-scoped outcome for a durable mutation key.
+Return the authoritative tenant-scoped outcome for a durable mutation key. Requires an authenticated tenant API key; no additional scope is required.
 
 ### Example Usage
 

@@ -27,7 +27,7 @@ import { Result } from "../types/fp.js";
  * Retrieve receipt verification keys
  *
  * @remarks
- * Return the public receipt verification-key history for out-of-band-pinned verification.
+ * Return the public receipt verification-key history for out-of-band-pinned verification. Public endpoint; no API key or scope is required.
  */
 export function receiptVerificationKeysRetrieve(
   client: X402ApiCore,

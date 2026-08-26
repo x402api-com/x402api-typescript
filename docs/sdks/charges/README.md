@@ -9,7 +9,7 @@
 
 ## create
 
-Create one idempotent dynamic charge with immutable x402 payment terms.
+Create one idempotent dynamic charge with immutable x402 payment terms. Requires a tenant API key with the `commerce:write` scope.
 
 ### Example Usage
 
@@ -105,7 +105,7 @@ run();
 
 ## retrieve
 
-Retrieve the frozen terms and current projected status of a tenant charge.
+Retrieve the frozen terms and current projected status of a tenant charge. Requires a tenant API key with the `commerce:read` scope.
 
 ### Example Usage
 

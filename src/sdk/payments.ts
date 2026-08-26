@@ -16,7 +16,7 @@ export class Payments extends ClientSDK {
    * List payments
    *
    * @remarks
-   * List tenant-visible payments using opaque cursor pagination.
+   * List tenant-visible payments using opaque cursor pagination. Requires a tenant API key with the `payments:read` scope.
    */
   async list(
     request?: operations.PaymentsListRequest | undefined,
@@ -33,7 +33,7 @@ export class Payments extends ClientSDK {
    * Retrieve a payment
    *
    * @remarks
-   * Retrieve one tenant-visible payment by its canonical identifier.
+   * Retrieve one tenant-visible payment by its canonical identifier. Requires a tenant API key with the `payments:read` scope.
    */
   async retrieve(
     request: operations.PaymentsRetrieveRequest,
@@ -50,7 +50,7 @@ export class Payments extends ClientSDK {
    * List payment observations
    *
    * @remarks
-   * List finalized and pending chain observations for one tenant-visible payment.
+   * List finalized and pending chain observations for one tenant-visible payment. Requires a tenant API key with the `payments:read` scope.
    */
   async listObservations(
     request: operations.PaymentsListObservationsRequest,
@@ -67,7 +67,7 @@ export class Payments extends ClientSDK {
    * Retrieve a payment receipt
    *
    * @remarks
-   * Retrieve the signed receipt projection for one tenant-visible payment.
+   * Retrieve the signed receipt projection for one tenant-visible payment. Requires a tenant API key with the `payments:read` scope.
    */
   async retrieveReceipt(
     request: operations.PaymentsRetrieveReceiptRequest,

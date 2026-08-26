@@ -14,7 +14,7 @@ export class Charges extends ClientSDK {
    * Create a programmatic charge
    *
    * @remarks
-   * Create one idempotent dynamic charge with immutable x402 payment terms.
+   * Create one idempotent dynamic charge with immutable x402 payment terms. Requires a tenant API key with the `commerce:write` scope.
    */
   async create(
     request: operations.ChargesCreateRequest,
@@ -31,7 +31,7 @@ export class Charges extends ClientSDK {
    * Retrieve a programmatic charge
    *
    * @remarks
-   * Retrieve the frozen terms and current projected status of a tenant charge.
+   * Retrieve the frozen terms and current projected status of a tenant charge. Requires a tenant API key with the `commerce:read` scope.
    */
   async retrieve(
     request: operations.ChargesRetrieveRequest,

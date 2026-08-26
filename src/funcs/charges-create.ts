@@ -32,9 +32,9 @@ import { Result } from "../types/fp.js";
  * Create a programmatic charge
  *
  * @remarks
- * Create one idempotent dynamic charge with immutable x402 payment terms.
+ * Create one idempotent dynamic charge with immutable x402 payment terms. Requires a tenant API key with the `commerce:write` scope.
  *
- * If set, this operation will use {@link Security.tenantApiKey} from the global security.
+ * If set, this operation will use either {@link Security.tenantApiKey} or {@link Security.tenantApiKey} from the global security.
  */
 export function chargesCreate(
   client: X402ApiCore,

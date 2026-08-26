@@ -31,9 +31,9 @@ import { Result } from "../types/fp.js";
  * Retrieve a payment
  *
  * @remarks
- * Retrieve one tenant-visible payment by its canonical identifier.
+ * Retrieve one tenant-visible payment by its canonical identifier. Requires a tenant API key with the `payments:read` scope.
  *
- * If set, this operation will use {@link Security.tenantApiKey} from the global security.
+ * If set, this operation will use either {@link Security.tenantApiKey} or {@link Security.tenantApiKey} from the global security.
  */
 export function paymentsRetrieve(
   client: X402ApiCore,

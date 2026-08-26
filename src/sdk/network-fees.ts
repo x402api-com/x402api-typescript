@@ -14,7 +14,7 @@ export class NetworkFees extends ClientSDK {
    * Create a network-fee quote
    *
    * @remarks
-   * Preview bounded network fees for the requested resource prices and rails.
+   * Preview bounded network fees for the requested resource prices and rails. Requires a tenant API key with the `resources:read` scope.
    */
   async createQuote(
     request: models.NetworkFeePreview,

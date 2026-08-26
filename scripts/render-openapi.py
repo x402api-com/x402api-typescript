@@ -29,24 +29,11 @@ OPERATION_NAMES = {
         "receivingAddresses",
         "getControlCapabilities",
     ),
-    "receiving_addresses_create_control_challenge": (
-        "receivingAddresses",
-        "createControlChallenge",
-    ),
     "receiving_addresses_list": ("receivingAddresses", "list"),
-    "receiving_addresses_register": ("receivingAddresses", "register"),
-    "receiving_addresses_activate": ("receivingAddresses", "activate"),
-    "receiving_addresses_refresh_readiness": (
-        "receivingAddresses",
-        "refreshReadiness",
-    ),
-    "receiving_addresses_rotate": ("receivingAddresses", "rotate"),
     "resources_list": ("resources", "list"),
     "resources_create": ("resources", "create"),
     "resources_list_versions": ("resources", "listVersions"),
     "resources_create_version": ("resources", "createVersion"),
-    "resources_activate_version": ("resources", "activateVersion"),
-    "resources_retire_version": ("resources", "retireVersion"),
     "wallets_retrieve_balance": ("wallets", "retrieveBalance"),
 }
 PUBLIC_OPERATIONS = {
@@ -102,11 +89,17 @@ def render(document: dict[str, Any]) -> dict[str, Any]:
     if not isinstance(paths, dict):
         raise ValueError("paths object is required")
     observed: set[str] = set()
-    for path_item in paths.values():
+    for path, path_item in list(paths.items()):
         if not isinstance(path_item, dict):
             continue
-        for method, operation in path_item.items():
+        for method, operation in list(path_item.items()):
             if method not in HTTP_METHODS or not isinstance(operation, dict):
+                continue
+            if (
+                operation.get("x-authentication-boundary")
+                == "human-tenant-owner-recent-step-up"
+            ):
+                del path_item[method]
                 continue
             operation_id = operation.get("operationId")
             if not isinstance(operation_id, str) or operation_id not in OPERATION_NAMES:
@@ -122,6 +115,8 @@ def render(document: dict[str, Any]) -> dict[str, Any]:
             operation["security"] = (
                 [] if operation_id in PUBLIC_OPERATIONS else tenant_security
             )
+        if not any(method in HTTP_METHODS for method in path_item):
+            del paths[path]
 
     if observed != set(OPERATION_NAMES):
         raise ValueError(

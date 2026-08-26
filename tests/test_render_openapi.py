@@ -85,6 +85,28 @@ class RenderOpenApiTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "unreviewed SDK operation"):
             renderer.render(document)
 
+    def test_prunes_human_step_up_operations_and_empty_paths(self) -> None:
+        paths = {
+            f"/operation/{index}": {"get": {"operationId": operation_id}}
+            for index, operation_id in enumerate(renderer.OPERATION_NAMES)
+        }
+        paths["/dashboard-only"] = {
+            "post": {
+                "operationId": "dashboard_only_mutation",
+                "x-authentication-boundary": (
+                    "human-tenant-owner-recent-step-up"
+                ),
+            }
+        }
+        document = {
+            "paths": paths,
+            "components": {"securitySchemes": {"tenantApiKey": {}}},
+        }
+
+        rendered = renderer.render(document)
+
+        self.assertNotIn("/dashboard-only", rendered["paths"])
+
 
 if __name__ == "__main__":
     unittest.main()

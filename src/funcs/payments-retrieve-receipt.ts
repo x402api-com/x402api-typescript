@@ -31,9 +31,9 @@ import { Result } from "../types/fp.js";
  * Retrieve a payment receipt
  *
  * @remarks
- * Retrieve the signed receipt projection for one tenant-visible payment.
+ * Retrieve the signed receipt projection for one tenant-visible payment. Requires a tenant API key with the `payments:read` scope.
  *
- * If set, this operation will use {@link Security.tenantApiKey} from the global security.
+ * If set, this operation will use either {@link Security.tenantApiKey} or {@link Security.tenantApiKey} from the global security.
  */
 export function paymentsRetrieveReceipt(
   client: X402ApiCore,

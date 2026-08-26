@@ -31,9 +31,9 @@ import { Result } from "../types/fp.js";
  * Retrieve wallet balances
  *
  * @remarks
- * Retrieve finalized external-wallet balance observations at the requested finality.
+ * Retrieve finalized external-wallet balance observations at the requested finality. Requires a tenant API key with the `balances:read` scope.
  *
- * If set, this operation will use {@link Security.tenantApiKey} from the global security.
+ * If set, this operation will use either {@link Security.tenantApiKey} or {@link Security.tenantApiKey} from the global security.
  */
 export function walletsRetrieveBalance(
   client: X402ApiCore,

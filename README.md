@@ -30,6 +30,15 @@ Create a scoped tenant API key in x402api and expose it to the server process as
 `X402API_TENANT_API_KEY`. The SDK sends it as a bearer credential. Never embed a
 tenant API key in browser, mobile, desktop, or other distributed client code.
 
+The quickstart calls require `payment-controls:read` for payment readiness and
+`payments:read` for the payment list. A valid key that lacks an operation's exact
+scope receives HTTP 403. The function table below lists the required scope for
+every generated method; unauthenticated methods are marked public.
+
+The server SDK intentionally excludes dashboard-only mutations that require a
+human tenant owner with a recent authenticator-app or WebAuthn step-up. A tenant
+API key cannot satisfy that boundary, regardless of its scopes.
+
 ### Initialize the client
 
 ```typescript
@@ -115,35 +124,28 @@ respect idempotency requirements.
 Method names below use the language-neutral generated names. The generator
 applies the normal casing conventions for this language.
 
-| SDK resource | Function | HTTP endpoint | Purpose |
-| --- | --- | --- | --- |
-| `charges` | `create` | `POST /v1/charges` | Create a programmatic charge. Requires an idempotency key. |
-| `charges` | `retrieve` | `GET /v1/charges/{charge_id}` | Retrieve a charge by UUID. |
-| `facilitator` | `getSupported` | `GET /v1/facilitator/supported` | Discover supported facilitator profiles. |
-| `idempotency` | `getOutcome` | `GET /v1/idempotency-outcomes/{idempotency_key}` | Inspect the recorded result for an idempotent mutation. |
-| `networkFees` | `createQuote` | `POST /v1/network-fee-quotes` | Preview network fees for one or more prices. |
-| `orders` | `list` | `GET /v1/orders` | List orders with cursor pagination. |
-| `orders` | `retrieve` | `GET /v1/orders/{id}` | Retrieve an order by UUID. |
-| `paymentReadiness` | `retrieve` | `GET /v1/payment-readiness` | Inspect assets and payment-control readiness. |
-| `receiptVerificationKeys` | `retrieve` | `GET /v1/payment-receipt-verification-keys` | Retrieve the public receipt-verification key history. |
-| `payments` | `list` | `GET /v1/payments` | List payments with cursor pagination. |
-| `payments` | `retrieve` | `GET /v1/payments/{id}` | Retrieve a payment by UUID. |
-| `payments` | `listObservations` | `GET /v1/payments/{id}/observations` | List chain observations for a payment. |
-| `payments` | `retrieveReceipt` | `GET /v1/payments/{id}/receipt` | Retrieve the signed payment receipt. |
-| `receivingAddresses` | `getControlCapabilities` | `GET /v1/receiving-address-control-capabilities` | Inspect supported address-control proofs. |
-| `receivingAddresses` | `createControlChallenge` | `POST /v1/receiving-address-control-challenges` | Create an address-control challenge. Requires an idempotency key. |
-| `receivingAddresses` | `list` | `GET /v1/receiving-addresses` | List receiving addresses with cursor pagination. |
-| `receivingAddresses` | `register` | `POST /v1/receiving-addresses` | Register a receiving address. Requires an idempotency key. |
-| `receivingAddresses` | `activate` | `POST /v1/receiving-addresses/{readiness_id}/activate` | Activate a ready receiving address. Requires an idempotency key. |
-| `receivingAddresses` | `refreshReadiness` | `POST /v1/receiving-addresses/{readiness_id}/readiness-refreshes` | Re-run readiness checks. Requires an idempotency key. |
-| `receivingAddresses` | `rotate` | `POST /v1/receiving-addresses/{readiness_id}/rotations` | Rotate a receiving address. Requires an idempotency key. |
-| `resources` | `list` | `GET /v1/resources` | List payment-gated resources with cursor pagination. |
-| `resources` | `create` | `POST /v1/resources` | Create a payment-gated resource. Requires an idempotency key. |
-| `resources` | `listVersions` | `GET /v1/resources/{resource_id}/versions` | List immutable resource versions. |
-| `resources` | `createVersion` | `POST /v1/resources/{resource_id}/versions` | Create a resource version. Requires an idempotency key. |
-| `resources` | `activateVersion` | `POST /v1/resources/{resource_id}/versions/{version_id}/activate` | Activate a resource version using optimistic concurrency. |
-| `resources` | `retireVersion` | `POST /v1/resources/{resource_id}/versions/{version_id}/retire` | Retire a resource version using optimistic concurrency. |
-| `wallets` | `retrieveBalance` | `GET /v1/wallets/{id}/balances` | Retrieve confirmed, finalized, or latest wallet balances. |
+| SDK resource | Function | HTTP endpoint | Purpose | Required authorization |
+| --- | --- | --- | --- | --- |
+| `charges` | `create` | `POST /v1/charges` | Create a programmatic charge. Requires an idempotency key. | Tenant API key with `commerce:write` |
+| `charges` | `retrieve` | `GET /v1/charges/{charge_id}` | Retrieve a charge by UUID. | Tenant API key with `commerce:read` |
+| `facilitator` | `getSupported` | `GET /v1/facilitator/supported` | Discover supported facilitator profiles. | Public; no credential required |
+| `idempotency` | `getOutcome` | `GET /v1/idempotency-outcomes/{idempotency_key}` | Inspect the recorded result for an idempotent mutation. | Tenant API key; no additional scope |
+| `networkFees` | `createQuote` | `POST /v1/network-fee-quotes` | Preview network fees for one or more prices. | Tenant API key with `resources:read` |
+| `orders` | `list` | `GET /v1/orders` | List orders with cursor pagination. | Tenant API key with `orders:read` |
+| `orders` | `retrieve` | `GET /v1/orders/{id}` | Retrieve an order by UUID. | Tenant API key with `orders:read` |
+| `paymentReadiness` | `retrieve` | `GET /v1/payment-readiness` | Inspect assets and payment-control readiness. | Tenant API key with `payment-controls:read` |
+| `receiptVerificationKeys` | `retrieve` | `GET /v1/payment-receipt-verification-keys` | Retrieve the public receipt-verification key history. | Public; no credential required |
+| `payments` | `list` | `GET /v1/payments` | List payments with cursor pagination. | Tenant API key with `payments:read` |
+| `payments` | `retrieve` | `GET /v1/payments/{id}` | Retrieve a payment by UUID. | Tenant API key with `payments:read` |
+| `payments` | `listObservations` | `GET /v1/payments/{id}/observations` | List chain observations for a payment. | Tenant API key with `payments:read` |
+| `payments` | `retrieveReceipt` | `GET /v1/payments/{id}/receipt` | Retrieve the signed payment receipt. | Tenant API key with `payments:read` |
+| `receivingAddresses` | `getControlCapabilities` | `GET /v1/receiving-address-control-capabilities` | Inspect supported address-control proofs. | Tenant API key with `wallets:read` |
+| `receivingAddresses` | `list` | `GET /v1/receiving-addresses` | List receiving addresses with cursor pagination. | Tenant API key with `wallets:read` |
+| `resources` | `list` | `GET /v1/resources` | List payment-gated resources with cursor pagination. | Tenant API key with `resources:read` |
+| `resources` | `create` | `POST /v1/resources` | Create a payment-gated resource. Requires an idempotency key. | Tenant API key with `resources:write` |
+| `resources` | `listVersions` | `GET /v1/resources/{resource_id}/versions` | List immutable resource versions. | Tenant API key with `resources:read` |
+| `resources` | `createVersion` | `POST /v1/resources/{resource_id}/versions` | Create a resource version. Requires an idempotency key. | Tenant API key with `resources:write` |
+| `wallets` | `retrieveBalance` | `GET /v1/wallets/{id}/balances` | Retrieve confirmed, finalized, or latest wallet balances. | Tenant API key with `balances:read` |
 
 ## Source contract and releases
 
@@ -364,12 +366,7 @@ run();
 ### [ReceivingAddresses](docs/sdks/receivingaddresses/README.md)
 
 * [getControlCapabilities](docs/sdks/receivingaddresses/README.md#getcontrolcapabilities) - Get receiving-address control capabilities
-* [createControlChallenge](docs/sdks/receivingaddresses/README.md#createcontrolchallenge) - Create a receiving-address control challenge
 * [list](docs/sdks/receivingaddresses/README.md#list) - List receiving addresses
-* [register](docs/sdks/receivingaddresses/README.md#register) - Register a receiving address
-* [activate](docs/sdks/receivingaddresses/README.md#activate) - Activate a receiving address
-* [refreshReadiness](docs/sdks/receivingaddresses/README.md#refreshreadiness) - Refresh receiving-address readiness
-* [rotate](docs/sdks/receivingaddresses/README.md#rotate) - Rotate a receiving address
 
 ### [Resources](docs/sdks/resources/README.md)
 
@@ -377,8 +374,6 @@ run();
 * [create](docs/sdks/resources/README.md#create) - Create a resource
 * [listVersions](docs/sdks/resources/README.md#listversions) - List resource versions
 * [createVersion](docs/sdks/resources/README.md#createversion) - Create a resource version
-* [activateVersion](docs/sdks/resources/README.md#activateversion) - Activate a resource version
-* [retireVersion](docs/sdks/resources/README.md#retireversion) - Retire a resource version
 
 ### [Wallets](docs/sdks/wallets/README.md)
 
@@ -415,19 +410,12 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`paymentsRetrieve`](docs/sdks/payments/README.md#retrieve) - Retrieve a payment
 - [`paymentsRetrieveReceipt`](docs/sdks/payments/README.md#retrievereceipt) - Retrieve a payment receipt
 - [`receiptVerificationKeysRetrieve`](docs/sdks/receiptverificationkeys/README.md#retrieve) - Retrieve receipt verification keys
-- [`receivingAddressesActivate`](docs/sdks/receivingaddresses/README.md#activate) - Activate a receiving address
-- [`receivingAddressesCreateControlChallenge`](docs/sdks/receivingaddresses/README.md#createcontrolchallenge) - Create a receiving-address control challenge
 - [`receivingAddressesGetControlCapabilities`](docs/sdks/receivingaddresses/README.md#getcontrolcapabilities) - Get receiving-address control capabilities
 - [`receivingAddressesList`](docs/sdks/receivingaddresses/README.md#list) - List receiving addresses
-- [`receivingAddressesRefreshReadiness`](docs/sdks/receivingaddresses/README.md#refreshreadiness) - Refresh receiving-address readiness
-- [`receivingAddressesRegister`](docs/sdks/receivingaddresses/README.md#register) - Register a receiving address
-- [`receivingAddressesRotate`](docs/sdks/receivingaddresses/README.md#rotate) - Rotate a receiving address
-- [`resourcesActivateVersion`](docs/sdks/resources/README.md#activateversion) - Activate a resource version
 - [`resourcesCreate`](docs/sdks/resources/README.md#create) - Create a resource
 - [`resourcesCreateVersion`](docs/sdks/resources/README.md#createversion) - Create a resource version
 - [`resourcesList`](docs/sdks/resources/README.md#list) - List resources
 - [`resourcesListVersions`](docs/sdks/resources/README.md#listversions) - List resource versions
-- [`resourcesRetireVersion`](docs/sdks/resources/README.md#retireversion) - Retire a resource version
 - [`walletsRetrieveBalance`](docs/sdks/wallets/README.md#retrievebalance) - Retrieve wallet balances
 
 </details>
@@ -598,7 +586,7 @@ run();
 
 
 **Inherit from [`X402APIBaseError`](./src/models/errors/x402-api-base-error.ts)**:
-* [`ApiErrorEnvelope`](./src/models/errors/api-error-envelope.ts): The request failed. Applicable to 5 of 27 methods.*
+* [`ApiErrorEnvelope`](./src/models/errors/api-error-envelope.ts): The request failed. Applicable to 3 of 20 methods.*
 * [`ResponseValidationError`](./src/models/errors/response-validation-error.ts): Type mismatch between the data returned from the server and the structure expected by the SDK. See `error.rawValue` for the raw value and `error.pretty()` for a nicely formatted multi-line string.
 
 </details>
