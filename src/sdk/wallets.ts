@@ -13,7 +13,7 @@ export class Wallets extends ClientSDK {
    * Retrieve wallet balances
    *
    * @remarks
-   * Retrieve finalized external-wallet balance observations at the requested finality.
+   * Retrieve finalized external-wallet balance observations at the requested finality. Requires a tenant API key with the `balances:read` scope.
    */
   async retrieveBalance(
     request: operations.WalletsRetrieveBalanceRequest,

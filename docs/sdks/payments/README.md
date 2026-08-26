@@ -11,7 +11,7 @@
 
 ## list
 
-List tenant-visible payments using opaque cursor pagination.
+List tenant-visible payments using opaque cursor pagination. Requires a tenant API key with the `payments:read` scope.
 
 ### Example Usage
 
@@ -80,7 +80,7 @@ run();
 
 ## retrieve
 
-Retrieve one tenant-visible payment by its canonical identifier.
+Retrieve one tenant-visible payment by its canonical identifier. Requires a tenant API key with the `payments:read` scope.
 
 ### Example Usage
 
@@ -153,7 +153,7 @@ run();
 
 ## listObservations
 
-List finalized and pending chain observations for one tenant-visible payment.
+List finalized and pending chain observations for one tenant-visible payment. Requires a tenant API key with the `payments:read` scope.
 
 ### Example Usage
 
@@ -226,7 +226,7 @@ run();
 
 ## retrieveReceipt
 
-Retrieve the signed receipt projection for one tenant-visible payment.
+Retrieve the signed receipt projection for one tenant-visible payment. Requires a tenant API key with the `payments:read` scope.
 
 ### Example Usage
 

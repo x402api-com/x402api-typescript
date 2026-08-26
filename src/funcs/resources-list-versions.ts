@@ -31,9 +31,9 @@ import { Result } from "../types/fp.js";
  * List resource versions
  *
  * @remarks
- * List immutable versions of one tenant resource using opaque cursor pagination.
+ * List immutable versions of one tenant resource using opaque cursor pagination. Requires a tenant API key with the `resources:read` scope.
  *
- * If set, this operation will use {@link Security.tenantApiKey} from the global security.
+ * If set, this operation will use either {@link Security.tenantApiKey} or {@link Security.tenantApiKey} from the global security.
  */
 export function resourcesListVersions(
   client: X402ApiCore,

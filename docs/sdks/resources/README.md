@@ -8,12 +8,10 @@
 * [create](#create) - Create a resource
 * [listVersions](#listversions) - List resource versions
 * [createVersion](#createversion) - Create a resource version
-* [activateVersion](#activateversion) - Activate a resource version
-* [retireVersion](#retireversion) - Retire a resource version
 
 ## list
 
-List tenant resources and their visible versions using opaque cursor pagination.
+List tenant resources and their visible versions using opaque cursor pagination. Requires a tenant API key with the `resources:read` scope.
 
 ### Example Usage
 
@@ -82,7 +80,7 @@ run();
 
 ## create
 
-Create one tenant resource idempotently.
+Create one tenant resource idempotently. Requires a tenant API key with the `resources:write` scope.
 
 ### Example Usage
 
@@ -187,7 +185,7 @@ run();
 
 ## listVersions
 
-List immutable versions of one tenant resource using opaque cursor pagination.
+List immutable versions of one tenant resource using opaque cursor pagination. Requires a tenant API key with the `resources:read` scope.
 
 ### Example Usage
 
@@ -260,7 +258,7 @@ run();
 
 ## createVersion
 
-Create an immutable priced version of one tenant resource idempotently.
+Create an immutable priced version of one tenant resource idempotently. Requires a tenant API key with the `resources:write` scope.
 
 ### Example Usage
 
@@ -356,178 +354,6 @@ run();
 ### Response
 
 **Promise\<[operations.ResourcesCreateVersionResponse](../../models/operations/resources-create-version-response.md)\>**
-
-### Errors
-
-| Error Type              | Status Code             | Content Type            |
-| ----------------------- | ----------------------- | ----------------------- |
-| errors.ApiErrorEnvelope | 409                     | application/json        |
-| errors.X402ApiError     | 4XX, 5XX                | \*/\*                   |
-
-## activateVersion
-
-Activate one immutable resource version idempotently.
-
-### Example Usage
-
-<!-- UsageSnippet language="typescript" operationID="resources_activate_version" method="post" path="/v1/resources/{resource_id}/versions/{version_id}/activate" -->
-```typescript
-import { X402Api } from "@x402api/sdk";
-
-const x402Api = new X402Api({
-  tenantApiKey: process.env["X402API_TENANT_API_KEY"] ?? "",
-});
-
-async function run() {
-  const result = await x402Api.resources.activateVersion({
-    idempotencyKey: "<value>",
-    resourceId: "87fdaa04-13b8-418c-bb9e-9076d195ff02",
-    versionId: "7f5a1532-643b-42d2-81d6-e7d1ba0c8021",
-    body: {
-      expectedTargetVersion: 530555,
-      expectedActiveVersionId: "916e6962-e50f-446c-95de-5100c39d4b2f",
-    },
-  });
-
-  console.log(result);
-}
-
-run();
-```
-
-### Standalone function
-
-The standalone function version of this method:
-
-```typescript
-import { X402ApiCore } from "@x402api/sdk/core.js";
-import { resourcesActivateVersion } from "@x402api/sdk/funcs/resources-activate-version.js";
-
-// Use `X402ApiCore` for best tree-shaking performance.
-// You can create one instance of it to use across an application.
-const x402Api = new X402ApiCore({
-  tenantApiKey: process.env["X402API_TENANT_API_KEY"] ?? "",
-});
-
-async function run() {
-  const res = await resourcesActivateVersion(x402Api, {
-    idempotencyKey: "<value>",
-    resourceId: "87fdaa04-13b8-418c-bb9e-9076d195ff02",
-    versionId: "7f5a1532-643b-42d2-81d6-e7d1ba0c8021",
-    body: {
-      expectedTargetVersion: 530555,
-      expectedActiveVersionId: "916e6962-e50f-446c-95de-5100c39d4b2f",
-    },
-  });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("resourcesActivateVersion failed:", res.error);
-  }
-}
-
-run();
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.ResourcesActivateVersionRequest](../../models/operations/resources-activate-version-request.md)                                                                    | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
-
-### Response
-
-**Promise\<[operations.ResourcesActivateVersionResponse](../../models/operations/resources-activate-version-response.md)\>**
-
-### Errors
-
-| Error Type              | Status Code             | Content Type            |
-| ----------------------- | ----------------------- | ----------------------- |
-| errors.ApiErrorEnvelope | 409                     | application/json        |
-| errors.X402ApiError     | 4XX, 5XX                | \*/\*                   |
-
-## retireVersion
-
-Retire one immutable resource version idempotently.
-
-### Example Usage
-
-<!-- UsageSnippet language="typescript" operationID="resources_retire_version" method="post" path="/v1/resources/{resource_id}/versions/{version_id}/retire" -->
-```typescript
-import { X402Api } from "@x402api/sdk";
-
-const x402Api = new X402Api({
-  tenantApiKey: process.env["X402API_TENANT_API_KEY"] ?? "",
-});
-
-async function run() {
-  const result = await x402Api.resources.retireVersion({
-    idempotencyKey: "<value>",
-    resourceId: "0554cf63-9750-4399-b653-7ec259a25ed5",
-    versionId: "bc2a4fef-ae62-4652-a16a-16ae6a056787",
-    body: {
-      expectedVersion: 832056,
-      expectedState: "draft",
-    },
-  });
-
-  console.log(result);
-}
-
-run();
-```
-
-### Standalone function
-
-The standalone function version of this method:
-
-```typescript
-import { X402ApiCore } from "@x402api/sdk/core.js";
-import { resourcesRetireVersion } from "@x402api/sdk/funcs/resources-retire-version.js";
-
-// Use `X402ApiCore` for best tree-shaking performance.
-// You can create one instance of it to use across an application.
-const x402Api = new X402ApiCore({
-  tenantApiKey: process.env["X402API_TENANT_API_KEY"] ?? "",
-});
-
-async function run() {
-  const res = await resourcesRetireVersion(x402Api, {
-    idempotencyKey: "<value>",
-    resourceId: "0554cf63-9750-4399-b653-7ec259a25ed5",
-    versionId: "bc2a4fef-ae62-4652-a16a-16ae6a056787",
-    body: {
-      expectedVersion: 832056,
-      expectedState: "draft",
-    },
-  });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("resourcesRetireVersion failed:", res.error);
-  }
-}
-
-run();
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.ResourcesRetireVersionRequest](../../models/operations/resources-retire-version-request.md)                                                                        | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
-
-### Response
-
-**Promise\<[operations.ResourcesRetireVersionResponse](../../models/operations/resources-retire-version-response.md)\>**
 
 ### Errors
 

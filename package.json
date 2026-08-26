@@ -33,9 +33,7 @@
     "build": "tshy",
     "prepublishOnly": "npm run build"
   },
-  "peerDependencies": {
-    
-  },
+  "peerDependencies": {},
   "devDependencies": {
     "@typescript/native-preview": "7.0.0-dev.20260302.1",
     "oxlint": "^1.60.0",
@@ -44,5 +42,88 @@
   },
   "dependencies": {
     "zod": "^3.25.65 || ^4.0.0"
-  }
+  },
+  "exports": {
+    ".": {
+      "import": {
+        "@x402api/sdk/source": "./src/index.ts",
+        "types": "./dist/esm/index.d.ts",
+        "default": "./dist/esm/index.js"
+      },
+      "require": {
+        "types": "./dist/commonjs/index.d.ts",
+        "default": "./dist/commonjs/index.js"
+      }
+    },
+    "./package.json": "./package.json",
+    "./types": {
+      "import": {
+        "@x402api/sdk/source": "./src/types/index.ts",
+        "types": "./dist/esm/types/index.d.ts",
+        "default": "./dist/esm/types/index.js"
+      },
+      "require": {
+        "types": "./dist/commonjs/types/index.d.ts",
+        "default": "./dist/commonjs/types/index.js"
+      }
+    },
+    "./models/errors": {
+      "import": {
+        "@x402api/sdk/source": "./src/models/errors/index.ts",
+        "types": "./dist/esm/models/errors/index.d.ts",
+        "default": "./dist/esm/models/errors/index.js"
+      },
+      "require": {
+        "types": "./dist/commonjs/models/errors/index.d.ts",
+        "default": "./dist/commonjs/models/errors/index.js"
+      }
+    },
+    "./models": {
+      "import": {
+        "@x402api/sdk/source": "./src/models/index.ts",
+        "types": "./dist/esm/models/index.d.ts",
+        "default": "./dist/esm/models/index.js"
+      },
+      "require": {
+        "types": "./dist/commonjs/models/index.d.ts",
+        "default": "./dist/commonjs/models/index.js"
+      }
+    },
+    "./models/operations": {
+      "import": {
+        "@x402api/sdk/source": "./src/models/operations/index.ts",
+        "types": "./dist/esm/models/operations/index.d.ts",
+        "default": "./dist/esm/models/operations/index.js"
+      },
+      "require": {
+        "types": "./dist/commonjs/models/operations/index.d.ts",
+        "default": "./dist/commonjs/models/operations/index.js"
+      }
+    },
+    "./*.js": {
+      "import": {
+        "@x402api/sdk/source": "./src/*.ts",
+        "types": "./dist/esm/*.d.ts",
+        "default": "./dist/esm/*.js"
+      },
+      "require": {
+        "types": "./dist/commonjs/*.d.ts",
+        "default": "./dist/commonjs/*.js"
+      }
+    },
+    "./*": {
+      "import": {
+        "@x402api/sdk/source": "./src/*.ts",
+        "types": "./dist/esm/*.d.ts",
+        "default": "./dist/esm/*.js"
+      },
+      "require": {
+        "types": "./dist/commonjs/*.d.ts",
+        "default": "./dist/commonjs/*.js"
+      }
+    }
+  },
+  "main": "./dist/commonjs/index.js",
+  "types": "./dist/commonjs/index.d.ts",
+  "module": "./dist/esm/index.js"
 }

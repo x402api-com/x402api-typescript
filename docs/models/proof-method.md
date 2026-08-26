@@ -1,7 +1,7 @@
 # ProofMethod
 
-* `signed_message` - Signed message
-* `onchain_canary` - On-chain canary
+* `signed_message` - signed_message
+* `onchain_canary` - onchain_canary
 
 ## Example Usage
 

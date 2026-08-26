@@ -13,7 +13,7 @@ export class ReceiptVerificationKeys extends ClientSDK {
    * Retrieve receipt verification keys
    *
    * @remarks
-   * Return the public receipt verification-key history for out-of-band-pinned verification.
+   * Return the public receipt verification-key history for out-of-band-pinned verification. Public endpoint; no API key or scope is required.
    */
   async retrieve(
     options?: RequestOptions,

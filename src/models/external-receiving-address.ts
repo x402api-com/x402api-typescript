@@ -18,7 +18,7 @@ import { SDKValidationError } from "./errors/sdk-validation-error.js";
  * @remarks
  * * `onchain_canary` - onchain_canary
  */
-export const ExternalReceivingAddressProofMethod = {
+export const ProofMethod = {
   SignedMessage: "signed_message",
   OnchainCanary: "onchain_canary",
 } as const;
@@ -28,9 +28,7 @@ export const ExternalReceivingAddressProofMethod = {
  * @remarks
  * * `onchain_canary` - onchain_canary
  */
-export type ExternalReceivingAddressProofMethod = OpenEnum<
-  typeof ExternalReceivingAddressProofMethod
->;
+export type ProofMethod = OpenEnum<typeof ProofMethod>;
 
 /**
  * * `current` - current
@@ -68,7 +66,7 @@ export type ExternalReceivingAddress = {
   assetId: string;
   address: string;
   status: string;
-  proofMethod: ExternalReceivingAddressProofMethod | null;
+  proofMethod: ProofMethod | null;
   proofVerifiedAt: Date | null;
   readinessState: string;
   readinessUsable: boolean;
@@ -84,10 +82,8 @@ export type ExternalReceivingAddress = {
 };
 
 /** @internal */
-export const ExternalReceivingAddressProofMethod$inboundSchema: z.ZodMiniType<
-  ExternalReceivingAddressProofMethod,
-  unknown
-> = openEnums.inboundSchema(ExternalReceivingAddressProofMethod);
+export const ProofMethod$inboundSchema: z.ZodMiniType<ProofMethod, unknown> =
+  openEnums.inboundSchema(ProofMethod);
 
 /** @internal */
 export const ReadinessStatus$inboundSchema: z.ZodMiniType<
@@ -109,9 +105,7 @@ export const ExternalReceivingAddress$inboundSchema: z.ZodMiniType<
     asset_id: types.string(),
     address: types.string(),
     status: types.string(),
-    proof_method: types.nullable(
-      ExternalReceivingAddressProofMethod$inboundSchema,
-    ),
+    proof_method: types.nullable(ProofMethod$inboundSchema),
     proof_verified_at: types.nullable(types.date()),
     readiness_state: types.string(),
     readiness_usable: types.boolean(),

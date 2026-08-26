@@ -8,7 +8,7 @@
 
 ## getSupported
 
-Return the currently approved public x402 facilitator profiles.
+Return the currently approved public x402 facilitator profiles. Public endpoint; no API key or scope is required.
 
 ### Example Usage
 

@@ -31,9 +31,9 @@ import { Result } from "../types/fp.js";
  * List receiving addresses
  *
  * @remarks
- * List tenant receiving-address registrations using opaque cursor pagination.
+ * List tenant receiving-address registrations using opaque cursor pagination. Requires a tenant API key with the `wallets:read` scope.
  *
- * If set, this operation will use {@link Security.tenantApiKey} from the global security.
+ * If set, this operation will use either {@link Security.tenantApiKey} or {@link Security.tenantApiKey} from the global security.
  */
 export function receivingAddressesList(
   client: X402ApiCore,

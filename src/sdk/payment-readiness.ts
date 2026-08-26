@@ -13,7 +13,7 @@ export class PaymentReadiness extends ClientSDK {
    * Retrieve payment readiness
    *
    * @remarks
-   * Return the tenant's current external-wallet payment-readiness projection.
+   * Return the tenant's current external-wallet payment-readiness projection. Requires a tenant API key with the `payment-controls:read` scope.
    */
   async retrieve(
     options?: RequestOptions,

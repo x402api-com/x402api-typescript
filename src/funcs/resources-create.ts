@@ -31,9 +31,9 @@ import { Result } from "../types/fp.js";
  * Create a resource
  *
  * @remarks
- * Create one tenant resource idempotently.
+ * Create one tenant resource idempotently. Requires a tenant API key with the `resources:write` scope.
  *
- * If set, this operation will use {@link Security.tenantApiKey} from the global security.
+ * If set, this operation will use either {@link Security.tenantApiKey} or {@link Security.tenantApiKey} from the global security.
  */
 export function resourcesCreate(
   client: X402ApiCore,
