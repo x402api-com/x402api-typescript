@@ -364,12 +364,7 @@ run();
 ### [ReceivingAddresses](docs/sdks/receivingaddresses/README.md)
 
 * [getControlCapabilities](docs/sdks/receivingaddresses/README.md#getcontrolcapabilities) - Get receiving-address control capabilities
-* [createControlChallenge](docs/sdks/receivingaddresses/README.md#createcontrolchallenge) - Create a receiving-address control challenge
 * [list](docs/sdks/receivingaddresses/README.md#list) - List receiving addresses
-* [register](docs/sdks/receivingaddresses/README.md#register) - Register a receiving address
-* [activate](docs/sdks/receivingaddresses/README.md#activate) - Activate a receiving address
-* [refreshReadiness](docs/sdks/receivingaddresses/README.md#refreshreadiness) - Refresh receiving-address readiness
-* [rotate](docs/sdks/receivingaddresses/README.md#rotate) - Rotate a receiving address
 
 ### [Resources](docs/sdks/resources/README.md)
 
@@ -377,8 +372,6 @@ run();
 * [create](docs/sdks/resources/README.md#create) - Create a resource
 * [listVersions](docs/sdks/resources/README.md#listversions) - List resource versions
 * [createVersion](docs/sdks/resources/README.md#createversion) - Create a resource version
-* [activateVersion](docs/sdks/resources/README.md#activateversion) - Activate a resource version
-* [retireVersion](docs/sdks/resources/README.md#retireversion) - Retire a resource version
 
 ### [Wallets](docs/sdks/wallets/README.md)
 
@@ -415,19 +408,12 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`paymentsRetrieve`](docs/sdks/payments/README.md#retrieve) - Retrieve a payment
 - [`paymentsRetrieveReceipt`](docs/sdks/payments/README.md#retrievereceipt) - Retrieve a payment receipt
 - [`receiptVerificationKeysRetrieve`](docs/sdks/receiptverificationkeys/README.md#retrieve) - Retrieve receipt verification keys
-- [`receivingAddressesActivate`](docs/sdks/receivingaddresses/README.md#activate) - Activate a receiving address
-- [`receivingAddressesCreateControlChallenge`](docs/sdks/receivingaddresses/README.md#createcontrolchallenge) - Create a receiving-address control challenge
 - [`receivingAddressesGetControlCapabilities`](docs/sdks/receivingaddresses/README.md#getcontrolcapabilities) - Get receiving-address control capabilities
 - [`receivingAddressesList`](docs/sdks/receivingaddresses/README.md#list) - List receiving addresses
-- [`receivingAddressesRefreshReadiness`](docs/sdks/receivingaddresses/README.md#refreshreadiness) - Refresh receiving-address readiness
-- [`receivingAddressesRegister`](docs/sdks/receivingaddresses/README.md#register) - Register a receiving address
-- [`receivingAddressesRotate`](docs/sdks/receivingaddresses/README.md#rotate) - Rotate a receiving address
-- [`resourcesActivateVersion`](docs/sdks/resources/README.md#activateversion) - Activate a resource version
 - [`resourcesCreate`](docs/sdks/resources/README.md#create) - Create a resource
 - [`resourcesCreateVersion`](docs/sdks/resources/README.md#createversion) - Create a resource version
 - [`resourcesList`](docs/sdks/resources/README.md#list) - List resources
 - [`resourcesListVersions`](docs/sdks/resources/README.md#listversions) - List resource versions
-- [`resourcesRetireVersion`](docs/sdks/resources/README.md#retireversion) - Retire a resource version
 - [`walletsRetrieveBalance`](docs/sdks/wallets/README.md#retrievebalance) - Retrieve wallet balances
 
 </details>
@@ -598,7 +584,7 @@ run();
 
 
 **Inherit from [`X402APIBaseError`](./src/models/errors/x402-api-base-error.ts)**:
-* [`ApiErrorEnvelope`](./src/models/errors/api-error-envelope.ts): The request failed. Applicable to 5 of 27 methods.*
+* [`ApiErrorEnvelope`](./src/models/errors/api-error-envelope.ts): The request failed. Applicable to 3 of 20 methods.*
 * [`ResponseValidationError`](./src/models/errors/response-validation-error.ts): Type mismatch between the data returned from the server and the structure expected by the SDK. See `error.rawValue` for the raw value and `error.pretty()` for a nicely formatted multi-line string.
 
 </details>

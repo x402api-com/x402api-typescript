@@ -13,7 +13,7 @@ export class Facilitator extends ClientSDK {
    * Get supported facilitator profiles
    *
    * @remarks
-   * Return the currently approved public x402 facilitator profiles.
+   * Return the currently approved public x402 facilitator profiles. Public endpoint; no API key or scope is required.
    */
   async getSupported(
     options?: RequestOptions,

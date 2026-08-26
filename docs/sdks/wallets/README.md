@@ -8,7 +8,7 @@
 
 ## retrieveBalance
 
-Retrieve finalized external-wallet balance observations at the requested finality.
+Retrieve finalized external-wallet balance observations at the requested finality. Requires a tenant API key with the `balances:read` scope.
 
 ### Example Usage
 

@@ -14,7 +14,7 @@ export class Orders extends ClientSDK {
    * List orders
    *
    * @remarks
-   * List tenant-visible orders using opaque cursor pagination.
+   * List tenant-visible orders using opaque cursor pagination. Requires a tenant API key with the `orders:read` scope.
    */
   async list(
     request?: operations.OrdersListRequest | undefined,
@@ -31,7 +31,7 @@ export class Orders extends ClientSDK {
    * Retrieve an order
    *
    * @remarks
-   * Retrieve one tenant-visible order by its canonical identifier.
+   * Retrieve one tenant-visible order by its canonical identifier. Requires a tenant API key with the `orders:read` scope.
    */
   async retrieve(
     request: operations.OrdersRetrieveRequest,

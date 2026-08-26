@@ -32,8 +32,3 @@ export const ExternalAddressProofInputMethodEnum$inboundSchema: z.ZodMiniType<
   ExternalAddressProofInputMethodEnum,
   unknown
 > = openEnums.inboundSchema(ExternalAddressProofInputMethodEnum);
-/** @internal */
-export const ExternalAddressProofInputMethodEnum$outboundSchema: z.ZodMiniType<
-  string,
-  ExternalAddressProofInputMethodEnum
-> = openEnums.outboundSchema(ExternalAddressProofInputMethodEnum);

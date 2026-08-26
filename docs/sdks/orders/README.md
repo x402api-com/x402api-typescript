@@ -9,7 +9,7 @@
 
 ## list
 
-List tenant-visible orders using opaque cursor pagination.
+List tenant-visible orders using opaque cursor pagination. Requires a tenant API key with the `orders:read` scope.
 
 ### Example Usage
 
@@ -78,7 +78,7 @@ run();
 
 ## retrieve
 
-Retrieve one tenant-visible order by its canonical identifier.
+Retrieve one tenant-visible order by its canonical identifier. Requires a tenant API key with the `orders:read` scope.
 
 ### Example Usage
 

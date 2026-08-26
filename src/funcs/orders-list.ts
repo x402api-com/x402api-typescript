@@ -31,9 +31,9 @@ import { Result } from "../types/fp.js";
  * List orders
  *
  * @remarks
- * List tenant-visible orders using opaque cursor pagination.
+ * List tenant-visible orders using opaque cursor pagination. Requires a tenant API key with the `orders:read` scope.
  *
- * If set, this operation will use {@link Security.tenantApiKey} from the global security.
+ * If set, this operation will use either {@link Security.tenantApiKey} or {@link Security.tenantApiKey} from the global security.
  */
 export function ordersList(
   client: X402ApiCore,

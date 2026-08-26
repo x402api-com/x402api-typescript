@@ -3,12 +3,10 @@
  * @generated-id: 399cf49baf34
  */
 
-import { resourcesActivateVersion } from "../funcs/resources-activate-version.js";
 import { resourcesCreateVersion } from "../funcs/resources-create-version.js";
 import { resourcesCreate } from "../funcs/resources-create.js";
 import { resourcesListVersions } from "../funcs/resources-list-versions.js";
 import { resourcesList } from "../funcs/resources-list.js";
-import { resourcesRetireVersion } from "../funcs/resources-retire-version.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
@@ -18,7 +16,7 @@ export class Resources extends ClientSDK {
    * List resources
    *
    * @remarks
-   * List tenant resources and their visible versions using opaque cursor pagination.
+   * List tenant resources and their visible versions using opaque cursor pagination. Requires a tenant API key with the `resources:read` scope.
    */
   async list(
     request?: operations.ResourcesListRequest | undefined,
@@ -35,7 +33,7 @@ export class Resources extends ClientSDK {
    * Create a resource
    *
    * @remarks
-   * Create one tenant resource idempotently.
+   * Create one tenant resource idempotently. Requires a tenant API key with the `resources:write` scope.
    */
   async create(
     request: operations.ResourcesCreateRequest,
@@ -52,7 +50,7 @@ export class Resources extends ClientSDK {
    * List resource versions
    *
    * @remarks
-   * List immutable versions of one tenant resource using opaque cursor pagination.
+   * List immutable versions of one tenant resource using opaque cursor pagination. Requires a tenant API key with the `resources:read` scope.
    */
   async listVersions(
     request: operations.ResourcesListVersionsRequest,
@@ -69,47 +67,13 @@ export class Resources extends ClientSDK {
    * Create a resource version
    *
    * @remarks
-   * Create an immutable priced version of one tenant resource idempotently.
+   * Create an immutable priced version of one tenant resource idempotently. Requires a tenant API key with the `resources:write` scope.
    */
   async createVersion(
     request: operations.ResourcesCreateVersionRequest,
     options?: RequestOptions,
   ): Promise<operations.ResourcesCreateVersionResponse> {
     return unwrapAsync(resourcesCreateVersion(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Activate a resource version
-   *
-   * @remarks
-   * Activate one immutable resource version idempotently.
-   */
-  async activateVersion(
-    request: operations.ResourcesActivateVersionRequest,
-    options?: RequestOptions,
-  ): Promise<operations.ResourcesActivateVersionResponse> {
-    return unwrapAsync(resourcesActivateVersion(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Retire a resource version
-   *
-   * @remarks
-   * Retire one immutable resource version idempotently.
-   */
-  async retireVersion(
-    request: operations.ResourcesRetireVersionRequest,
-    options?: RequestOptions,
-  ): Promise<operations.ResourcesRetireVersionResponse> {
-    return unwrapAsync(resourcesRetireVersion(
       this,
       request,
       options,

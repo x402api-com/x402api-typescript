@@ -31,9 +31,9 @@ import { Result } from "../types/fp.js";
  * List resources
  *
  * @remarks
- * List tenant resources and their visible versions using opaque cursor pagination.
+ * List tenant resources and their visible versions using opaque cursor pagination. Requires a tenant API key with the `resources:read` scope.
  *
- * If set, this operation will use {@link Security.tenantApiKey} from the global security.
+ * If set, this operation will use either {@link Security.tenantApiKey} or {@link Security.tenantApiKey} from the global security.
  */
 export function resourcesList(
   client: X402ApiCore,
