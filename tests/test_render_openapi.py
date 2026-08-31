@@ -75,6 +75,10 @@ class RenderOpenApiTests(unittest.TestCase):
             if path_item["get"]["operationId"] == "charges_create"
         )
         self.assertTrue(charges["x-speakeasy-usage-example"])
+        self.assertEqual(
+            renderer.OPERATION_NAMES["charges_submit_payment"],
+            ("charges", "submitPayment"),
+        )
 
     def test_rejects_an_unreviewed_operation(self) -> None:
         document = {

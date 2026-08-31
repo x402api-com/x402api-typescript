@@ -30,7 +30,7 @@ import { Result } from "../types/fp.js";
  * @remarks
  * Return the supported proof and control capabilities for external receiving addresses. Requires a tenant API key with the `wallets:read` scope.
  *
- * If set, this operation will use either {@link Security.tenantApiKey} or {@link Security.tenantApiKey} from the global security.
+ * If set, this operation will use {@link Security.tenantApiKey} from the global security.
  */
 export function receivingAddressesGetControlCapabilities(
   client: X402ApiCore,

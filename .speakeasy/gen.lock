@@ -2,18 +2,18 @@ lockVersion: ""
 id: ""
 management:
   docChecksum: d028de8128cab582d65cfc5683c953b9
-  docVersion: 1.0.0
+  docVersion: 1.1.0
   speakeasyVersion: 1.794.0
   generationVersion: 2.930.0
-  releaseVersion: 1.0.0
+  releaseVersion: 1.1.0
   configChecksum: b50236398687aa5a43a3ea36ca9482ca
   repoURL: https://github.com/x402api-com/x402api-typescript
   installationURL: https://github.com/x402api-com/x402api-typescript
   published: true
 persistentEdits:
-  generation_id: 20f1ebdc-4d30-488a-810e-db4d7902259f
-  pristine_commit_hash: b95b42dfc8063a4b28b9ae6bcad23c5febf38daa
-  pristine_tree_hash: 5bf8dfb56690a8e5c11ac353f5f4a31fcdb76e38
+  generation_id: 26905063-627f-4b68-9ef8-fdef03fe6d17
+  pristine_commit_hash: 491e93d9417304b2bf2f737b429d47a8dd3bd032
+  pristine_tree_hash: 755c73e569ccf020a0fff392097b898678bc4984
 features:
   typescript:
     additionalDependencies: 0.1.0

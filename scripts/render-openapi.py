@@ -14,6 +14,7 @@ SEMVER = re.compile(r"^(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)$")
 OPERATION_NAMES = {
     "charges_create": ("charges", "create"),
     "charges_retrieve": ("charges", "retrieve"),
+    "charges_submit_payment": ("charges", "submitPayment"),
     "facilitator_get_supported": ("facilitator", "getSupported"),
     "idempotency_get_outcome": ("idempotency", "getOutcome"),
     "network_fees_create_quote": ("networkFees", "createQuote"),

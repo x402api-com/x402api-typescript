@@ -33,7 +33,7 @@ import { Result } from "../types/fp.js";
  * @remarks
  * List tenant-visible payments using opaque cursor pagination. Requires a tenant API key with the `payments:read` scope.
  *
- * If set, this operation will use either {@link Security.tenantApiKey} or {@link Security.tenantApiKey} from the global security.
+ * If set, this operation will use {@link Security.tenantApiKey} from the global security.
  */
 export function paymentsList(
   client: X402ApiCore,

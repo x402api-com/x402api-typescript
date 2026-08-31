@@ -5,6 +5,7 @@
 
 import { chargesCreate } from "../funcs/charges-create.js";
 import { chargesRetrieve } from "../funcs/charges-retrieve.js";
+import { chargesSubmitPayment } from "../funcs/charges-submit-payment.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
@@ -14,7 +15,7 @@ export class Charges extends ClientSDK {
    * Create a programmatic charge
    *
    * @remarks
-   * Create one idempotent dynamic charge with immutable x402 payment terms. Requires a tenant API key with the `commerce:write` scope.
+   * Create one idempotent dynamic charge and immutable PAYMENT-REQUIRED challenge from an active resource template. resource_version_id is the current active_version.id returned by GET /v1/resources, not the top-level resource id or pay_ public_payment_id. The 201 management response contains the canonical buyer challenge; it does not submit or settle payment. Requires a tenant API key with the `commerce:write` scope.
    */
   async create(
     request: operations.ChargesCreateRequest,
@@ -38,6 +39,23 @@ export class Charges extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.ChargesRetrieveResponse> {
     return unwrapAsync(chargesRetrieve(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Submit a programmatic charge payment
+   *
+   * @remarks
+   * Submit one exact canonical PAYMENT-SIGNATURE for a tenant charge. The request body is empty. Preserve and retry the identical signature after HTTP 202 or 503; never create a replacement authorization for an ambiguous outcome. Requires a tenant API key with the `commerce:write` scope.
+   */
+  async submitPayment(
+    request: operations.ChargesSubmitPaymentRequest,
+    options?: RequestOptions,
+  ): Promise<operations.ChargesSubmitPaymentResponse> {
+    return unwrapAsync(chargesSubmitPayment(
       this,
       request,
       options,

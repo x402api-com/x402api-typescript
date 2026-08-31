@@ -10,17 +10,17 @@ import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./errors/sdk-validation-error.js";
 import {
-  FeePolicyDocument,
-  FeePolicyDocument$inboundSchema,
-} from "./fee-policy-document.js";
+  PublicFeePolicyDocument,
+  PublicFeePolicyDocument$inboundSchema,
+} from "./public-fee-policy-document.js";
 import {
-  NetworkFeeAlternative,
-  NetworkFeeAlternative$inboundSchema,
-} from "./network-fee-alternative.js";
+  PublicNetworkFeeAlternative,
+  PublicNetworkFeeAlternative$inboundSchema,
+} from "./public-network-fee-alternative.js";
 
 export type NetworkFeePreviewResponse = {
-  feePolicy: FeePolicyDocument;
-  alternatives: Array<NetworkFeeAlternative>;
+  feePolicy: PublicFeePolicyDocument;
+  alternatives: Array<PublicNetworkFeeAlternative>;
   feeQuoteDigest: string;
 };
 
@@ -30,8 +30,8 @@ export const NetworkFeePreviewResponse$inboundSchema: z.ZodMiniType<
   unknown
 > = z.pipe(
   z.object({
-    fee_policy: FeePolicyDocument$inboundSchema,
-    alternatives: z.array(NetworkFeeAlternative$inboundSchema),
+    fee_policy: PublicFeePolicyDocument$inboundSchema,
+    alternatives: z.array(PublicNetworkFeeAlternative$inboundSchema),
     fee_quote_digest: types.string(),
   }),
   z.transform((v) => {

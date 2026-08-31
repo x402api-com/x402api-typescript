@@ -87,6 +87,14 @@ curl --request POST https://api.x402api.com/v1/charges \
   }'
 ```
 
+### Submit a charge payment
+
+Call `charges.submitPayment` with the charge UUID and the exact canonical
+`PAYMENT-SIGNATURE` returned by the payer. The SDK sends that value as a header
+to `POST /v1/charges/{charge_id}/payments` with no request body. If the API
+returns HTTP 202 or 503, preserve and retry the identical signed artifact;
+never create a replacement authorization while settlement is ambiguous.
+
 ### Read payment state and receipts
 
 Use `payments.list` for a tenant-wide view, `payments.retrieve` for one payment,
@@ -128,6 +136,7 @@ applies the normal casing conventions for this language.
 | --- | --- | --- | --- | --- |
 | `charges` | `create` | `POST /v1/charges` | Create a programmatic charge. Requires an idempotency key. | Tenant API key with `commerce:write` |
 | `charges` | `retrieve` | `GET /v1/charges/{charge_id}` | Retrieve a charge by UUID. | Tenant API key with `commerce:read` |
+| `charges` | `submitPayment` | `POST /v1/charges/{charge_id}/payments` | Submit one exact `PAYMENT-SIGNATURE` with no request body. | Tenant API key with `commerce:write` |
 | `facilitator` | `getSupported` | `GET /v1/facilitator/supported` | Discover supported facilitator profiles. | Public; no credential required |
 | `idempotency` | `getOutcome` | `GET /v1/idempotency-outcomes/{idempotency_key}` | Inspect the recorded result for an idempotent mutation. | Tenant API key; no additional scope |
 | `networkFees` | `createQuote` | `POST /v1/network-fee-quotes` | Preview network fees for one or more prices. | Tenant API key with `resources:read` |
@@ -330,6 +339,7 @@ run();
 
 * [create](docs/sdks/charges/README.md#create) - Create a programmatic charge
 * [retrieve](docs/sdks/charges/README.md#retrieve) - Retrieve a programmatic charge
+* [submitPayment](docs/sdks/charges/README.md#submitpayment) - Submit a programmatic charge payment
 
 ### [Facilitator](docs/sdks/facilitator/README.md)
 
@@ -399,6 +409,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 
 - [`chargesCreate`](docs/sdks/charges/README.md#create) - Create a programmatic charge
 - [`chargesRetrieve`](docs/sdks/charges/README.md#retrieve) - Retrieve a programmatic charge
+- [`chargesSubmitPayment`](docs/sdks/charges/README.md#submitpayment) - Submit a programmatic charge payment
 - [`facilitatorGetSupported`](docs/sdks/facilitator/README.md#getsupported) - Get supported facilitator profiles
 - [`idempotencyGetOutcome`](docs/sdks/idempotency/README.md#getoutcome) - Get an idempotency outcome
 - [`networkFeesCreateQuote`](docs/sdks/networkfees/README.md#createquote) - Create a network-fee quote

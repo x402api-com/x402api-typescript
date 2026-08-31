@@ -32,9 +32,9 @@ import { Result } from "../types/fp.js";
  * Create a programmatic charge
  *
  * @remarks
- * Create one idempotent dynamic charge with immutable x402 payment terms. Requires a tenant API key with the `commerce:write` scope.
+ * Create one idempotent dynamic charge and immutable PAYMENT-REQUIRED challenge from an active resource template. resource_version_id is the current active_version.id returned by GET /v1/resources, not the top-level resource id or pay_ public_payment_id. The 201 management response contains the canonical buyer challenge; it does not submit or settle payment. Requires a tenant API key with the `commerce:write` scope.
  *
- * If set, this operation will use either {@link Security.tenantApiKey} or {@link Security.tenantApiKey} from the global security.
+ * If set, this operation will use {@link Security.tenantApiKey} from the global security.
  */
 export function chargesCreate(
   client: X402ApiCore,
