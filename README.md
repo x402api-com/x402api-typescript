@@ -330,6 +330,7 @@ run();
 
 * [create](docs/sdks/charges/README.md#create) - Create a programmatic charge
 * [retrieve](docs/sdks/charges/README.md#retrieve) - Retrieve a programmatic charge
+* [submitPayment](docs/sdks/charges/README.md#submitpayment) - Submit a programmatic charge payment
 
 ### [Facilitator](docs/sdks/facilitator/README.md)
 
@@ -399,6 +400,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 
 - [`chargesCreate`](docs/sdks/charges/README.md#create) - Create a programmatic charge
 - [`chargesRetrieve`](docs/sdks/charges/README.md#retrieve) - Retrieve a programmatic charge
+- [`chargesSubmitPayment`](docs/sdks/charges/README.md#submitpayment) - Submit a programmatic charge payment
 - [`facilitatorGetSupported`](docs/sdks/facilitator/README.md#getsupported) - Get supported facilitator profiles
 - [`idempotencyGetOutcome`](docs/sdks/idempotency/README.md#getoutcome) - Get an idempotency outcome
 - [`networkFeesCreateQuote`](docs/sdks/networkfees/README.md#createquote) - Create a network-fee quote
@@ -586,7 +588,7 @@ run();
 
 
 **Inherit from [`X402APIBaseError`](./src/models/errors/x402-api-base-error.ts)**:
-* [`ApiErrorEnvelope`](./src/models/errors/api-error-envelope.ts): The request failed. Applicable to 3 of 20 methods.*
+* [`ApiErrorEnvelope`](./src/models/errors/api-error-envelope.ts): The request failed. Applicable to 4 of 21 methods.*
 * [`ResponseValidationError`](./src/models/errors/response-validation-error.ts): Type mismatch between the data returned from the server and the structure expected by the SDK. See `error.rawValue` for the raw value and `error.pretty()` for a nicely formatted multi-line string.
 
 </details>

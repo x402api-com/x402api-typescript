@@ -18,17 +18,9 @@ import {
   FeePolicyQuoteCurrencyInputEnum$inboundSchema,
 } from "./fee-policy-quote-currency-input-enum.js";
 import {
-  NativeFeeObservationEvidence,
-  NativeFeeObservationEvidence$inboundSchema,
-} from "./native-fee-observation-evidence.js";
-import {
-  NativeUsdObservationEvidence,
-  NativeUsdObservationEvidence$inboundSchema,
-} from "./native-usd-observation-evidence.js";
-import {
-  NetworkFeeAlternative,
-  NetworkFeeAlternative$inboundSchema,
-} from "./network-fee-alternative.js";
+  PublicNetworkFeeAlternative,
+  PublicNetworkFeeAlternative$inboundSchema,
+} from "./public-network-fee-alternative.js";
 
 export type FeePolicy = {
   type: string;
@@ -44,23 +36,6 @@ export type FeePolicy = {
    * * `USD` - USD
    */
   quoteCurrency: FeePolicyQuoteCurrencyInputEnum;
-  feeAllowanceCapQuoteMicros: string;
-};
-
-/**
- * Published shape for available and explicitly unavailable fee evidence.
- */
-export type FeeEvidence = {
-  type: string;
-  version: number;
-  network: string;
-  assetId: string;
-  payloadProfile: string;
-  nativeSymbol?: string | undefined;
-  nativeDecimals?: number | undefined;
-  nativeFeeObservations?: Array<NativeFeeObservationEvidence> | undefined;
-  nativeUsdObservations?: Array<NativeUsdObservationEvidence> | undefined;
-  expiresAt?: Date | undefined;
 };
 
 export type PaymentReceipt = {
@@ -71,9 +46,9 @@ export type PaymentReceipt = {
   receiptDigest: string;
   signature: string;
   signingKeyVersion: string;
-  eligibleAlternatives: Array<NetworkFeeAlternative>;
+  eligibleAlternatives: Array<PublicNetworkFeeAlternative>;
   feePolicy: FeePolicy | null;
-  feeEvidence: FeeEvidence | null;
+  feeEvidence: { [k: string]: any } | null;
   feeQuoteDigest: string | null;
   feeQuoteExpiresAt: Date | null;
   settlementAmountAtomic: string;
@@ -93,7 +68,6 @@ export const FeePolicy$inboundSchema: z.ZodMiniType<FeePolicy, unknown> = z
     version: types.number(),
     feeMode: FeePolicyModeInputEnum$inboundSchema,
     quoteCurrency: FeePolicyQuoteCurrencyInputEnum$inboundSchema,
-    feeAllowanceCapQuoteMicros: types.string(),
   });
 
 export function feePolicyFromJSON(
@@ -103,35 +77,6 @@ export function feePolicyFromJSON(
     jsonString,
     (x) => FeePolicy$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'FeePolicy' from JSON`,
-  );
-}
-
-/** @internal */
-export const FeeEvidence$inboundSchema: z.ZodMiniType<FeeEvidence, unknown> = z
-  .object({
-    type: types.string(),
-    version: types.number(),
-    network: types.string(),
-    assetId: types.string(),
-    payloadProfile: types.string(),
-    nativeSymbol: types.optional(types.string()),
-    nativeDecimals: types.optional(types.number()),
-    nativeFeeObservations: types.optional(
-      z.array(NativeFeeObservationEvidence$inboundSchema),
-    ),
-    nativeUsdObservations: types.optional(
-      z.array(NativeUsdObservationEvidence$inboundSchema),
-    ),
-    expiresAt: types.optional(types.date()),
-  });
-
-export function feeEvidenceFromJSON(
-  jsonString: string,
-): SafeParseResult<FeeEvidence, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => FeeEvidence$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'FeeEvidence' from JSON`,
   );
 }
 
@@ -148,9 +93,9 @@ export const PaymentReceipt$inboundSchema: z.ZodMiniType<
     receipt_digest: types.string(),
     signature: types.string(),
     signing_key_version: types.string(),
-    eligible_alternatives: z.array(NetworkFeeAlternative$inboundSchema),
+    eligible_alternatives: z.array(PublicNetworkFeeAlternative$inboundSchema),
     fee_policy: types.nullable(z.lazy(() => FeePolicy$inboundSchema)),
-    fee_evidence: types.nullable(z.lazy(() => FeeEvidence$inboundSchema)),
+    fee_evidence: types.nullable(z.record(z.string(), z.any())),
     fee_quote_digest: types.nullable(types.string()),
     fee_quote_expires_at: types.nullable(types.date()),
     settlement_amount_atomic: types.string(),

@@ -33,7 +33,7 @@ import { Result } from "../types/fp.js";
  * @remarks
  * Retrieve one tenant-visible order by its canonical identifier. Requires a tenant API key with the `orders:read` scope.
  *
- * If set, this operation will use either {@link Security.tenantApiKey} or {@link Security.tenantApiKey} from the global security.
+ * If set, this operation will use {@link Security.tenantApiKey} from the global security.
  */
 export function ordersRetrieve(
   client: X402ApiCore,

@@ -5,6 +5,7 @@
 
 export * from "./charges-create.js";
 export * from "./charges-retrieve.js";
+export * from "./charges-submit-payment.js";
 export * from "./facilitator-get-supported.js";
 export * from "./idempotency-get-outcome.js";
 export * from "./network-fees-create-quote.js";
