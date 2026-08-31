@@ -34,7 +34,7 @@ import { Result } from "../types/fp.js";
  * @remarks
  * Create an immutable priced version of one tenant resource idempotently. Requires a tenant API key with the `resources:write` scope.
  *
- * If set, this operation will use either {@link Security.tenantApiKey} or {@link Security.tenantApiKey} from the global security.
+ * If set, this operation will use {@link Security.tenantApiKey} from the global security.
  */
 export function resourcesCreateVersion(
   client: X402ApiCore,

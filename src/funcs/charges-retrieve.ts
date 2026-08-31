@@ -34,7 +34,7 @@ import { Result } from "../types/fp.js";
  * @remarks
  * Retrieve the frozen terms and current projected status of a tenant charge. Requires a tenant API key with the `commerce:read` scope.
  *
- * If set, this operation will use either {@link Security.tenantApiKey} or {@link Security.tenantApiKey} from the global security.
+ * If set, this operation will use {@link Security.tenantApiKey} from the global security.
  */
 export function chargesRetrieve(
   client: X402ApiCore,
