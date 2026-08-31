@@ -33,7 +33,7 @@ import { Result } from "../types/fp.js";
  * @remarks
  * Return the authoritative tenant-scoped outcome for a durable mutation key. Requires an authenticated tenant API key; no additional scope is required.
  *
- * If set, this operation will use either {@link Security.tenantApiKey} or {@link Security.tenantApiKey} from the global security.
+ * If set, this operation will use {@link Security.tenantApiKey} from the global security.
  */
 export function idempotencyGetOutcome(
   client: X402ApiCore,

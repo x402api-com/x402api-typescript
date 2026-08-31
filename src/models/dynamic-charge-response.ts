@@ -14,20 +14,29 @@ import {
 } from "./dynamic-charge-price.js";
 import { SDKValidationError } from "./errors/sdk-validation-error.js";
 import {
-  FeePolicyDocument,
-  FeePolicyDocument$inboundSchema,
-} from "./fee-policy-document.js";
+  PublicFeePolicyDocument,
+  PublicFeePolicyDocument$inboundSchema,
+} from "./public-fee-policy-document.js";
 import {
-  NetworkFeeAlternative,
-  NetworkFeeAlternative$inboundSchema,
-} from "./network-fee-alternative.js";
+  PublicNetworkFeeAlternative,
+  PublicNetworkFeeAlternative$inboundSchema,
+} from "./public-network-fee-alternative.js";
 
 export type DynamicChargeResponse = {
+  /**
+   * Immutable challenge UUID created for this charge.
+   */
   chargeId: string;
   chargeDigest: string;
   orderId: string;
+  /**
+   * Current projected order status; payment terms remain immutable.
+   */
   status: string;
   resourceVersionId: string;
+  /**
+   * Opaque server challenge handle. Return it to the buyer as X-X402API-Challenge-Handle; it is not the buyer payment identifier.
+   */
   paymentIdentifier: string;
   expiresAt: Date;
   createdAt: Date;
@@ -38,10 +47,16 @@ export type DynamicChargeResponse = {
    */
   metadata: { [k: string]: any };
   metadataDigest: string;
+  /**
+   * Complete immutable x402 v2 PAYMENT-REQUIRED document.
+   */
   paymentRequired: any;
+  /**
+   * Canonical base64-encoded value to return in the buyer-facing PAYMENT-REQUIRED header.
+   */
   paymentRequiredHeader: string;
-  eligibleAlternatives: Array<NetworkFeeAlternative>;
-  feePolicy: FeePolicyDocument;
+  eligibleAlternatives: Array<PublicNetworkFeeAlternative>;
+  feePolicy: PublicFeePolicyDocument;
   feeQuoteDigest: string;
 };
 
@@ -65,8 +80,8 @@ export const DynamicChargeResponse$inboundSchema: z.ZodMiniType<
     metadata_digest: types.string(),
     payment_required: z.any(),
     payment_required_header: types.string(),
-    eligible_alternatives: z.array(NetworkFeeAlternative$inboundSchema),
-    fee_policy: FeePolicyDocument$inboundSchema,
+    eligible_alternatives: z.array(PublicNetworkFeeAlternative$inboundSchema),
+    fee_policy: PublicFeePolicyDocument$inboundSchema,
     fee_quote_digest: types.string(),
   }),
   z.transform((v) => {

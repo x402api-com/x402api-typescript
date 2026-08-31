@@ -19,14 +19,10 @@ let value: PaymentReceipt = {
     version: 699685,
     feeMode: "tenant_absorbs_up_to_cap",
     quoteCurrency: "USD",
-    feeAllowanceCapQuoteMicros: "<value>",
   },
   feeEvidence: {
-    type: "<value>",
-    version: 647188,
-    network: "<value>",
-    assetId: "<id>",
-    payloadProfile: "<value>",
+    "key": "<value>",
+    "key1": "<value>",
   },
   feeQuoteDigest: "<value>",
   feeQuoteExpiresAt: new Date("2026-03-18T11:53:47.416Z"),
@@ -52,9 +48,9 @@ let value: PaymentReceipt = {
 | `receiptDigest`                                                                               | *string*                                                                                      | :heavy_check_mark:                                                                            | N/A                                                                                           |
 | `signature`                                                                                   | *string*                                                                                      | :heavy_check_mark:                                                                            | N/A                                                                                           |
 | `signingKeyVersion`                                                                           | *string*                                                                                      | :heavy_check_mark:                                                                            | N/A                                                                                           |
-| `eligibleAlternatives`                                                                        | [models.NetworkFeeAlternative](../models/network-fee-alternative.md)[]                        | :heavy_check_mark:                                                                            | N/A                                                                                           |
+| `eligibleAlternatives`                                                                        | [models.PublicNetworkFeeAlternative](../models/public-network-fee-alternative.md)[]           | :heavy_check_mark:                                                                            | N/A                                                                                           |
 | `feePolicy`                                                                                   | [models.FeePolicy](../models/fee-policy.md)                                                   | :heavy_check_mark:                                                                            | N/A                                                                                           |
-| `feeEvidence`                                                                                 | [models.FeeEvidence](../models/fee-evidence.md)                                               | :heavy_check_mark:                                                                            | N/A                                                                                           |
+| `feeEvidence`                                                                                 | Record<string, *any*>                                                                         | :heavy_check_mark:                                                                            | N/A                                                                                           |
 | `feeQuoteDigest`                                                                              | *string*                                                                                      | :heavy_check_mark:                                                                            | N/A                                                                                           |
 | `feeQuoteExpiresAt`                                                                           | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_check_mark:                                                                            | N/A                                                                                           |
 | `settlementAmountAtomic`                                                                      | *string*                                                                                      | :heavy_check_mark:                                                                            | N/A                                                                                           |

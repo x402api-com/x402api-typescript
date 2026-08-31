@@ -48,6 +48,9 @@ export const Method = {
 export type Method = ClosedEnum<typeof Method>;
 
 export type DynamicChargeCreate = {
+  /**
+   * Current active resource-version UUID used as the charge template. Read resources[].active_version.id from GET /v1/resources or copy Active version UUID (charge API) in the tenant dashboard. Do not use the top-level resource id or pay_ public_payment_id.
+   */
   resourceVersionId: string;
   method?: Method | undefined;
   resourceUrl: string;
