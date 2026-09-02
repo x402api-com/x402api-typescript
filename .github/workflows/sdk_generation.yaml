@@ -64,9 +64,27 @@ jobs:
             [[ "${SOURCE_ENVIRONMENT}" =~ ^TAG=[A-Za-z0-9._-]+$ ]]
           fi
 
-  preview:
+  mint-preview-token:
     if: github.event_name == 'workflow_dispatch' && inputs.mode == 'pr'
     needs: validate-inputs
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      token: ${{ steps.app-token.outputs.token }}
+    steps:
+      - name: Mint a one-repository preview token
+        id: app-token
+        uses: actions/create-github-app-token@fee1f7d63c2ff003460e3d139729b119787bc349 # v2
+        with:
+          app-id: ${{ secrets.SDK_GITHUB_APP_ID }}
+          private-key: ${{ secrets.SDK_GITHUB_APP_PRIVATE_KEY }}
+          owner: x402api-com
+          repositories: x402api-typescript
+          skip-token-revoke: true
+
+  preview:
+    if: github.event_name == 'workflow_dispatch' && inputs.mode == 'pr'
+    needs: [validate-inputs, mint-preview-token]
     permissions:
       checks: write
       contents: write
@@ -83,7 +101,7 @@ jobs:
       github_repository: x402api-com/x402api-typescript
       runs-on: ubuntu-latest
     secrets:
-      github_access_token: ${{ secrets.GITHUB_TOKEN }}
+      github_access_token: ${{ needs.mint-preview-token.outputs.token }}
       speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}
 
   finalize-preview:
