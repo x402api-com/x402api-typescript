@@ -86,6 +86,100 @@ jobs:
       github_access_token: ${{ secrets.GITHUB_TOKEN }}
       speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}
 
+  finalize-preview:
+    if: github.event_name == 'workflow_dispatch' && inputs.mode == 'pr'
+    needs: [validate-inputs, preview]
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          ref: ${{ inputs.feature_branch }}
+          fetch-depth: 0
+          persist-credentials: true
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: "24"
+          package-manager-cache: false
+
+      - name: Validate the generated branch and deployed contract
+        shell: bash
+        env:
+          FEATURE_BRANCH: ${{ inputs.feature_branch }}
+          SDK_VERSION: ${{ inputs.set_version }}
+          SOURCE_REVISION: ${{ inputs.source_revision }}
+          CONTRACT_DIGEST: ${{ inputs.contract_digest }}
+        run: |
+          set -Eeuo pipefail
+          expected_branch="sdk-v${SDK_VERSION}-${SOURCE_REVISION:0:12}"
+          test "${FEATURE_BRANCH}" = "${expected_branch}"
+          test "$(git branch --show-current)" = "${FEATURE_BRANCH}"
+          if git grep -n -E '^(<{7}|={7}|>{7})( |$)'; then
+            echo "::error title=Unresolved generated-source conflict::Conflict markers remain in the generated TypeScript SDK."
+            exit 1
+          fi
+          headers="${RUNNER_TEMP}/production-health.headers"
+          public_contract="${RUNNER_TEMP}/public-openapi.json"
+          curl --fail --silent --show-error --location \
+            --connect-timeout 10 --max-time 30 --dump-header "${headers}" \
+            --output /dev/null https://api.x402api.com/health/ready
+          curl --fail --silent --show-error --location \
+            --connect-timeout 10 --max-time 30 \
+            --output "${public_contract}" https://api.x402api.com/openapi/openapi.json
+          python - "${headers}" "${public_contract}" <<'PY'
+          import hashlib, json, os, pathlib, sys
+          revisions = [line.split(":", 1)[1].strip() for line in pathlib.Path(sys.argv[1]).read_text().splitlines() if line.lower().startswith("x-x402api-release:")]
+          if revisions != [os.environ["SOURCE_REVISION"]]:
+              raise SystemExit(f"production revision mismatch: {revisions!r}")
+          document = json.loads(pathlib.Path(sys.argv[2]).read_text())
+          canonical = json.dumps(document, sort_keys=True, separators=(",", ":"), ensure_ascii=True).encode()
+          digest = f"sha256:{hashlib.sha256(canonical).hexdigest()}"
+          if digest != os.environ["CONTRACT_DIGEST"] or document.get("info", {}).get("version") != os.environ["SDK_VERSION"]:
+              raise SystemExit("production contract identity mismatch")
+          PY
+          python scripts/render-openapi.py \
+            --input "${public_contract}" --output "${RUNNER_TEMP}/sdk-openapi.json"
+          python scripts/write-release-manifest.py \
+            --public-openapi "${public_contract}" \
+            --sdk-openapi "${RUNNER_TEMP}/sdk-openapi.json" \
+            --version "${SDK_VERSION}" \
+            --source-revision "${SOURCE_REVISION}" \
+            --contract-digest "${CONTRACT_DIGEST}"
+
+      - name: Test and finalize the reviewed source
+        shell: bash
+        env:
+          FEATURE_BRANCH: ${{ inputs.feature_branch }}
+          SDK_VERSION: ${{ inputs.set_version }}
+        run: |
+          set -Eeuo pipefail
+          test "$(node -p 'require("./package.json").version')" = "${SDK_VERSION}"
+          test "$(node -p 'require("./jsr.json").version')" = "${SDK_VERSION}"
+          test "$(sed -n 's/^  releaseVersion: //p' .speakeasy/gen.lock)" = "${SDK_VERSION}"
+          npm install --global npm@12.0.2
+          npm ci
+          python -m unittest discover -s tests -p 'test_*.py'
+          npm test
+          npm run lint
+          npm run build
+          npm audit --audit-level=high
+          npm pack --dry-run
+          git diff --check
+          test -z "$(git ls-files --others --exclude-standard)"
+          git diff --exit-code -- . ':(exclude).x402api/release.json'
+          git config user.name "x402api SDK automation"
+          git config user.email "sdk-automation@x402api.com"
+          git add .x402api/release.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Bind TypeScript SDK v${SDK_VERSION} provenance"
+            git push origin "HEAD:refs/heads/${FEATURE_BRANCH}"
+          fi
+
   validate-or-publish:
     if: github.event_name == 'workflow_dispatch' && inputs.mode != 'pr'
     needs: validate-inputs
