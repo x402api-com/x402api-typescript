@@ -214,14 +214,19 @@ jobs:
           git diff --exit-code
           test -z "$(git ls-files --others --exclude-standard)"
 
-      - name: Detect an existing publication
-        if: inputs.mode == 'direct'
+      - name: Detect existing package and version publications
         id: publication
         shell: bash
         env:
           SDK_VERSION: ${{ inputs.set_version }}
         run: |
           set -Eeuo pipefail
+          if npm view "@x402api/sdk" version \
+              --registry https://registry.npmjs.org >/dev/null 2>&1; then
+            echo "package_exists=true" >>"${GITHUB_OUTPUT}"
+          else
+            echo "package_exists=false" >>"${GITHUB_OUTPUT}"
+          fi
           if npm view "@x402api/sdk@${SDK_VERSION}" version \
               --registry https://registry.npmjs.org >/dev/null 2>&1; then
             echo "exists=true" >>"${GITHUB_OUTPUT}"
@@ -229,8 +234,19 @@ jobs:
             echo "exists=false" >>"${GITHUB_OUTPUT}"
           fi
 
-      - name: Publish with npm Trusted Publishing
+      - name: Require scoped bootstrap authentication for the first package
+        if: inputs.mode == 'test' && steps.publication.outputs.package_exists != 'true'
+        shell: bash
+        env:
+          NPM_BOOTSTRAP_TOKEN: ${{ secrets.NPM_BOOTSTRAP_TOKEN }}
+        run: |
+          set -Eeuo pipefail
+          test -n "${NPM_BOOTSTRAP_TOKEN}"
+
+      - name: Publish with npm Trusted Publishing or the scoped bootstrap token
         if: inputs.mode == 'direct' && steps.publication.outputs.exists != 'true'
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_BOOTSTRAP_TOKEN }}
         run: npm publish --access public --provenance
 
       - name: Verify the public package and record the source tag
