@@ -26,6 +26,10 @@ export type PaymentReadinessRail = {
   walletReady: boolean;
   platformAvailable: boolean;
   acceptingNewPayments: boolean;
+  readyForNewPayment: boolean;
+  readinessValidUntil: Date | null;
+  feeQuoteReady: boolean;
+  feeQuoteValidUntil: Date | null;
   status: string;
   blockers: Array<PaymentReadinessBlocker>;
   tenantChallengesEnabled: boolean;
@@ -49,6 +53,10 @@ export const PaymentReadinessRail$inboundSchema: z.ZodMiniType<
     wallet_ready: types.boolean(),
     platform_available: types.boolean(),
     accepting_new_payments: types.boolean(),
+    ready_for_new_payment: types.boolean(),
+    readiness_valid_until: types.nullable(types.date()),
+    fee_quote_ready: types.boolean(),
+    fee_quote_valid_until: types.nullable(types.date()),
     status: types.string(),
     blockers: z.array(PaymentReadinessBlocker$inboundSchema),
     tenant_challenges_enabled: types.boolean(),
@@ -64,6 +72,10 @@ export const PaymentReadinessRail$inboundSchema: z.ZodMiniType<
       "wallet_ready": "walletReady",
       "platform_available": "platformAvailable",
       "accepting_new_payments": "acceptingNewPayments",
+      "ready_for_new_payment": "readyForNewPayment",
+      "readiness_valid_until": "readinessValidUntil",
+      "fee_quote_ready": "feeQuoteReady",
+      "fee_quote_valid_until": "feeQuoteValidUntil",
       "tenant_challenges_enabled": "tenantChallengesEnabled",
       "tenant_settlement_enabled": "tenantSettlementEnabled",
       "network_assistance_enabled": "networkAssistanceEnabled",

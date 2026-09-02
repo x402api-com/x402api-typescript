@@ -8,37 +8,44 @@ import { PaymentReadiness } from "@x402api/sdk/models";
 let value: PaymentReadiness = {
   state: "accepting",
   acceptingNewPayments: false,
-  pausedByTenant: false,
+  readyForNewPayment: false,
+  pausedByTenant: true,
   platformAvailable: true,
-  healthValidUntil: new Date("2025-03-03T02:32:14.246Z"),
-  observedAt: new Date("2025-11-07T17:09:00.734Z"),
+  healthValidUntil: new Date("2024-03-08T05:04:37.218Z"),
+  observedAt: new Date("2026-02-11T17:25:12.143Z"),
   tenantStatus: "<value>",
-  tenantAcceptingNewChallenges: true,
-  globalChallengesEnabled: false,
-  globalSettlementEnabled: false,
-  controlPlaneReadyForNewChallenges: true,
+  tenantAcceptingNewChallenges: false,
+  globalChallengesEnabled: true,
+  globalSettlementEnabled: true,
+  controlPlaneReadyForNewChallenges: false,
   controlPlaneReadyForSettlement: true,
   externalOnboarding: "<value>",
-  rails: [
+  rails: [],
+  canonicalRails: [
     {
       assetId: "<id>",
       network: "<value>",
       symbol: "<value>",
-      selected: true,
+      selected: false,
       walletReady: true,
-      platformAvailable: false,
-      acceptingNewPayments: false,
-      status: "<value>",
-      blockers: [],
-      tenantChallengesEnabled: true,
-      tenantSettlementEnabled: true,
-      networkAssistanceEnabled: true,
-      challengeControlReady: false,
-      settlementControlReady: true,
-      assets: [],
+      platformAvailable: true,
+      acceptingNewPayments: true,
+      challengeControlReady: true,
+      settlementControlReady: false,
+      feeQuoteReady: true,
+      feeQuoteValidUntil: new Date("2024-03-13T11:49:42.736Z"),
+      readyForNewPayment: true,
+      readinessValidUntil: new Date("2026-06-30T09:54:32.301Z"),
+      status: "not_selected",
+      blockers: [
+        {
+          code: "<value>",
+          owner: "manual_platform_pause",
+          message: "<value>",
+        },
+      ],
     },
   ],
-  canonicalRails: [],
 };
 ```
 
@@ -48,6 +55,7 @@ let value: PaymentReadiness = {
 | ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
 | `state`                                                                                                                 | [models.PaymentReadinessState](../models/payment-readiness-state.md)                                                    | :heavy_check_mark:                                                                                                      | N/A                                                                                                                     |
 | `acceptingNewPayments`                                                                                                  | *boolean*                                                                                                               | :heavy_check_mark:                                                                                                      | N/A                                                                                                                     |
+| `readyForNewPayment`                                                                                                    | *boolean*                                                                                                               | :heavy_check_mark:                                                                                                      | N/A                                                                                                                     |
 | `pausedByTenant`                                                                                                        | *boolean*                                                                                                               | :heavy_check_mark:                                                                                                      | N/A                                                                                                                     |
 | `platformAvailable`                                                                                                     | *boolean*                                                                                                               | :heavy_check_mark:                                                                                                      | N/A                                                                                                                     |
 | `healthValidUntil`                                                                                                      | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)                           | :heavy_check_mark:                                                                                                      | N/A                                                                                                                     |

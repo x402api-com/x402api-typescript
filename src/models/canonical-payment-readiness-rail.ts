@@ -53,6 +53,12 @@ export type CanonicalPaymentReadinessRail = {
   walletReady: boolean;
   platformAvailable: boolean;
   acceptingNewPayments: boolean;
+  challengeControlReady: boolean;
+  settlementControlReady: boolean;
+  feeQuoteReady: boolean;
+  feeQuoteValidUntil: Date | null;
+  readyForNewPayment: boolean;
+  readinessValidUntil: Date | null;
   status: CanonicalPaymentReadinessRailStatus;
   blockers: Array<PaymentReadinessBlocker>;
 };
@@ -76,6 +82,12 @@ export const CanonicalPaymentReadinessRail$inboundSchema: z.ZodMiniType<
     wallet_ready: types.boolean(),
     platform_available: types.boolean(),
     accepting_new_payments: types.boolean(),
+    challenge_control_ready: types.boolean(),
+    settlement_control_ready: types.boolean(),
+    fee_quote_ready: types.boolean(),
+    fee_quote_valid_until: types.nullable(types.date()),
+    ready_for_new_payment: types.boolean(),
+    readiness_valid_until: types.nullable(types.date()),
     status: CanonicalPaymentReadinessRailStatus$inboundSchema,
     blockers: z.array(PaymentReadinessBlocker$inboundSchema),
   }),
@@ -85,6 +97,12 @@ export const CanonicalPaymentReadinessRail$inboundSchema: z.ZodMiniType<
       "wallet_ready": "walletReady",
       "platform_available": "platformAvailable",
       "accepting_new_payments": "acceptingNewPayments",
+      "challenge_control_ready": "challengeControlReady",
+      "settlement_control_ready": "settlementControlReady",
+      "fee_quote_ready": "feeQuoteReady",
+      "fee_quote_valid_until": "feeQuoteValidUntil",
+      "ready_for_new_payment": "readyForNewPayment",
+      "readiness_valid_until": "readinessValidUntil",
     });
   }),
 );
