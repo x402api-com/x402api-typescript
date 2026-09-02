@@ -64,13 +64,13 @@ jobs:
             [[ "${SOURCE_ENVIRONMENT}" =~ ^TAG=[A-Za-z0-9._-]+$ ]]
           fi
 
-  mint-preview-token:
+  preview:
     if: github.event_name == 'workflow_dispatch' && inputs.mode == 'pr'
     needs: validate-inputs
     runs-on: ubuntu-latest
-    timeout-minutes: 5
-    outputs:
-      token: ${{ steps.app-token.outputs.token }}
+    timeout-minutes: 25
+    permissions:
+      contents: read
     steps:
       - name: Mint a one-repository preview token
         id: app-token
@@ -80,29 +80,31 @@ jobs:
           private-key: ${{ secrets.SDK_GITHUB_APP_PRIVATE_KEY }}
           owner: x402api-com
           repositories: x402api-typescript
-          skip-token-revoke: true
-
-  preview:
-    if: github.event_name == 'workflow_dispatch' && inputs.mode == 'pr'
-    needs: [validate-inputs, mint-preview-token]
-    permissions:
-      checks: write
-      contents: write
-      pull-requests: write
-      statuses: write
-    uses: speakeasy-api/sdk-generation-action/.github/workflows/workflow-executor.yaml@68f3bfefb79354d39358bf4699863dabd2cea0f6
-    with:
-      force: ${{ inputs.force }}
-      mode: pr
-      set_version: ${{ inputs.set_version }}
-      feature_branch: ${{ inputs.feature_branch }}
-      environment: ${{ inputs.environment }}
-      speakeasy_version: 1.794.0
-      github_repository: x402api-com/x402api-typescript
-      runs-on: ubuntu-latest
-    secrets:
-      github_access_token: ${{ needs.mint-preview-token.outputs.token }}
-      speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}
+      - name: Check out the SDK repository
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          fetch-depth: 0
+          token: ${{ steps.app-token.outputs.token }}
+      - name: Check out the pinned Speakeasy generation action
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          repository: speakeasy-api/sdk-generation-action
+          ref: fa50f4813201c6f919c74c25196b17c070ec4ac1
+          path: _speakeasy
+          persist-credentials: false
+      - name: Generate the reviewed SDK branch and PR
+        uses: ./_speakeasy
+        with:
+          speakeasy_version: 1.794.0
+          github_access_token: ${{ steps.app-token.outputs.token }}
+          speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}
+          mode: pr
+          force: ${{ inputs.force }}
+          set_version: ${{ inputs.set_version }}
+          feature_branch: ${{ inputs.feature_branch }}
+          cli_environment_variables: ${{ inputs.environment }}
+          github_repository: x402api-com/x402api-typescript
+          enable_sdk_changelog: true
 
   finalize-preview:
     if: github.event_name == 'workflow_dispatch' && inputs.mode == 'pr'
