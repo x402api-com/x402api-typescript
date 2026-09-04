@@ -53,11 +53,16 @@ jobs:
           SOURCE_REVISION: ${{ inputs.source_revision }}
           CONTRACT_DIGEST: ${{ inputs.contract_digest }}
           SOURCE_ENVIRONMENT: ${{ inputs.environment }}
+          FEATURE_BRANCH: ${{ inputs.feature_branch }}
         run: |
           set -Eeuo pipefail
+          test "${GITHUB_REF}" = "refs/heads/main"
           [[ "${SDK_VERSION}" =~ ^(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)$ ]]
           [[ "${SOURCE_REVISION}" =~ ^[0-9a-f]{40}$ ]]
           [[ "${CONTRACT_DIGEST}" =~ ^sha256:[0-9a-f]{64}$ ]]
+          if [[ "${SDK_MODE}" = "pr" ]]; then
+            test "${FEATURE_BRANCH}" = "sdk-v${SDK_VERSION}-${SOURCE_REVISION:0:12}"
+          fi
           if [[ "${SDK_MODE}" = "direct" ]]; then
             test "${SOURCE_ENVIRONMENT}" = "TAG=v${SDK_VERSION}"
           else
@@ -70,21 +75,14 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 25
     permissions:
-      contents: read
+      contents: write
+      pull-requests: write
     steps:
-      - name: Mint a one-repository preview token
-        id: app-token
-        uses: actions/create-github-app-token@fee1f7d63c2ff003460e3d139729b119787bc349 # v2
-        with:
-          app-id: ${{ secrets.SDK_GITHUB_APP_ID }}
-          private-key: ${{ secrets.SDK_GITHUB_APP_PRIVATE_KEY }}
-          owner: x402api-com
-          repositories: x402api-typescript
       - name: Check out the SDK repository
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
           fetch-depth: 0
-          token: ${{ steps.app-token.outputs.token }}
+          persist-credentials: false
       - name: Check out the pinned Speakeasy generation action
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
@@ -96,7 +94,7 @@ jobs:
         uses: ./_speakeasy
         with:
           speakeasy_version: 1.794.0
-          github_access_token: ${{ steps.app-token.outputs.token }}
+          github_access_token: ${{ github.token }}
           speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}
           mode: pr
           force: ${{ inputs.force }}
