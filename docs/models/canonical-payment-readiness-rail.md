@@ -13,8 +13,20 @@ let value: CanonicalPaymentReadinessRail = {
   walletReady: true,
   platformAvailable: true,
   acceptingNewPayments: false,
-  status: "temporarily_unavailable",
-  blockers: [],
+  challengeControlReady: false,
+  settlementControlReady: true,
+  feeQuoteReady: false,
+  feeQuoteValidUntil: new Date("2025-11-24T00:00:46.577Z"),
+  readyForNewPayment: true,
+  readinessValidUntil: new Date("2026-11-08T15:42:26.720Z"),
+  status: "not_selected",
+  blockers: [
+    {
+      code: "<value>",
+      owner: "manual_platform_pause",
+      message: "<value>",
+    },
+  ],
 };
 ```
 
@@ -29,5 +41,11 @@ let value: CanonicalPaymentReadinessRail = {
 | `walletReady`                                                                                      | *boolean*                                                                                          | :heavy_check_mark:                                                                                 | N/A                                                                                                |
 | `platformAvailable`                                                                                | *boolean*                                                                                          | :heavy_check_mark:                                                                                 | N/A                                                                                                |
 | `acceptingNewPayments`                                                                             | *boolean*                                                                                          | :heavy_check_mark:                                                                                 | N/A                                                                                                |
+| `challengeControlReady`                                                                            | *boolean*                                                                                          | :heavy_check_mark:                                                                                 | N/A                                                                                                |
+| `settlementControlReady`                                                                           | *boolean*                                                                                          | :heavy_check_mark:                                                                                 | N/A                                                                                                |
+| `feeQuoteReady`                                                                                    | *boolean*                                                                                          | :heavy_check_mark:                                                                                 | N/A                                                                                                |
+| `feeQuoteValidUntil`                                                                               | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)      | :heavy_check_mark:                                                                                 | N/A                                                                                                |
+| `readyForNewPayment`                                                                               | *boolean*                                                                                          | :heavy_check_mark:                                                                                 | N/A                                                                                                |
+| `readinessValidUntil`                                                                              | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)      | :heavy_check_mark:                                                                                 | N/A                                                                                                |
 | `status`                                                                                           | [models.CanonicalPaymentReadinessRailStatus](../models/canonical-payment-readiness-rail-status.md) | :heavy_check_mark:                                                                                 | N/A                                                                                                |
 | `blockers`                                                                                         | [models.PaymentReadinessBlocker](../models/payment-readiness-blocker.md)[]                         | :heavy_check_mark:                                                                                 | N/A                                                                                                |

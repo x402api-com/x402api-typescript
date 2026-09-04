@@ -33,7 +33,7 @@ generation:
     skipResponseBodyAssertions: false
   repoUrl: https://github.com/x402api-com/x402api-typescript
 typescript:
-  version: 1.1.0
+  version: 1.3.0
   acceptHeaderEnum: false
   additionalDependencies:
     dependencies: {}
@@ -43,7 +43,8 @@ typescript:
     engines:
       node: '>=22'
     license: MIT
-  additionalScripts: {}
+  additionalScripts:
+    test: npm run build --silent && node --test tests/*.test.mjs
   alwaysIncludeInboundAndOutbound: false
   apiPromiseHelpers: false
   author: x402api

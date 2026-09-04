@@ -144,6 +144,7 @@ jobs:
           expected_branch="sdk-v${SDK_VERSION}-${SOURCE_REVISION:0:12}"
           test "${FEATURE_BRANCH}" = "${expected_branch}"
           test "$(git branch --show-current)" = "${FEATURE_BRANCH}"
+          python scripts/normalize-generated.py --stage
           if git grep -n -E '^(<{7}|={7}|>{7})( |$)'; then
             echo "::error title=Unresolved generated-source conflict::Conflict markers remain in the generated TypeScript SDK."
             exit 1
@@ -195,6 +196,7 @@ jobs:
           npm audit --audit-level=high
           npm pack --dry-run
           git diff --check
+          git diff --cached --check
           test -z "$(git ls-files --others --exclude-standard)"
           git diff --exit-code -- . ':(exclude).x402api/release.json'
           git config user.name "x402api SDK automation"
