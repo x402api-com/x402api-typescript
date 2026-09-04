@@ -8,17 +8,17 @@ const x402Api = new X402Api({
 
 async function run() {
   const result = await x402Api.charges.create({
-    idempotencyKey: "charge-example-001",
+    idempotencyKey: "<value>",
     body: {
-      resourceVersionId: "00000000-0000-4000-8000-000000000001",
-      resourceUrl: "https://merchant.example/products/pro-plan",
+      resourceVersionId: "aee1e97c-ebca-42b0-8a09-a29fca93ee2a",
+      resourceUrl: "https://impressionable-sand.net",
       prices: [
         {
-          assetId: "base_usdc",
-          amountAtomic: "1000000",
+          assetId: "<id>",
+          amountAtomic: "<value>",
         },
       ],
-      expiresInSeconds: 900,
+      expiresInSeconds: 652390,
     },
   });
 

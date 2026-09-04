@@ -226,7 +226,7 @@ run();
 
 ## retrieveReceipt
 
-Retrieve the signed receipt projection for one tenant-visible payment. Requires a tenant API key with the `payments:read` scope.
+Retrieve the signed receipt projection for one tenant-visible payment. HTTP 202 returns confirmation and finality state while the signed receipt is pending. Requires a tenant API key with the `payments:read` scope.
 
 ### Example Usage
 
@@ -293,6 +293,8 @@ run();
 
 ### Errors
 
-| Error Type          | Status Code         | Content Type        |
-| ------------------- | ------------------- | ------------------- |
-| errors.X402ApiError | 4XX, 5XX            | \*/\*               |
+| Error Type              | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| errors.ApiErrorEnvelope | 409                     | application/json        |
+| errors.ApiErrorEnvelope | 503                     | application/json        |
+| errors.X402ApiError     | 4XX, 5XX                | \*/\*                   |

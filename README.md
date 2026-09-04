@@ -597,7 +597,7 @@ run();
 
 
 **Inherit from [`X402APIBaseError`](./src/models/errors/x402-api-base-error.ts)**:
-* [`ApiErrorEnvelope`](./src/models/errors/api-error-envelope.ts): The request failed. Applicable to 3 of 20 methods.*
+* [`ApiErrorEnvelope`](./src/models/errors/api-error-envelope.ts): The request failed. Applicable to 5 of 21 methods.*
 * [`ResponseValidationError`](./src/models/errors/response-validation-error.ts): Type mismatch between the data returned from the server and the structure expected by the SDK. See `error.rawValue` for the raw value and `error.pretty()` for a nicely formatted multi-line string.
 
 </details>
