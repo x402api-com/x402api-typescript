@@ -38,6 +38,14 @@ export type DynamicChargeResponse = {
    */
   paymentIdentifier: string;
   expiresAt: Date;
+  /**
+   * Optional HTTPS hosted checkout for this exact charge. It is a short-lived bearer capability and expires with expires_at.
+   */
+  humanCheckoutUrl?: string | undefined;
+  /**
+   * Optional canonical hosted-checkout URL to encode as a QR; never a recipient address.
+   */
+  qrPayload?: string | undefined;
   createdAt: Date;
   prices: Array<DynamicChargePrice>;
   requestedExpiresInSeconds: number;
@@ -72,6 +80,8 @@ export const DynamicChargeResponse$inboundSchema: z.ZodMiniType<
     resource_version_id: types.string(),
     payment_identifier: types.string(),
     expires_at: types.date(),
+    human_checkout_url: types.optional(types.string()),
+    qr_payload: types.optional(types.string()),
     created_at: types.date(),
     prices: z.array(DynamicChargePrice$inboundSchema),
     requested_expires_in_seconds: types.number(),
@@ -91,6 +101,8 @@ export const DynamicChargeResponse$inboundSchema: z.ZodMiniType<
       "resource_version_id": "resourceVersionId",
       "payment_identifier": "paymentIdentifier",
       "expires_at": "expiresAt",
+      "human_checkout_url": "humanCheckoutUrl",
+      "qr_payload": "qrPayload",
       "created_at": "createdAt",
       "requested_expires_in_seconds": "requestedExpiresInSeconds",
       "metadata_digest": "metadataDigest",

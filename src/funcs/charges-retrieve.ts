@@ -31,7 +31,7 @@ import { Result } from "../types/fp.js";
  * Retrieve a programmatic charge
  *
  * @remarks
- * Retrieve the frozen terms and current projected status of a tenant charge. Requires a tenant API key with the `commerce:read` scope.
+ * Retrieve the frozen terms and current projected status of a tenant charge. Any optional human_checkout_url and qr_payload are stable, identical bearer capabilities that expire with expires_at. Requires a tenant API key with the `commerce:read` scope.
  *
  * If set, this operation will use {@link Security.tenantApiKey} from the global security.
  */
