@@ -31,7 +31,7 @@ import { Result } from "../types/fp.js";
  * Create a programmatic charge
  *
  * @remarks
- * Create one idempotent dynamic charge and immutable PAYMENT-REQUIRED challenge from an active resource template. resource_version_id is the current active_version.id returned by GET /v1/resources, not the top-level resource id or pay_ public_payment_id. The 201 management response contains the canonical buyer challenge; it does not submit or settle payment. Requires a tenant API key with the `commerce:write` scope.
+ * Create one idempotent dynamic charge and immutable PAYMENT-REQUIRED challenge from an active resource template. resource_version_id is the current active_version.id returned by GET /v1/resources, not the top-level resource id or pay_ public_payment_id. The 201 management response contains the canonical buyer challenge; it does not submit or settle payment. When direct human checkout is active and the frozen charge has an eligible sponsored rail, the response also contains paired human_checkout_url and qr_payload fields for the same exact charge. Requires a tenant API key with the `commerce:write` scope.
  *
  * If set, this operation will use {@link Security.tenantApiKey} from the global security.
  */

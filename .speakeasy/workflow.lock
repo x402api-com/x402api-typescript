@@ -2,16 +2,17 @@ speakeasyVersion: 1.794.0
 sources:
     x402api-public:
         sourceNamespace: x402api-public
-        sourceRevisionDigest: sha256:85063468734dcba5551cdc305a575d967e6010a965a5d012534c465a28d00470
-        sourceBlobDigest: sha256:ab34245502557af4ec49c74c07dc81580caa58241c0fde7751e7342b5db18a94
+        sourceRevisionDigest: sha256:bab8bbe90e158fd310ed786aacf9da5fdfc778c708134a5d1ca904e03b310bd8
+        sourceBlobDigest: sha256:ab6672d1225e7628b6da58b739f155c6f1aeafc4e9db64fbeaffac70d3afee0f
         tags:
             - latest
+            - sdk-v1.4.0-7387674e566a
 targets:
     typescript:
         source: x402api-public
         sourceNamespace: x402api-public
-        sourceRevisionDigest: sha256:85063468734dcba5551cdc305a575d967e6010a965a5d012534c465a28d00470
-        sourceBlobDigest: sha256:ab34245502557af4ec49c74c07dc81580caa58241c0fde7751e7342b5db18a94
+        sourceRevisionDigest: sha256:bab8bbe90e158fd310ed786aacf9da5fdfc778c708134a5d1ca904e03b310bd8
+        sourceBlobDigest: sha256:ab6672d1225e7628b6da58b739f155c6f1aeafc4e9db64fbeaffac70d3afee0f
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: 1.794.0
