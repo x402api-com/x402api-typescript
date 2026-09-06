@@ -26,4 +26,3 @@ const value: models.ResourceFulfillmentConfig3 = {
   provisionerAdapterId: "e7fae3cc-8b50-452a-ae6f-0316887e19fc",
 };
 ```
-

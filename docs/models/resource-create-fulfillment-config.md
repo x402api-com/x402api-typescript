@@ -26,4 +26,3 @@ const value: models.FulfillmentConfig3 = {
   provisionerAdapterId: "31a88499-f0a5-4fba-9b27-264f1cee0987",
 };
 ```
-
