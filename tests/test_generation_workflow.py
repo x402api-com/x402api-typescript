@@ -13,11 +13,12 @@ class GenerationWorkflowTests(unittest.TestCase):
 
     def test_preview_is_tested_and_bound_to_provenance_before_success(self) -> None:
         workflow = (ROOT / ".github" / "workflows" / "sdk_generation.yaml").read_text()
-        self.assertIn("Mint a one-repository preview token", workflow)
-        self.assertIn("repositories: x402api-typescript", workflow)
-        self.assertIn(
-            "github_access_token: ${{ steps.app-token.outputs.token }}", workflow
-        )
+        preview = workflow[workflow.index("  preview:") : workflow.index("  finalize-preview:")]
+        self.assertIn("contents: write", preview)
+        self.assertIn("token: ${{ github.token }}", preview)
+        self.assertIn("github_access_token: ${{ github.token }}", preview)
+        self.assertNotIn("Mint a one-repository preview token", preview)
+        self.assertNotIn("steps.app-token.outputs.token", preview)
         self.assertNotIn("pull_request_target:", workflow)
         self.assertIn("finalize-preview:", workflow)
         self.assertIn("needs: [validate-inputs, preview]", workflow)
