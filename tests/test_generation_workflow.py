@@ -15,6 +15,7 @@ class GenerationWorkflowTests(unittest.TestCase):
         workflow = (ROOT / ".github" / "workflows" / "sdk_generation.yaml").read_text()
         preview = workflow[workflow.index("  preview:") : workflow.index("  finalize-preview:")]
         self.assertIn("contents: write", preview)
+        self.assertIn("pull-requests: write", preview)
         self.assertIn("token: ${{ github.token }}", preview)
         self.assertIn("github_access_token: ${{ github.token }}", preview)
         self.assertNotIn("Mint a one-repository preview token", preview)
